@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Score : MonoBehaviour
 {
@@ -11,7 +9,6 @@ public class Score : MonoBehaviour
     public void addScore(int value)
     {
         _score += value;
-        Debug.Log("Score: " + _score);   
+        Debug.Log("Score: " + _score);
     }
-
 }

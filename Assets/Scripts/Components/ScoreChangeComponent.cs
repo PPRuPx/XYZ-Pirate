@@ -1,15 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class ScoreChangeComponent : MonoBehaviour
+namespace Components
 {
-
-    [SerializeField] private Score _score;
-    [SerializeField] private int value;
-
-    public void ChangeScore()
+    public class ScoreChangeComponent : MonoBehaviour
     {
-        _score.addScore(value);
+        [SerializeField] private Score _score;
+        [SerializeField] private int value;
+
+        public void ChangeScore()
+        {
+            _score.addScore(value);
+        }
     }
 }

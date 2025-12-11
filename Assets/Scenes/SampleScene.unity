@@ -1780,6 +1780,8 @@ GameObject:
   - component: {fileID: 527984370}
   - component: {fileID: 527984369}
   - component: {fileID: 527984371}
+  - component: {fileID: 527984373}
+  - component: {fileID: 527984372}
   m_Layer: 8
   m_Name: Spikes
   m_TagString: Untagged
@@ -1877,6 +1879,46 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.388093}
   m_EdgeRadius: 0
+--- !u!114 &527984372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 527984368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9361362736637e84caa1d57f842e3a4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tag: Player
+  _action:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 527984373}
+        m_MethodName: ApplyDamage
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &527984373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 527984368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d96e8d3c046c2948ac8bffd7d3a61f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damage: 1
 --- !u!1 &620457953
 GameObject:
   m_ObjectHideFlags: 0
@@ -4369,6 +4411,7 @@ GameObject:
   - component: {fileID: 1518393449}
   - component: {fileID: 1518393448}
   - component: {fileID: 1518393450}
+  - component: {fileID: 1518393451}
   m_Layer: 0
   m_Name: Hero
   m_TagString: Player
@@ -4529,6 +4572,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _moveSpeed: 5
   _jumpSpeed: 10
+  _damageJumpSpeed: 75
   _groundCheck: {fileID: 410703493}
 --- !u!70 &1518393448
 CapsuleCollider2D:
@@ -4586,6 +4630,50 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1518393451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1518393442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e65bb0f82ec26347a0b33685c8b53c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: 5
+  _onHeal:
+    m_PersistentCalls:
+      m_Calls: []
+  _onDamage:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1518393447}
+        m_MethodName: TakeDamage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _onDie:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1469673274}
+        m_MethodName: Reload
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1523389401
 GameObject:
   m_ObjectHideFlags: 0

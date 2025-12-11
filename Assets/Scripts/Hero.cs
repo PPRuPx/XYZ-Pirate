@@ -1,27 +1,25 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Serialization;
+﻿using UnityEngine;
 
 public class Hero : MonoBehaviour
 {
     [SerializeField] private float _moveSpeed;
     [SerializeField] private float _jumpSpeed;
+    [SerializeField] private float _damageJumpSpeed;
     [SerializeField] private LayerCheck _groundCheck;
 
     private Rigidbody2D _rigidbody;
     private Animator _animator;
     private SpriteRenderer _renderer;
-    
+
     private Vector3 _directrion;
     private bool _isGrounded;
     private bool _allowDoubleJump;
 
-    private static readonly int IsRunningKey = Animator.StringToHash("is-running"); 
-    private static readonly int IsGroundedKey = Animator.StringToHash("is-grounded"); 
-    private static readonly int VerticalVelocityKey = Animator.StringToHash("vertical-velocity"); 
-    
+    private static readonly int IsRunningKey = Animator.StringToHash("is-running");
+    private static readonly int IsGroundedKey = Animator.StringToHash("is-grounded");
+    private static readonly int VerticalVelocityKey = Animator.StringToHash("vertical-velocity");
+    private static readonly int HitKey = Animator.StringToHash("hit");
+
 
     private void Awake()
     {
@@ -45,7 +43,7 @@ public class Hero : MonoBehaviour
         var xVelocity = _directrion.x * _moveSpeed;
         var yVelocity = CalculateYVelocity();
         _rigidbody.velocity = new Vector2(xVelocity, yVelocity);
-        
+
         _animator.SetBool(IsRunningKey, _directrion.x != 0);
         _animator.SetBool(IsGroundedKey, _isGrounded);
         _animator.SetFloat(VerticalVelocityKey, _rigidbody.velocity.y);
@@ -58,13 +56,12 @@ public class Hero : MonoBehaviour
         var yVelocity = _rigidbody.velocity.y;
         var isJumpPressing = _directrion.y > 0;
 
-        if (_isGrounded) 
+        if (_isGrounded)
             _allowDoubleJump = true;
-        
+
         if (isJumpPressing)
         {
             yVelocity = CalculateJumpVelocity(yVelocity);
-            
         }
         else if (_rigidbody.velocity.y > 0)
         {
@@ -79,7 +76,7 @@ public class Hero : MonoBehaviour
         var isFalling = _rigidbody.velocity.y <= 0.001f;
         if (!isFalling)
             return yVelocity;
-        
+
         if (_isGrounded)
         {
             yVelocity += _jumpSpeed;
@@ -105,5 +102,19 @@ public class Hero : MonoBehaviour
     public void SaySomething()
     {
         Debug.Log("Hello!");
+    }
+
+    public void TakeDamage()
+    {
+        _animator.SetTrigger(HitKey);
+
+        float xVelocity = _rigidbody.velocity.x;
+        if (_rigidbody.velocity.x > 0)
+            xVelocity = -_damageJumpSpeed;
+        else if (_rigidbody.velocity.x < 0)
+            xVelocity = _damageJumpSpeed;
+        float yVelocity = _damageJumpSpeed;
+        
+        _rigidbody.velocity = new Vector2(xVelocity, yVelocity);
     }
 }

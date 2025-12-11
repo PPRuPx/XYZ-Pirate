@@ -1,13 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ReloadLevelComponent : MonoBehaviour
+namespace Components
 {
-    public void Reload()
+    public class ReloadLevelComponent : MonoBehaviour
     {
-        var scene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(scene.name);
+        public void Reload()
+        {
+            var scene = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(scene.name);
+        }
     }
 }

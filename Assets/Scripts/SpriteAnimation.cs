@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Serialization;
 
 [RequireComponent(typeof(SpriteRenderer))]
 public class SpriteAnimation : MonoBehaviour
@@ -29,7 +25,7 @@ public class SpriteAnimation : MonoBehaviour
 
     private void Update()
     {
-        if (_nextFrameTime > Time.time) 
+        if (_nextFrameTime > Time.time)
             return;
 
         if (_currentSpriteIndex >= _sprites.Length)
@@ -44,9 +40,8 @@ public class SpriteAnimation : MonoBehaviour
                 _onComplete?.Invoke();
                 return;
             }
-                
         }
-            
+
         _renderer.sprite = _sprites[_currentSpriteIndex];
         _nextFrameTime += _secondsPerFrame;
         _currentSpriteIndex++;
