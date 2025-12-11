@@ -11,6 +11,5 @@ public class ScoreChangeComponent : MonoBehaviour
     public void ChangeScore()
     {
         _score.addScore(value);
-        Debug.Log("Score: " + _score.getScore());
     }
 }
