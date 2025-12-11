@@ -169,6 +169,10 @@ MonoBehaviour:
   _jumpSpeed: 10
   _damageJumpSpeed: 75
   _groundCheck: {fileID: 9054513557823677183}
+  _interactionRadius: 1
+  _interactionLayer:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!114 &9054513558946311199
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -238,6 +242,21 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 2650698d-f723-4452-a2f7-937747396d12
     m_ActionName: Hero/SaySomething[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 9054513558946311199}
+        m_MethodName: OnInteract
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 950ca486-6440-4d2a-a8fb-8ec53c282b70
+    m_ActionName: Hero/Interact[/Keyboard/e]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Hero
@@ -314,7 +333,18 @@ MonoBehaviour:
   _health: 5
   _onHeal:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 9054513558946311197}
+        m_MethodName: TakeHeal
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   _onDamage:
     m_PersistentCalls:
       m_Calls:

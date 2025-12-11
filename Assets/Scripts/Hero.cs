@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Components;
+using UnityEngine;
 
 public class Hero : MonoBehaviour
 {
@@ -6,6 +7,9 @@ public class Hero : MonoBehaviour
     [SerializeField] private float _jumpSpeed;
     [SerializeField] private float _damageJumpSpeed;
     [SerializeField] private LayerCheck _groundCheck;
+    
+    [SerializeField] private float _interactionRadius;
+    [SerializeField] private LayerMask _interactionLayer;
 
     private Rigidbody2D _rigidbody;
     private Animator _animator;
@@ -14,6 +18,7 @@ public class Hero : MonoBehaviour
     private Vector3 _directrion;
     private bool _isGrounded;
     private bool _allowDoubleJump;
+    private Collider2D[] _interactionResult = new Collider2D[1];
 
     private static readonly int IsRunningKey = Animator.StringToHash("is-running");
     private static readonly int IsGroundedKey = Animator.StringToHash("is-grounded");
@@ -103,9 +108,15 @@ public class Hero : MonoBehaviour
     {
         Debug.Log("Hello!");
     }
+    
+    public void TakeHeal()
+    {
+        Debug.Log("Nice!");
+    }
 
     public void TakeDamage()
     {
+        Debug.Log("Ouch!");
         _animator.SetTrigger(HitKey);
 
         float xVelocity = _rigidbody.velocity.x;
@@ -116,5 +127,17 @@ public class Hero : MonoBehaviour
         float yVelocity = _damageJumpSpeed;
         
         _rigidbody.velocity = new Vector2(xVelocity, yVelocity);
+    }
+
+    public void Interact()
+    {
+        var size = Physics2D.OverlapCircleNonAlloc(
+            transform.position,
+            _interactionRadius,
+            _interactionResult,
+            _interactionLayer);
+
+        for (int i = 0; i < size; i++)
+            _interactionResult[i].GetComponent<InteractableComponent>()?.Interact();
     }
 }
