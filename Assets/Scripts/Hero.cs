@@ -29,6 +29,8 @@ public class Hero : MonoBehaviour
     private bool _allowDoubleJump;
     private bool _isJumpLockedAfterDamage;
     private float _fallVelocity;
+    private float _currentJumpSpeed;
+    
     private Collider2D[] _interactionResult = new Collider2D[1];
 
     private static readonly int IsRunningKey = Animator.StringToHash("is-running");
@@ -42,6 +44,8 @@ public class Hero : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
         _health = GetComponent<HealthComponent>();
+
+        _currentJumpSpeed = _jumpSpeed;
     }
 
     public void SetDirection(Vector3 direction)
@@ -107,13 +111,13 @@ public class Hero : MonoBehaviour
 
         if (_isGrounded)
         {
-            yVelocity += _jumpSpeed;
+            yVelocity += _currentJumpSpeed;
             SpawnJumpParticle();
         }
         else if (_allowDoubleJump)
         {
             // Full strength double jump (compensate falling velocity)
-            yVelocity = _jumpSpeed;
+            yVelocity = _currentJumpSpeed;
             SpawnJumpParticle();
             _allowDoubleJump = false;
         }
@@ -149,14 +153,21 @@ public class Hero : MonoBehaviour
         _animator.SetTrigger(HitKey);
         _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0);
         _rigidbody.AddForce(Vector2.up * _damageJumpSpeed, ForceMode2D.Impulse); 
-        
         Invoke(nameof(UnlockJump), _damageJumpLockTime);
     }
     
-    private void UnlockJump()
+    public void TakeJumpPower(float multiplier, float time)
     {
-        _isJumpLockedAfterDamage = false;
+        Debug.Log("Oh my!");
+        _currentJumpSpeed *= multiplier;
+        Invoke(nameof(ResetBuff), time);
     }
+    
+    private void ResetBuff() =>
+        _currentJumpSpeed = _jumpSpeed;
+    
+    private void UnlockJump() =>
+        _isJumpLockedAfterDamage = false;
 
     public void Interact()
     {
