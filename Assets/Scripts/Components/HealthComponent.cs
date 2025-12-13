@@ -6,6 +6,8 @@ namespace Components
     public class HealthComponent : MonoBehaviour
     {
         [SerializeField] private int _health;
+        [SerializeField] private bool _invulnerability;
+        
         [SerializeField] private UnityEvent _onHeal;
         [SerializeField] private UnityEvent _onDamage;
         [SerializeField] private UnityEvent _onDie;
@@ -24,5 +26,7 @@ namespace Components
             if (_health <= 0)
                 _onDie?.Invoke();
         }
+
+        public bool Invulnerability() => _invulnerability;
     }
 }

@@ -7,11 +7,12 @@ namespace Components
     public class EnterCollisionComponent : MonoBehaviour
     {
         [SerializeField] private string _tag;
+        [SerializeField] private string _layer;
         [SerializeField] private EnterEvent _action;
 
         private void OnCollisionEnter2D(Collision2D other)
         {
-            if (other.gameObject.CompareTag(_tag))
+            if (other.gameObject.CompareTag(_tag) || other.gameObject)
                 _action.Invoke(other.gameObject);
         }
 

@@ -1,23 +1,34 @@
 ﻿using Components;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Hero : MonoBehaviour
 {
     [SerializeField] private float _moveSpeed;
     [SerializeField] private float _jumpSpeed;
-    [SerializeField] private float _damageJumpSpeed;
     [SerializeField] private LayerCheck _groundCheck;
+    [SerializeField] private float _hardLandSpeedThreshold;
+    
+    [SerializeField] private float _damageJumpSpeed;
+    [SerializeField] private float _damageJumpLockTime;
     
     [SerializeField] private float _interactionRadius;
     [SerializeField] private LayerMask _interactionLayer;
 
+    [SerializeField] private SpawnComponent _runParticles;
+    [SerializeField] private SpawnComponent _jumpParticles;
+    [SerializeField] private SpawnComponent _fallParticles;
+
     private Rigidbody2D _rigidbody;
     private Animator _animator;
-    private SpriteRenderer _renderer;
+    private HealthComponent _health;
 
     private Vector3 _directrion;
+    private bool _wasGrounded;
     private bool _isGrounded;
     private bool _allowDoubleJump;
+    private bool _isJumpLockedAfterDamage;
+    private float _fallVelocity;
     private Collider2D[] _interactionResult = new Collider2D[1];
 
     private static readonly int IsRunningKey = Animator.StringToHash("is-running");
@@ -30,7 +41,7 @@ public class Hero : MonoBehaviour
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
-        _renderer = GetComponent<SpriteRenderer>();
+        _health = GetComponent<HealthComponent>();
     }
 
     public void SetDirection(Vector3 direction)
@@ -40,7 +51,16 @@ public class Hero : MonoBehaviour
 
     private void Update()
     {
+        _wasGrounded = _isGrounded;
         _isGrounded = _groundCheck.IsTouchingLayer;
+        
+        if (!_wasGrounded && _isGrounded)
+            SpawnFallParticle();
+        
+        if (!_isGrounded && _rigidbody.velocity.y < 0)
+            _fallVelocity = _rigidbody.velocity.y;
+        else if (_isGrounded)
+            _fallVelocity = 0;
     }
 
     private void FixedUpdate()
@@ -63,7 +83,10 @@ public class Hero : MonoBehaviour
 
         if (_isGrounded)
             _allowDoubleJump = true;
-
+        
+        if (_isJumpLockedAfterDamage)
+            return yVelocity;
+        
         if (isJumpPressing)
         {
             yVelocity = CalculateJumpVelocity(yVelocity);
@@ -85,11 +108,13 @@ public class Hero : MonoBehaviour
         if (_isGrounded)
         {
             yVelocity += _jumpSpeed;
+            SpawnJumpParticle();
         }
         else if (_allowDoubleJump)
         {
             // Full strength double jump (compensate falling velocity)
             yVelocity = _jumpSpeed;
+            SpawnJumpParticle();
             _allowDoubleJump = false;
         }
 
@@ -99,9 +124,9 @@ public class Hero : MonoBehaviour
     private void UpdateSpriteDirection()
     {
         if (_directrion.x > 0)
-            _renderer.flipX = false;
+            transform.localScale = new Vector3(1, 1, 1);
         else if (_directrion.x < 0)
-            _renderer.flipX = true;
+            transform.localScale = new Vector3(-1, 1, 1);
     }
 
     public void SaySomething()
@@ -116,17 +141,21 @@ public class Hero : MonoBehaviour
 
     public void TakeDamage()
     {
-        Debug.Log("Ouch!");
-        _animator.SetTrigger(HitKey);
-
-        float xVelocity = _rigidbody.velocity.x;
-        if (_rigidbody.velocity.x > 0)
-            xVelocity = -_damageJumpSpeed;
-        else if (_rigidbody.velocity.x < 0)
-            xVelocity = _damageJumpSpeed;
-        float yVelocity = _damageJumpSpeed;
+        if (_health.Invulnerability())
+            return;
         
-        _rigidbody.velocity = new Vector2(xVelocity, yVelocity);
+        Debug.Log("Ouch!");
+        _isJumpLockedAfterDamage = true;
+        _animator.SetTrigger(HitKey);
+        _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0);
+        _rigidbody.AddForce(Vector2.up * _damageJumpSpeed, ForceMode2D.Impulse); 
+        
+        Invoke(nameof(UnlockJump), _damageJumpLockTime);
+    }
+    
+    private void UnlockJump()
+    {
+        _isJumpLockedAfterDamage = false;
     }
 
     public void Interact()
@@ -139,5 +168,22 @@ public class Hero : MonoBehaviour
 
         for (int i = 0; i < size; i++)
             _interactionResult[i].GetComponent<InteractableComponent>()?.Interact();
+    }
+
+    public void SpawnRunParticle()
+    {
+        if (_isGrounded) 
+            _runParticles.Spawn();
+    }
+    
+    public void SpawnJumpParticle()
+    {
+        _jumpParticles.Spawn();
+    }
+    
+    public void SpawnFallParticle()
+    {
+        if (_fallVelocity < _hardLandSpeedThreshold)
+            _fallParticles.Spawn();
     }
 }
