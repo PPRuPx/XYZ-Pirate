@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.Events;
 
 namespace Components
@@ -7,26 +8,37 @@ namespace Components
     {
         [SerializeField] private int _health;
         [SerializeField] private bool _invulnerability;
-        
+
         [SerializeField] private UnityEvent _onHeal;
         [SerializeField] private UnityEvent _onDamage;
         [SerializeField] private UnityEvent _onDie;
+        [SerializeField] private HealthChangeEvent _onChange;
 
-        public void ApplyHeal(int healValue)
+        public void SetHealth(int healthValue)
         {
-            _health += healValue;
-            _onHeal?.Invoke();
+            _health = healthValue;
         }
 
-        public void ApplyDamage(int damageValue)
+        public void ModifyHealth(int delta)
         {
-            _health -= damageValue;
-            _onDamage?.Invoke();
-
+            _health += delta;
+            _onChange?.Invoke(_health);
+            
+            if (delta < 0)
+                _onDamage?.Invoke();
+            
+            if (delta > 0)
+                _onHeal?.Invoke();
+            
             if (_health <= 0)
                 _onDie?.Invoke();
         }
 
-        public bool Invulnerability() => _invulnerability;
+        public bool IsInvulnerable() => _invulnerability;
+    }
+
+    [Serializable]
+    public class HealthChangeEvent : UnityEvent<int>
+    {
     }
 }

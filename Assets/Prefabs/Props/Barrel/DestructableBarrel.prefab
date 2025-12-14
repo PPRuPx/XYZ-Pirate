@@ -32,7 +32,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4569319440895371751}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -281,6 +281,9 @@ MonoBehaviour:
           m_StringArgument: destroy
           m_BoolArgument: 0
         m_CallState: 2
+  _onChange:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1404918185835591284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -317,7 +320,7 @@ MonoBehaviour:
     Prefab: {fileID: 4562808722414723909, guid: ef3d8c820569ce84ab06f53efb01917f,
       type: 3}
     DropVector: {x: 2, y: 2}
-  - Chance: 33.3
+  - Chance: 10
     Prefab: {fileID: 5920652027994574295, guid: c312aa0d1bc319f4c9da6b2ffd686660,
       type: 3}
     DropVector: {x: 0, y: 4}

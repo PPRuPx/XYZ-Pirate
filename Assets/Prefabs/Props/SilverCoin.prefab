@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4562808722414723912}
   - component: {fileID: 4562808722414723915}
   - component: {fileID: 4562808722414723914}
-  - component: {fileID: 4562808722414723919}
+  - component: {fileID: 5545157137016426796}
   - component: {fileID: 4562808722414723916}
   m_Layer: 0
   m_Name: SilverCoin
@@ -119,9 +119,9 @@ MonoBehaviour:
   _event:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4562808722414723914}
-        m_MethodName: DestroyObject
-        m_Mode: 1
+      - m_Target: {fileID: 5545157137016426796}
+        m_MethodName: ApplyChange
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -130,8 +130,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 4562808722414723919}
-        m_MethodName: ChangeScore
+      - m_Target: {fileID: 4562808722414723914}
+        m_MethodName: DestroyObject
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _objectToDestroy: {fileID: 4562808722414723909}
---- !u!114 &4562808722414723919
+--- !u!114 &5545157137016426796
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -163,11 +163,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4562808722414723909}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a94fd7922d205a94dbd6c023fc75d8a8, type: 3}
+  m_Script: {fileID: 11500000, guid: 9931b301f34449f4ae40abfcdfb8d4ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _score: {fileID: 7795182708997346484, guid: 1a1a5c2f722806240a1c7126b0e28d41, type: 3}
-  value: 1
+  _value: 1
 --- !u!114 &4562808722414723916
 MonoBehaviour:
   m_ObjectHideFlags: 0

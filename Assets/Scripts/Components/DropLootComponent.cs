@@ -6,6 +6,8 @@ namespace Components
 {
     public class DropLootComponent : MonoBehaviour
     {
+        private const float Z_OFFSET = -0.1f;
+        
         [SerializeField] private Transform _target;
         [SerializeField] private Loot[] _drop;
 
@@ -17,7 +19,9 @@ namespace Components
                 float roll = Random.Range(0f, 100f);
                 if (roll <= loot.Chance)
                 {
-                    var go = Instantiate(loot.Prefab, _target.position, Quaternion.identity);
+                    var targetPos = _target.position;
+                    var spawnPos = new Vector3(targetPos.x, targetPos.y, targetPos.z + Z_OFFSET);
+                    var go = Instantiate(loot.Prefab, spawnPos, Quaternion.identity);
                     var rb = go.GetComponent<Rigidbody2D>();
                     if (rb != null)
                         rb.AddForce(loot.DropVector, ForceMode2D.Impulse);

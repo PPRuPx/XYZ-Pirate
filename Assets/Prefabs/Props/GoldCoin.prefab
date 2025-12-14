@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5920652027994573866}
   - component: {fileID: -6772027722386803356}
   - component: {fileID: 5920652027994573864}
-  - component: {fileID: 5920652027994573869}
+  - component: {fileID: 3045446149169215423}
   - component: {fileID: 5920652027994573870}
   m_Layer: 0
   m_Name: GoldCoin
@@ -119,9 +119,9 @@ MonoBehaviour:
   _event:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5920652027994573869}
-        m_MethodName: ChangeScore
-        m_Mode: 1
+      - m_Target: {fileID: 3045446149169215423}
+        m_MethodName: ApplyChange
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _objectToDestroy: {fileID: 5920652027994574295}
---- !u!114 &5920652027994573869
+--- !u!114 &3045446149169215423
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -163,11 +163,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5920652027994574295}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a94fd7922d205a94dbd6c023fc75d8a8, type: 3}
+  m_Script: {fileID: 11500000, guid: 9931b301f34449f4ae40abfcdfb8d4ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _score: {fileID: 7795182708997346484, guid: 1a1a5c2f722806240a1c7126b0e28d41, type: 3}
-  value: 10
+  _value: 10
 --- !u!114 &5920652027994573870
 MonoBehaviour:
   m_ObjectHideFlags: 0

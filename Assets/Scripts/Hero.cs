@@ -1,6 +1,8 @@
-﻿using Components;
+﻿using System;
+using Components;
 using DefaultNamespace;
 using DefaultNamespace.Utils;
+using Model.State;
 using UnityEditor;
 using UnityEditor.Animations;
 using UnityEngine;
@@ -33,15 +35,15 @@ public class Hero : MonoBehaviour
     private Rigidbody2D _rigidbody;
     private Animator _animator;
     private HealthComponent _health;
+    private CoinsComponent _coins;
     
     private Vector3 _directrion;
     private bool _wasGrounded;
     private bool _isGrounded;
     private bool _allowDoubleJump;
-    private bool _isJumpLockedAfterDamage;
+    private bool _isJumpLocked;
     private float _fallVelocity;
     private float _currentJumpSpeed;
-    private bool _isArmed;
 
     private Collider2D[] _interactionResult = new Collider2D[1];
 
@@ -51,15 +53,31 @@ public class Hero : MonoBehaviour
     private static readonly int HitKey = Animator.StringToHash("hit");
     private static readonly int AttackKey = Animator.StringToHash("attack");
 
+    private GameSession _session;
 
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
         _health = GetComponent<HealthComponent>();
-
-        _currentJumpSpeed = _jumpSpeed;
+        _coins = GetComponent<CoinsComponent>();
     }
+
+    private void Start()
+    {
+        _session = FindObjectOfType<GameSession>();
+        
+        _currentJumpSpeed = _jumpSpeed;
+        _health.SetHealth(_session.Data.Hp);
+        _coins.SetCoins(_session.Data.Coins);
+        UpdateHeroWeapon();
+    }
+    
+    public void OnHealthChanged(int currentHealth) =>
+        _session.Data.Hp = currentHealth;
+    
+    public void OnCoinsChanged(int currentCoins) =>
+        _session.Data.Coins = currentCoins;
 
     public void SetDirection(Vector3 direction)
     {
@@ -101,7 +119,7 @@ public class Hero : MonoBehaviour
         if (_isGrounded)
             _allowDoubleJump = true;
 
-        if (_isJumpLockedAfterDamage)
+        if (_isJumpLocked)
             return yVelocity;
 
         if (isJumpPressing)
@@ -126,6 +144,8 @@ public class Hero : MonoBehaviour
         {
             yVelocity += _currentJumpSpeed;
             SpawnJumpParticle();
+            _isJumpLocked = true;
+            Invoke(nameof(UnlockJump), _damageJumpLockTime);
         }
         else if (_allowDoubleJump)
         {
@@ -133,6 +153,8 @@ public class Hero : MonoBehaviour
             yVelocity = _currentJumpSpeed;
             SpawnJumpParticle();
             _allowDoubleJump = false;
+            _isJumpLocked = true;
+            Invoke(nameof(UnlockJump), _damageJumpLockTime);
         }
 
         return yVelocity;
@@ -158,11 +180,11 @@ public class Hero : MonoBehaviour
 
     public void TakeDamage()
     {
-        if (_health.Invulnerability())
+        if (_health.IsInvulnerable())
             return;
 
         Debug.Log("Ouch!");
-        _isJumpLockedAfterDamage = true;
+        _isJumpLocked = true;
         _animator.SetTrigger(HitKey);
         _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0);
         _rigidbody.AddForce(Vector2.up * _damageJumpSpeed, ForceMode2D.Impulse);
@@ -180,7 +202,7 @@ public class Hero : MonoBehaviour
         _currentJumpSpeed = _jumpSpeed;
 
     private void UnlockJump() =>
-        _isJumpLockedAfterDamage = false;
+        _isJumpLocked = false;
 
     public void Interact()
     {
@@ -222,7 +244,7 @@ public class Hero : MonoBehaviour
 
     public void Attack()
     {
-        if (_isArmed)
+        if (_session.Data.IsArmed)
             _animator.SetTrigger(AttackKey);
     }
     
@@ -235,13 +257,16 @@ public class Hero : MonoBehaviour
 
             var hp = go.GetComponent<HealthComponent>();
             if (hp != null)
-                hp.ApplyDamage(_attackDamage);
+                hp.ModifyHealth(-_attackDamage);
         }
     }
 
     public void ArmHero()
     {
-        _isArmed = true;
-        _animator.runtimeAnimatorController = _armed;
+        _session.Data.IsArmed = true;
+        UpdateHeroWeapon();
     }
+
+    private void UpdateHeroWeapon() =>
+        _animator.runtimeAnimatorController = _session.Data.IsArmed ? _armed : _unarmed;
 }
