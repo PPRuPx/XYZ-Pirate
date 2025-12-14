@@ -10,13 +10,14 @@ GameObject:
   m_Component:
   - component: {fileID: 5920652027994573868}
   - component: {fileID: 5920652027994573867}
+  - component: {fileID: -578157224397320085}
   - component: {fileID: 5920652027994573866}
-  - component: {fileID: -6772027722386803356}
+  - component: {fileID: 5877071943571441165}
   - component: {fileID: 5920652027994573864}
   - component: {fileID: 5920652027994573869}
   - component: {fileID: 5920652027994573870}
   m_Layer: 0
-  m_Name: GoldCoin
+  m_Name: GoldCoinPhysical
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -87,6 +88,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!50 &-578157224397320085
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5920652027994574295}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!58 &5920652027994573866
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -97,13 +119,13 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.017004132, y: 0.014728069}
   serializedVersion: 2
   m_Radius: 0.16969573
---- !u!114 &-6772027722386803356
+--- !u!114 &5877071943571441165
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -112,11 +134,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 5920652027994574295}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d790463b107f5d4cb6f2786611956d8, type: 3}
+  m_Script: {fileID: 11500000, guid: 9361362736637e84caa1d57f842e3a4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _tag: Player
-  _event:
+  _action:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5920652027994573869}

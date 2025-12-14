@@ -1,4 +1,8 @@
 ﻿using Components;
+using DefaultNamespace;
+using DefaultNamespace.Utils;
+using UnityEditor;
+using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -8,21 +12,28 @@ public class Hero : MonoBehaviour
     [SerializeField] private float _jumpSpeed;
     [SerializeField] private LayerCheck _groundCheck;
     [SerializeField] private float _hardLandSpeedThreshold;
-    
+
     [SerializeField] private float _damageJumpSpeed;
     [SerializeField] private float _damageJumpLockTime;
-    
+
     [SerializeField] private float _interactionRadius;
     [SerializeField] private LayerMask _interactionLayer;
 
     [SerializeField] private SpawnComponent _runParticles;
     [SerializeField] private SpawnComponent _jumpParticles;
     [SerializeField] private SpawnComponent _fallParticles;
+    [SerializeField] private SpawnComponent _attackParticles;
+
+    [SerializeField] private AnimatorController _unarmed;
+    [SerializeField] private AnimatorController _armed;
+    
+    [SerializeField] private int _attackDamage;
+    [SerializeField] private CheckCircleOverlap _attackRange;
 
     private Rigidbody2D _rigidbody;
     private Animator _animator;
     private HealthComponent _health;
-
+    
     private Vector3 _directrion;
     private bool _wasGrounded;
     private bool _isGrounded;
@@ -30,13 +41,15 @@ public class Hero : MonoBehaviour
     private bool _isJumpLockedAfterDamage;
     private float _fallVelocity;
     private float _currentJumpSpeed;
-    
+    private bool _isArmed;
+
     private Collider2D[] _interactionResult = new Collider2D[1];
 
     private static readonly int IsRunningKey = Animator.StringToHash("is-running");
     private static readonly int IsGroundedKey = Animator.StringToHash("is-grounded");
     private static readonly int VerticalVelocityKey = Animator.StringToHash("vertical-velocity");
     private static readonly int HitKey = Animator.StringToHash("hit");
+    private static readonly int AttackKey = Animator.StringToHash("attack");
 
 
     private void Awake()
@@ -52,15 +65,15 @@ public class Hero : MonoBehaviour
     {
         _directrion = direction;
     }
-
+    
     private void Update()
     {
         _wasGrounded = _isGrounded;
         _isGrounded = _groundCheck.IsTouchingLayer;
-        
+
         if (!_wasGrounded && _isGrounded)
             SpawnFallParticle();
-        
+
         if (!_isGrounded && _rigidbody.velocity.y < 0)
             _fallVelocity = _rigidbody.velocity.y;
         else if (_isGrounded)
@@ -87,10 +100,10 @@ public class Hero : MonoBehaviour
 
         if (_isGrounded)
             _allowDoubleJump = true;
-        
+
         if (_isJumpLockedAfterDamage)
             return yVelocity;
-        
+
         if (isJumpPressing)
         {
             yVelocity = CalculateJumpVelocity(yVelocity);
@@ -137,7 +150,7 @@ public class Hero : MonoBehaviour
     {
         Debug.Log("Hello!");
     }
-    
+
     public void TakeHeal()
     {
         Debug.Log("Nice!");
@@ -147,25 +160,25 @@ public class Hero : MonoBehaviour
     {
         if (_health.Invulnerability())
             return;
-        
+
         Debug.Log("Ouch!");
         _isJumpLockedAfterDamage = true;
         _animator.SetTrigger(HitKey);
         _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0);
-        _rigidbody.AddForce(Vector2.up * _damageJumpSpeed, ForceMode2D.Impulse); 
+        _rigidbody.AddForce(Vector2.up * _damageJumpSpeed, ForceMode2D.Impulse);
         Invoke(nameof(UnlockJump), _damageJumpLockTime);
     }
-    
+
     public void TakeJumpPower(float multiplier, float time)
     {
         Debug.Log("Oh my!");
         _currentJumpSpeed *= multiplier;
         Invoke(nameof(ResetBuff), time);
     }
-    
+
     private void ResetBuff() =>
         _currentJumpSpeed = _jumpSpeed;
-    
+
     private void UnlockJump() =>
         _isJumpLockedAfterDamage = false;
 
@@ -178,23 +191,57 @@ public class Hero : MonoBehaviour
             _interactionLayer);
 
         for (int i = 0; i < size; i++)
-            _interactionResult[i].GetComponent<InteractableComponent>()?.Interact();
+        {
+            var interactable = _interactionResult[i].GetComponent<InteractableComponent>();
+            if (interactable != null)
+                interactable.Interact();
+        }
     }
 
     public void SpawnRunParticle()
     {
-        if (_isGrounded) 
+        if (_isGrounded)
             _runParticles.Spawn();
     }
-    
+
     public void SpawnJumpParticle()
     {
         _jumpParticles.Spawn();
     }
-    
+
     public void SpawnFallParticle()
     {
         if (_fallVelocity < _hardLandSpeedThreshold)
             _fallParticles.Spawn();
+    }
+    
+    public void SpawnAttackParticle()
+    {
+        _attackParticles.Spawn();
+    }
+
+    public void Attack()
+    {
+        if (_isArmed)
+            _animator.SetTrigger(AttackKey);
+    }
+    
+    public void OnAttack()
+    {
+        foreach (var go in _attackRange.getObjectsInRange())
+        {
+            if (go.CompareTag("Player"))
+                continue;
+
+            var hp = go.GetComponent<HealthComponent>();
+            if (hp != null)
+                hp.ApplyDamage(_attackDamage);
+        }
+    }
+
+    public void ArmHero()
+    {
+        _isArmed = true;
+        _animator.runtimeAnimatorController = _armed;
     }
 }
