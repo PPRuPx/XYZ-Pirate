@@ -7,7 +7,7 @@ namespace Components
     public class CoinsComponent : MonoBehaviour
     {
         [SerializeField] private int _coins;
-        [SerializeField] private HealthChangeEvent _onChange;
+        [SerializeField] private HealthChangeEvent _onChange; // TODO: fix class
 
         public int Coins() =>  _coins;
         
@@ -22,7 +22,7 @@ namespace Components
     }
 
     [Serializable]
-    public class CoinChangeEvent : UnityEvent<int>
+    public class CoinsChangeEvent : UnityEvent<int>
     {
     }
 }

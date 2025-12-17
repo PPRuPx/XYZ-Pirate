@@ -19,12 +19,15 @@ namespace Components
                 float roll = Random.Range(0f, 100f);
                 if (roll <= loot.Chance)
                 {
-                    var targetPos = _target.position;
-                    var spawnPos = new Vector3(targetPos.x, targetPos.y, targetPos.z + Z_OFFSET);
-                    var go = Instantiate(loot.Prefab, spawnPos, Quaternion.identity);
-                    var rb = go.GetComponent<Rigidbody2D>();
-                    if (rb != null)
-                        rb.AddForce(loot.DropVector, ForceMode2D.Impulse);
+                    for (int i = 0; i < loot.Count; i++)
+                    {
+                        var targetPos = _target.position;
+                        var spawnPos = new Vector3(targetPos.x, targetPos.y, targetPos.z + Z_OFFSET);
+                        var go = Instantiate(loot.Prefab, spawnPos, Quaternion.identity);
+                        var rb = go.GetComponent<Rigidbody2D>();
+                        if (rb != null)
+                            rb.AddForce(loot.DropVector, ForceMode2D.Impulse);
+                    }
                 }
             }
         }
@@ -36,6 +39,7 @@ namespace Components
             public float Chance;
             public GameObject Prefab;
             public Vector2 DropVector;
+            public int Count = 1;
         }
     }
 }

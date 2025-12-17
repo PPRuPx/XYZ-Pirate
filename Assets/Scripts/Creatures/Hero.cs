@@ -1,9 +1,11 @@
-﻿using Components;
+﻿using System.Collections;
+using Components;
 using Creatures;
 using DefaultNamespace.Utils;
 using Model.State;
 using UnityEditor.Animations;
 using UnityEngine;
+using Utils;
 
 public class Hero : Creature
 {
@@ -13,6 +15,12 @@ public class Hero : Creature
     [SerializeField] private float _wallGravityScale;
     [SerializeField] protected float _invulOnHitTime;
 
+    [Space] [Header("Special Attack")] 
+    [SerializeField] private Cooldown _throwCooldown;
+    [SerializeField] private Cooldown _superThrowCooldown;
+    [SerializeField] private int _superThrowParticles;
+    [SerializeField] private float _superThrowDelay;
+    
     [Space] [Header("Interaction")] 
     [SerializeField] private CheckCircleOverlap _interactionCheck;
 
@@ -24,9 +32,12 @@ public class Hero : Creature
     [SerializeField] private ParticleSystem _hitParticles;
 
     private CoinsComponent _coinsComponent;
+    private SwordsComponent _swordsComponent;
 
     private bool _allowDoubleJump;
     private bool _isOnWall;
+    private bool _allowThrowSword;
+    private bool _superThrow;
 
     private float _defaultJumpSpeed;
     private float _defaultGravityScale;
@@ -34,12 +45,15 @@ public class Hero : Creature
     private readonly Collider2D[] _interactionResult = new Collider2D[1];
 
     private GameSession _session;
+    
+    private static readonly int ThrowKey = Animator.StringToHash("throw");
 
     protected override void Awake()
     {
         base.Awake();
         
         _coinsComponent = GetComponent<CoinsComponent>();
+        _swordsComponent = GetComponent<SwordsComponent>();
 
         _defaultJumpSpeed = _jumpSpeed;
         _defaultGravityScale = Rigidbody.gravityScale;
@@ -51,6 +65,7 @@ public class Hero : Creature
 
         HealthComponent.SetHealth(_session.Data.Hp);
         _coinsComponent.SetCoins(_session.Data.Coins);
+        _swordsComponent.SetSwords(_session.Data.Swords);
 
         UpdateHeroWeapon();
     }
@@ -109,7 +124,6 @@ public class Hero : Creature
         base.TakeDamage();
         if (_coinsComponent.Coins() > 0)
             SpawnCoins();
-        
     }
 
     private void SpawnCoins()
@@ -121,7 +135,7 @@ public class Hero : Creature
         var burst = _hitParticles.emission.GetBurst(0);
         burst.count = numCoinsToDispose;
         _hitParticles.emission.SetBurst(0, burst);
-
+        
         _hitParticles.gameObject.SetActive(true);
         _hitParticles.Play();
     }
@@ -152,7 +166,7 @@ public class Hero : Creature
     
     public override void Attack()
     {
-        if (!_session.Data.IsArmed)
+        if (_session.Data.Swords < 1)
             return;
 
         base.Attack();
@@ -160,10 +174,57 @@ public class Hero : Creature
 
     public void ArmHero()
     {
-        _session.Data.IsArmed = true;
+        _session.Data.Swords += 1;
         UpdateHeroWeapon();
     }
 
     private void UpdateHeroWeapon() =>
-        Animator.runtimeAnimatorController = _session.Data.IsArmed ? _armed : _unarmed;
+        Animator.runtimeAnimatorController = _session.Data.Swords > 0 ? _armed : _unarmed;
+
+    public void StartThrowing()
+    {
+        _superThrowCooldown.Reset();
+    }
+
+    public void PerformThrowing()
+    {
+        if (!_superThrowCooldown.IsReady || _session.Data.Swords <= 1)
+            return;
+
+        if (_superThrowCooldown.IsReady)
+            _superThrow = true;
+        
+        Animator.SetTrigger(ThrowKey);
+        _throwCooldown.Reset();
+    }
+    
+    public void OnDoThrow()
+    {
+        if (_superThrow)
+        {
+            var numThrows = Mathf.Min(_superThrowParticles, _session.Data.Swords - 1);
+            StartCoroutine(DoSuperThrow(numThrows));
+        }
+        else
+        {
+            ThrowAndRemoveFromInventory();
+        }
+
+        _superThrow = false;
+    }
+
+    private void ThrowAndRemoveFromInventory()
+    {
+        _particles.Spawn("Throw");
+        _session.Data.Swords--;
+    }
+
+    private IEnumerator DoSuperThrow(int numThrows)
+    {
+        for (int i = 0; i < numThrows; i++)
+        {
+            ThrowAndRemoveFromInventory();
+            yield return new WaitForSeconds(_superThrowDelay);
+        }
+    }
 }

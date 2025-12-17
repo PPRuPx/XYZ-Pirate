@@ -45,6 +45,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _target: {fileID: 7928136182313898939}
   _prefab: {fileID: 8968556562190432647, guid: 3492591a28466954898c1e9065be524e, type: 3}
+--- !u!1 &483422636105792854
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5719373487905557135}
+  m_Layer: 0
+  m_Name: DropPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5719373487905557135
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 483422636105792854}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.65, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 9054513558946311198}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &539367308995484655
 GameObject:
   m_ObjectHideFlags: 0
@@ -5223,6 +5253,51 @@ CapsuleCollider2D:
   m_Offset: {x: -0.013466568, y: 0.005861076}
   m_Size: {x: 0.75586814, y: 0.5269409}
   m_Direction: 1
+--- !u!1 &8007273691927754054
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1682720891341346545}
+  - component: {fileID: 3783361076075261801}
+  m_Layer: 12
+  m_Name: ThrowSwordProjectilePosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1682720891341346545
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8007273691927754054}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.375, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 9054513558946311198}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3783361076075261801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8007273691927754054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 432c0566de66ecd44a0055bfb78fd339, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _target: {fileID: 1682720891341346545}
+  _prefab: {fileID: 4420834555265327490, guid: bee1da2144738894fb6a5495ddf681dd, type: 3}
 --- !u!1 &9054513557823677182
 GameObject:
   m_ObjectHideFlags: 0
@@ -5300,6 +5375,7 @@ GameObject:
   - component: {fileID: 9054513558946311197}
   - component: {fileID: 9054513558946311185}
   - component: {fileID: 2057118330901136821}
+  - component: {fileID: 2206751116573102797}
   - component: {fileID: 9054513558946311199}
   - component: {fileID: 9054513558946311196}
   - component: {fileID: 9054513558946311187}
@@ -5307,6 +5383,7 @@ GameObject:
   - component: {fileID: 9054513558946311184}
   - component: {fileID: 1918538859379386752}
   - component: {fileID: 8337300357762108113}
+  - component: {fileID: 8625494101094854774}
   m_Layer: 12
   m_Name: Hero
   m_TagString: Player
@@ -5334,6 +5411,8 @@ Transform:
   - {fileID: 4806410207051513785}
   - {fileID: 7734949698800271829}
   - {fileID: 8350311853555271601}
+  - {fileID: 1682720891341346545}
+  - {fileID: 5719373487905557135}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5373,9 +5452,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingLayerID: 1119810221
+  m_SortingLayer: 6
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: e16fa6b25e12ffd41a76906aefa351a6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -5399,12 +5478,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42d1b3660904c164182b3b605eee46a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _invertScale: 0
   _moveSpeed: 5
   _jumpSpeed: 10
   _damageVelocity: 10
-  _groundLayer:
-    serializedVersion: 2
-    m_Bits: 256
   _groundCheck: {fileID: 9054513557823677183}
   _jumpLockTime: 0.2
   _attackDamage: 1
@@ -5414,6 +5491,12 @@ MonoBehaviour:
   _wallCheck: {fileID: 6105038903911306873}
   _wallGravityScale: 5
   _invulOnHitTime: 0
+  _throwCooldown:
+    _value: 1
+  _superThrowCooldown:
+    _value: 0
+  _superThrowParticles: 3
+  _superThrowDelay: 0.2
   _interactionCheck: {fileID: 8624573869138431577}
   _unarmed: {fileID: 9100000, guid: 3a04bfe438fdc4546b2800e02702fd6c, type: 2}
   _armed: {fileID: 9100000, guid: aa9fe4aefbf847f44974a8d1050904c4, type: 2}
@@ -5441,6 +5524,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 9054513558946311197}
         m_MethodName: TakeDamage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_MethodName: DropLoot
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5505,6 +5599,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &2206751116573102797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9054513558946311192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2557c448b27943e1b05408a8477460c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _swords: 0
+  _onChange:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &9054513558946311199
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5562,8 +5672,8 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 9054513558946311199}
-        m_MethodName: OnSaySomethingIA
-        m_Mode: 0
+        m_MethodName: 
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -5604,6 +5714,21 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 293ca6d3-8b32-4e6b-b28d-36bc606ce80b
     m_ActionName: Hero/Attack[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 9054513558946311199}
+        m_MethodName: OnThrowIA
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: bca66393-3904-4e09-8a40-67d37a7b059f
+    m_ActionName: Hero/Throw[/Keyboard/shift]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Hero
@@ -5656,7 +5781,7 @@ Animator:
   m_GameObject: {fileID: 9054513558946311192}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 3a04bfe438fdc4546b2800e02702fd6c, type: 2}
+  m_Controller: {fileID: 9100000, guid: aa9fe4aefbf847f44974a8d1050904c4, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -5698,3 +5823,24 @@ MonoBehaviour:
     Component: {fileID: 3074340407791599420}
   - id: Slash
     Component: {fileID: 5040539531420631725}
+  - id: Throw
+    Component: {fileID: 3783361076075261801}
+--- !u!114 &8625494101094854774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9054513558946311192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1c3a8f917e571a4d830b8963701d9c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _target: {fileID: 5719373487905557135}
+  _drop:
+  - Chance: 100
+    Prefab: {fileID: 4562808722414723909, guid: ef3d8c820569ce84ab06f53efb01917f,
+      type: 3}
+    DropVector: {x: 0, y: 0}
+    Count: 0

@@ -11,9 +11,12 @@ GameObject:
   - component: {fileID: 6324320853313205116}
   - component: {fileID: 6770792081678684522}
   - component: {fileID: 4525022921348201316}
+  - component: {fileID: 8144329708001767660}
+  - component: {fileID: 4714995285760665704}
   - component: {fileID: 68672335914366649}
+  - component: {fileID: 8350339302887260647}
   m_Layer: 0
-  m_Name: SwordSlashParticle
+  m_Name: StuckedSword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -69,18 +72,18 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1119810221
-  m_SortingLayer: 6
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: c2f3d5c14fa0b7f469cc3fd44ef90f2d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.625, y: 0.625}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &4525022921348201316
@@ -98,12 +101,59 @@ MonoBehaviour:
   _frameRate: 10
   _loop: 0
   _sprites:
-  - {fileID: 21300000, guid: 21c8615f7bd8a8f4d894e3870d0a01f8, type: 3}
-  - {fileID: 21300000, guid: 50cd4e507d29f754091bf642971c57a7, type: 3}
-  - {fileID: 21300000, guid: 07889f9cbe2f19743bdb881acb269e17, type: 3}
+  - {fileID: 21300000, guid: e2ae744588563214e9e6d853ff1d6a00, type: 3}
+  - {fileID: 21300000, guid: 56444f0354bcfe747964360e1c64f51f, type: 3}
+  - {fileID: 21300000, guid: 29d583f135822c243aabb9eaf48718ef, type: 3}
+  - {fileID: 21300000, guid: c2f3d5c14fa0b7f469cc3fd44ef90f2d, type: 3}
   _onComplete:
     m_PersistentCalls:
+      m_Calls: []
+--- !u!70 &8144329708001767660
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4420834555265327490}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.08282789, y: -0.07795544}
+  m_Size: {x: 0.45447463, y: 0.22548154}
+  m_Direction: 1
+--- !u!114 &4714995285760665704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4420834555265327490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d790463b107f5d4cb6f2786611956d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tag: Player
+  _layer:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  _event:
+    m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 8350339302887260647}
+        m_MethodName: ArmHero
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 68672335914366649}
         m_MethodName: DestroyObject
         m_Mode: 1
@@ -128,3 +178,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _objectToDestroy: {fileID: 4420834555265327490}
+--- !u!114 &8350339302887260647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4420834555265327490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89f978571676b514093fa1cb5b2ae6ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -7,6 +7,6 @@ namespace DefaultNamespace.Model.State
     {
         public int Coins;
         public int Hp;
-        public bool IsArmed;
+        public int Swords;
     }
 }

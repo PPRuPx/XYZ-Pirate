@@ -6,7 +6,7 @@ namespace Creatures
     public class PlatformPatrol : Patrol
     {
         [SerializeField] private LayerCheck _groundCheck;
-        [SerializeField] private int _direction;
+        [SerializeField] private int _direction = 1;
         
         private Creature _creature;
         
