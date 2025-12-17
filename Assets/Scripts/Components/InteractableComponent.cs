@@ -7,9 +7,6 @@ namespace Components
     {
         [SerializeField] private UnityEvent _action;
 
-        public void Interact()
-        {
-            _action?.Invoke();
-        }
+        public void Interact() => _action?.Invoke();
     }
 }

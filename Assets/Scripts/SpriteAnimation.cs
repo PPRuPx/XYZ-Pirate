@@ -14,8 +14,6 @@ public class SpriteAnimation : MonoBehaviour
     private int _currentSpriteIndex;
     private float _nextFrameTime;
 
-    private bool _isPlaying = true;
-
     private void Awake()
     {
         _renderer = GetComponent<SpriteRenderer>();
@@ -36,7 +34,6 @@ public class SpriteAnimation : MonoBehaviour
             }
             else
             {
-                _isPlaying = false;
                 _onComplete?.Invoke();
                 return;
             }

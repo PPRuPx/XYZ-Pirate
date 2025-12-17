@@ -6,19 +6,18 @@ namespace Components
 {
     public class CoinsComponent : MonoBehaviour
     {
-        [SerializeField] private int _value;
+        [SerializeField] private int _coins;
         [SerializeField] private HealthChangeEvent _onChange;
 
-        public void SetCoins(int value)
-        {
-            _value = value;
-        }
+        public int Coins() =>  _coins;
+        
+        public void SetCoins(int value) => 
+            _coins = value;
 
         public void ModifyCoins(int delta)
         {
-            _value += delta;
-            _onChange?.Invoke(_value);
-            // Debug.Log("Coins: " + _coins);
+            _coins += delta;
+            _onChange?.Invoke(_coins);
         }
     }
 

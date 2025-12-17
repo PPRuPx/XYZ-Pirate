@@ -12,7 +12,7 @@ namespace Components
             var hero = target.GetComponent<Hero>();
             if (hero != null)
             {
-                hero.TakeJumpPower(_power, _time);
+                hero.ApplyJumpPowerBuff(_power, _time);
             }
         }
     }
