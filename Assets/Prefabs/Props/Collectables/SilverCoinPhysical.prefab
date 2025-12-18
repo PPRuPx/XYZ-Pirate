@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 5920254646288895913}
   - component: {fileID: 4562808722414723912}
   - component: {fileID: 9151254002719150849}
-  - component: {fileID: 4562808722414723914}
   - component: {fileID: 4121545390237669261}
-  - component: {fileID: 4562808722414723916}
+  - component: {fileID: 1352945692358505410}
+  - component: {fileID: 5780973707219881919}
+  - component: {fileID: 4562808722414723914}
   m_Layer: 0
   m_Name: SilverCoinPhysical
   m_TagString: Untagged
@@ -76,8 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2322180950842035098, guid: 5d12baabfbf53ec4d8b14b2cbcf311dd,
-    type: 3}
+  m_Sprite: {fileID: 21300000, guid: d0e256f7d358529479d14a778d6a1012, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -122,9 +122,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0153028965, y: 0.017851293}
+  m_Offset: {x: 0.0153028965, y: -0.0137550235}
   serializedVersion: 2
-  m_Radius: 0.17349434
+  m_Radius: 0.16954356
 --- !u!114 &9151254002719150849
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,6 +152,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 5780973707219881919}
+        m_MethodName: Spawn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: effect
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 4562808722414723914}
         m_MethodName: DestroyObject
         m_Mode: 1
@@ -163,19 +174,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &4562808722414723914
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4562808722414723909}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9444494ae86dcf344b3351a7e857f6ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _objectToDestroy: {fileID: 4562808722414723909}
 --- !u!114 &4121545390237669261
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,7 +187,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _value: 1
---- !u!114 &4562808722414723916
+--- !u!114 &1352945692358505410
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -198,16 +196,46 @@ MonoBehaviour:
   m_GameObject: {fileID: 4562808722414723909}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa9b91f7c7ac525468ba418296a8805f, type: 3}
+  m_Script: {fileID: 11500000, guid: 47f55af419601374bb045557c60758bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _frameRate: 10
-  _loop: 1
-  _sprites:
-  - {fileID: -2322180950842035098, guid: 5d12baabfbf53ec4d8b14b2cbcf311dd, type: 3}
-  - {fileID: -4893972260818282012, guid: 5d12baabfbf53ec4d8b14b2cbcf311dd, type: 3}
-  - {fileID: -6323751108524238166, guid: 5d12baabfbf53ec4d8b14b2cbcf311dd, type: 3}
-  - {fileID: 2722280177590742205, guid: 5d12baabfbf53ec4d8b14b2cbcf311dd, type: 3}
-  _onComplete:
-    m_PersistentCalls:
-      m_Calls: []
+  _clips:
+  - Name: idle
+    Sprites:
+    - {fileID: 21300000, guid: d0e256f7d358529479d14a778d6a1012, type: 3}
+    - {fileID: 21300000, guid: 310f7afe6dd06be4bbc047044e888b59, type: 3}
+    - {fileID: 21300000, guid: bfacfd13e1c4a14479be9e3e979bbfb4, type: 3}
+    - {fileID: 21300000, guid: f9c14998d4789874783ab680205839a1, type: 3}
+    Loop: 1
+    AllowNextClip: 0
+    OnComplete:
+      m_PersistentCalls:
+        m_Calls: []
+--- !u!114 &5780973707219881919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4562808722414723909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 432c0566de66ecd44a0055bfb78fd339, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _target: {fileID: 4562808722414723918}
+  _prefab: {fileID: 398800399911911499, guid: b6a88e0bfe62b0f4b9314cf2f7631c38, type: 3}
+--- !u!114 &4562808722414723914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4562808722414723909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9444494ae86dcf344b3351a7e857f6ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _objectToDestroy: {fileID: 4562808722414723909}

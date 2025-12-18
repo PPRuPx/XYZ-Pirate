@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4562808722414723915}
   - component: {fileID: 4562808722414723914}
   - component: {fileID: 5545157137016426796}
-  - component: {fileID: 4562808722414723916}
+  - component: {fileID: 6856566402116262418}
   m_Layer: 0
   m_Name: SilverCoin
   m_TagString: Untagged
@@ -30,7 +30,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4562808722414723909}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.5, y: -1, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -75,8 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2322180950842035098, guid: 5d12baabfbf53ec4d8b14b2cbcf311dd,
-    type: 3}
+  m_Sprite: {fileID: 21300000, guid: d0e256f7d358529479d14a778d6a1012, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -100,9 +99,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0153028965, y: 0.017851293}
+  m_Offset: {x: 0.0153028965, y: -0.012767315}
   serializedVersion: 2
-  m_Radius: 0.17349434
+  m_Radius: 0.17053127
 --- !u!114 &4562808722414723915
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116,6 +115,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _tag: Player
+  _layer:
+    serializedVersion: 2
+    m_Bits: 4294967295
   _event:
     m_PersistentCalls:
       m_Calls:
@@ -130,15 +132,15 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 4562808722414723914}
-        m_MethodName: DestroyObject
-        m_Mode: 1
+      - m_Target: {fileID: 6856566402116262418}
+        m_MethodName: SetClip
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: effect
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &4562808722414723914
@@ -167,7 +169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _value: 1
---- !u!114 &4562808722414723916
+--- !u!114 &6856566402116262418
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -176,16 +178,40 @@ MonoBehaviour:
   m_GameObject: {fileID: 4562808722414723909}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa9b91f7c7ac525468ba418296a8805f, type: 3}
+  m_Script: {fileID: 11500000, guid: 47f55af419601374bb045557c60758bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _frameRate: 10
-  _loop: 1
-  _sprites:
-  - {fileID: -2322180950842035098, guid: 5d12baabfbf53ec4d8b14b2cbcf311dd, type: 3}
-  - {fileID: -4893972260818282012, guid: 5d12baabfbf53ec4d8b14b2cbcf311dd, type: 3}
-  - {fileID: -6323751108524238166, guid: 5d12baabfbf53ec4d8b14b2cbcf311dd, type: 3}
-  - {fileID: 2722280177590742205, guid: 5d12baabfbf53ec4d8b14b2cbcf311dd, type: 3}
-  _onComplete:
-    m_PersistentCalls:
-      m_Calls: []
+  _clips:
+  - Name: idle
+    Sprites:
+    - {fileID: 21300000, guid: d0e256f7d358529479d14a778d6a1012, type: 3}
+    - {fileID: 21300000, guid: 310f7afe6dd06be4bbc047044e888b59, type: 3}
+    - {fileID: 21300000, guid: bfacfd13e1c4a14479be9e3e979bbfb4, type: 3}
+    - {fileID: 21300000, guid: f9c14998d4789874783ab680205839a1, type: 3}
+    Loop: 1
+    AllowNextClip: 0
+    OnComplete:
+      m_PersistentCalls:
+        m_Calls: []
+  - Name: effect
+    Sprites:
+    - {fileID: 21300000, guid: 123e8edfd5b675240ba8e8befb63a16b, type: 3}
+    - {fileID: 21300000, guid: ae64a9933269bcf4db43facd90cc5996, type: 3}
+    - {fileID: 21300000, guid: b86f4df87ba46664ebc9a436632faab0, type: 3}
+    Loop: 0
+    AllowNextClip: 0
+    OnComplete:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4562808722414723914}
+          m_MethodName: DestroyObject
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2

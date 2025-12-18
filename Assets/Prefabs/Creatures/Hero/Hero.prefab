@@ -5034,7 +5034,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2774791590543688767}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.65, y: -0.1, z: 0}
+  m_LocalPosition: {x: 0.7, y: -0.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 9054513558946311198}
@@ -5052,10 +5052,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f69b87263f124e0d90324b3a8b1d2470, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _radius: 0.3
+  _radius: 0.35
   _mask:
     serializedVersion: 2
-    m_Bits: 2147487543
+    m_Bits: 4294967295
   _tags:
   - Enemy
   _onOverlap:
@@ -5124,7 +5124,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3010869227419794596}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.65, y: -0.1, z: 0}
+  m_LocalPosition: {x: 0.6, y: -0.15, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 9054513558946311198}
@@ -5455,7 +5455,7 @@ SpriteRenderer:
   m_SortingLayerID: 1119810221
   m_SortingLayer: 6
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e16fa6b25e12ffd41a76906aefa351a6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e6c8b086223bc704c91ca108baa70a60, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -5494,7 +5494,7 @@ MonoBehaviour:
   _throwCooldown:
     _value: 1
   _superThrowCooldown:
-    _value: 0
+    _value: 1
   _superThrowParticles: 3
   _superThrowDelay: 0.2
   _interactionCheck: {fileID: 8624573869138431577}
@@ -5781,7 +5781,7 @@ Animator:
   m_GameObject: {fileID: 9054513558946311192}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: aa9fe4aefbf847f44974a8d1050904c4, type: 2}
+  m_Controller: {fileID: 9100000, guid: 3a04bfe438fdc4546b2800e02702fd6c, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

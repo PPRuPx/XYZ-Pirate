@@ -1,0 +1,29 @@
+﻿using System;
+using Components.Health;
+using UnityEngine;
+using UnityEngine.Events;
+
+namespace Components.Collectables
+{
+    public class CoinsComponent : MonoBehaviour
+    {
+        [SerializeField] private int _coins;
+        [SerializeField] private HealthChangeEvent _onChange; // TODO: fix class
+
+        public int Coins() =>  _coins;
+        
+        public void SetCoins(int value) => 
+            _coins = value;
+
+        public void ModifyCoins(int delta)
+        {
+            _coins += delta;
+            _onChange?.Invoke(_coins);
+        }
+    }
+
+    [Serializable]
+    public class CoinsChangeEvent : UnityEvent<int>
+    {
+    }
+}

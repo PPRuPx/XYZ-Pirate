@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 716514996}
   - component: {fileID: 3973638653807795802}
   - component: {fileID: 4149396454883726005}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Vision
   m_TagString: Untagged
   m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
@@ -116,7 +116,7 @@ GameObject:
   - component: {fileID: 1432912222}
   - component: {fileID: 1432912224}
   - component: {fileID: 1432912223}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: PatrolGroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -179,7 +179,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7928136182313898939}
   - component: {fileID: 2378041196320739715}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: JumpParticlePosition
   m_TagString: Untagged
   m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
@@ -224,7 +224,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8207054124094762767}
   - component: {fileID: 4454406933991817942}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: FootStepParticlePosition
   m_TagString: Untagged
   m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
@@ -273,7 +273,7 @@ GameObject:
   - component: {fileID: 2304518508347784637}
   - component: {fileID: 2426100674618623143}
   - component: {fileID: 2878017098964592970}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: AttackRange
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
@@ -395,7 +395,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2466440077966408913}
   - component: {fileID: 3008309802985549378}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: ExclamationParticlePosition
   m_TagString: Untagged
   m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
@@ -440,7 +440,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3956943178658660154}
   - component: {fileID: 3268555701003270898}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: MissParticlePosition
   m_TagString: Untagged
   m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
@@ -485,7 +485,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7245876258102635286}
   - component: {fileID: 3074340407791599420}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: SlamDownParticlePosition
   m_TagString: Untagged
   m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
@@ -520,6 +520,87 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _target: {fileID: 7245876258102635286}
   _prefab: {fileID: 7130081698175151967, guid: efe42cf5fff1e4d4e90643cb3d513e39, type: 3}
+--- !u!1 &7491074720885078757
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6392959444535743175}
+  - component: {fileID: 1842341575841188451}
+  - component: {fileID: 8396205770957978324}
+  m_Layer: 0
+  m_Name: Drop
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &6392959444535743175
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7491074720885078757}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 9054513558946311198}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1842341575841188451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7491074720885078757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cbe9101306c448fb53f3475c2c0f260, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _count: 10
+  _drop:
+  - Drop: {fileID: 4562808722414723909, guid: ef3d8c820569ce84ab06f53efb01917f, type: 3}
+    Probability: 80
+  - Drop: {fileID: 5920652027994574295, guid: c312aa0d1bc319f4c9da6b2ffd686660, type: 3}
+    Probability: 20
+  _onDrropCalculated:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8396205770957978324}
+        m_MethodName: StartDrop
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _spawnOnEnable: 1
+--- !u!114 &8396205770957978324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7491074720885078757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faabbeea0af4459cb5dea1b61752a491, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sectorAngle: 180
+  _sectorRotation: 0
+  _waitTime: 0.05
+  _speed: 5
 --- !u!1 &7536201426200081720
 GameObject:
   m_ObjectHideFlags: 0
@@ -530,7 +611,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1357350460317977596}
   - component: {fileID: 1246835759703684791}
-  m_Layer: 8
+  m_Layer: 31
   m_Name: CorpseCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -567,6 +648,51 @@ CapsuleCollider2D:
   m_Offset: {x: 0.031016476, y: 0.027139194}
   m_Size: {x: 0.7363712, y: 0.5192693}
   m_Direction: 1
+--- !u!1 &8391745061539171027
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5796224767749967159}
+  - component: {fileID: 3393775189666636655}
+  m_Layer: 0
+  m_Name: DropSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5796224767749967159
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8391745061539171027}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.3, z: -1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 9054513558946311198}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3393775189666636655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8391745061539171027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 432c0566de66ecd44a0055bfb78fd339, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _target: {fileID: 5796224767749967159}
+  _prefab: {fileID: 7491074720885078757}
 --- !u!1 &9054513557823677182
 GameObject:
   m_ObjectHideFlags: 0
@@ -578,7 +704,7 @@ GameObject:
   - component: {fileID: 9054513557823677181}
   - component: {fileID: 9054513557823677183}
   - component: {fileID: 9054513557823677180}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -648,7 +774,7 @@ GameObject:
   - component: {fileID: 9054513558946311184}
   - component: {fileID: 8337300357762108113}
   - component: {fileID: 5794758957415524520}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Sharky
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -676,6 +802,8 @@ Transform:
   - {fileID: 3956943178658660154}
   - {fileID: 1357350460317977596}
   - {fileID: 1432912222}
+  - {fileID: 6392959444535743175}
+  - {fileID: 5796224767749967159}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -829,6 +957,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 3393775189666636655}
+        m_MethodName: Spawn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   _onChange:
     m_PersistentCalls:
       m_Calls:
@@ -922,6 +1061,8 @@ MonoBehaviour:
     Component: {fileID: 3008309802985549378}
   - id: MissHero
     Component: {fileID: 3268555701003270898}
+  - id: DropSpawner
+    Component: {fileID: 3393775189666636655}
 --- !u!114 &5794758957415524520
 MonoBehaviour:
   m_ObjectHideFlags: 0
