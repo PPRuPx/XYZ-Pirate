@@ -37,5 +37,21 @@ namespace Creatures.Hero
                 _hero.PerformThrowing();
             }
         }
+        
+        public void OnUseHealPotionIA(InputAction.CallbackContext context)
+        {
+            if (context.started)
+            {
+                _hero.UseHealPotion();
+            }
+        }
+        
+        public void OnUseJumpPotionIA(InputAction.CallbackContext context)
+        {
+            if (context.started)
+            {
+                _hero.UseJumpPotion();
+            }
+        }
     }
 }

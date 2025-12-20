@@ -1,7 +1,6 @@
 ﻿using System.Collections;
-using Components;
-using Components.Collectables;
 using Components.ColliderBased;
+using Model.Definitions;
 using Model.State;
 using UnityEditor.Animations;
 using UnityEngine;
@@ -33,9 +32,6 @@ namespace Creatures.Hero
         [Space] [Header("Particles")] 
         [SerializeField] private ParticleSystem _hitParticles;
 
-        private CoinsComponent _coinsComponent;
-        private SwordsComponent _swordsComponent;
-
         private bool _allowDoubleJump;
         private bool _isOnWall;
         private bool _allowThrowSword;
@@ -49,13 +45,16 @@ namespace Creatures.Hero
         private GameSession _session;
     
         private static readonly int ThrowKey = Animator.StringToHash("throw");
+        private static readonly int IsOnWallKey = Animator.StringToHash("is-on-wall");
 
+        private int CoinCount => _session.Data.Inventory.Count("Coin");
+        private int SwordCount => _session.Data.Inventory.Count("Sword");
+        private int HealPotionCount => _session.Data.Inventory.Count("Heal Potion");
+        private int JumpPotionCount => _session.Data.Inventory.Count("Jump Potion");
+        
         protected override void Awake()
         {
             base.Awake();
-        
-            _coinsComponent = GetComponent<CoinsComponent>();
-            _swordsComponent = GetComponent<SwordsComponent>();
 
             _defaultJumpSpeed = _jumpSpeed;
             _defaultGravityScale = Rigidbody.gravityScale;
@@ -64,25 +63,32 @@ namespace Creatures.Hero
         private void Start()
         {
             _session = FindObjectOfType<GameSession>();
-
+            _session.Data.Inventory.OnChanged += OnInventoryChanged;
+            
             HealthComponent.SetHealth(_session.Data.Hp);
-            _coinsComponent.SetCoins(_session.Data.Coins);
-            _swordsComponent.SetSwords(_session.Data.Swords);
-
             UpdateHeroWeapon();
+        }
+
+        private void OnDestroy()
+        {
+            _session.Data.Inventory.OnChanged -= OnInventoryChanged;
+        }
+
+        private void OnInventoryChanged(string id, int value)
+        {
+            if (id == "Sword")
+                UpdateHeroWeapon();
         }
 
         public void OnHealthChanged(int currentHealth) =>
             _session.Data.Hp = currentHealth;
 
-        public void OnCoinsChanged(int currentCoins) =>
-            _session.Data.Coins = currentCoins;
-
         protected override void Update()
         {
             base.Update();
 
-            if (_wallCheck.IsTouchingLayers && Direction.x == transform.localScale.x)
+            var moveToSameDirection = Direction.x * transform.lossyScale.x > 0;
+            if (_wallCheck.IsTouchingLayers && moveToSameDirection)
             {
                 _isOnWall = true;
                 Rigidbody.gravityScale = _wallGravityScale;
@@ -92,6 +98,8 @@ namespace Creatures.Hero
                 _isOnWall = false;
                 Rigidbody.gravityScale = _defaultGravityScale;
             }
+            
+            Animator.SetBool(IsOnWallKey, _isOnWall);
         }
 
         protected override float CalculateYVelocity()
@@ -124,15 +132,14 @@ namespace Creatures.Hero
         public override void TakeDamage()
         {
             base.TakeDamage();
-            if (_coinsComponent.Coins() > 0)
+            if (CoinCount > 0)
                 SpawnCoins();
         }
 
         private void SpawnCoins()
         {
-            var numCoinsToDispose = Mathf.Min(_session.Data.Coins, 5);
-            _coinsComponent.ModifyCoins(-numCoinsToDispose);
-            _session.Data.Coins = _coinsComponent.Coins();
+            var numCoinsToDispose = Mathf.Min(CoinCount, 5);
+            _session.Data.Inventory.Remove("Coin", numCoinsToDispose);
 
             var burst = _hitParticles.emission.GetBurst(0);
             burst.count = numCoinsToDispose;
@@ -142,6 +149,29 @@ namespace Creatures.Hero
             _hitParticles.Play();
         }
 
+        public void UseHealPotion()
+        {
+            if (HealPotionCount > 0)
+            {
+                _session.Data.Inventory.Remove("Heal Potion", 1);
+                HealthComponent.ModifyHealth(
+                    DefsFacade.I.HealPotion.HealAmount);
+                _particles.Spawn("PotionEffect");
+            }
+        }
+        
+        public void UseJumpPotion()
+        {
+            if (JumpPotionCount > 0)
+            {
+                _session.Data.Inventory.Remove("Jump Potion", 1);
+                ApplyJumpPowerBuff(
+                    DefsFacade.I.JumpPotion.Multiplier, 
+                    DefsFacade.I.JumpPotion.Duration);
+                _particles.Spawn("PotionEffect");
+            }
+        }
+        
         public void ApplyJumpPowerBuff(float multiplier, float time)
         {
             _jumpSpeed *= multiplier;
@@ -168,20 +198,14 @@ namespace Creatures.Hero
     
         public override void Attack()
         {
-            if (_session.Data.Swords < 1)
+            if (SwordCount <= 0)
                 return;
 
             base.Attack();
         }
 
-        public void ArmHero()
-        {
-            _session.Data.Swords += 1;
-            UpdateHeroWeapon();
-        }
-
         private void UpdateHeroWeapon() =>
-            Animator.runtimeAnimatorController = _session.Data.Swords > 0 ? _armed : _unarmed;
+            Animator.runtimeAnimatorController = SwordCount > 0 ? _armed : _unarmed;
 
         public void StartThrowing()
         {
@@ -190,7 +214,7 @@ namespace Creatures.Hero
 
         public void PerformThrowing()
         {
-            if (_session.Data.Swords <= 1)
+            if (SwordCount <= 1)
                 return;
 
             _superThrow = _superThrowCooldown.IsReady;
@@ -203,7 +227,7 @@ namespace Creatures.Hero
         {
             if (_superThrow)
             {
-                var numThrows = Mathf.Min(_superThrowParticles, _session.Data.Swords - 1);
+                var numThrows = Mathf.Min(_superThrowParticles, SwordCount - 1);
                 StartCoroutine(DoSuperThrow(numThrows));
             }
             else
@@ -217,7 +241,7 @@ namespace Creatures.Hero
         private void ThrowAndRemoveFromInventory()
         {
             _particles.Spawn("Throw");
-            _session.Data.Swords--;
+            _session.Data.Inventory.Remove("Sword", 1);
         }
 
         private IEnumerator DoSuperThrow(int numThrows)
@@ -228,5 +252,8 @@ namespace Creatures.Hero
                 yield return new WaitForSeconds(_superThrowDelay);
             }
         }
+
+        public void AddInInventory(string id, int value) =>
+            _session.Data.Inventory.Add(id, value);
     }
 }

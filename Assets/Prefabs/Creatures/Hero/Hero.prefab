@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7928136182313898939}
   - component: {fileID: 2378041196320739715}
   m_Layer: 12
-  m_Name: JumpParticlePosition
+  m_Name: JumpParticleSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -4897,7 +4897,7 @@ GameObject:
   - component: {fileID: 8207054124094762767}
   - component: {fileID: 4454406933991817942}
   m_Layer: 12
-  m_Name: FootStepParticlePosition
+  m_Name: FootStepParticleSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -5110,7 +5110,7 @@ GameObject:
   - component: {fileID: 8350311853555271601}
   - component: {fileID: 5040539531420631725}
   m_Layer: 12
-  m_Name: SwordSlashPosition
+  m_Name: SwordSlashSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -5144,6 +5144,51 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _target: {fileID: 8350311853555271601}
   _prefab: {fileID: 4420834555265327490, guid: c5ff90d7080e314479b1c76e9695690f, type: 3}
+--- !u!1 &6278489095042262363
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6091243269847638985}
+  - component: {fileID: 4579894533691261603}
+  m_Layer: 12
+  m_Name: PotionEffectSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6091243269847638985
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6278489095042262363}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 9054513558946311198}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4579894533691261603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6278489095042262363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 432c0566de66ecd44a0055bfb78fd339, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _target: {fileID: 9054513558946311198}
+  _prefab: {fileID: 2085763457194687542, guid: b9e8e5db41666d1479557c31a409809e, type: 3}
 --- !u!1 &6399066416307518389
 GameObject:
   m_ObjectHideFlags: 0
@@ -5155,7 +5200,7 @@ GameObject:
   - component: {fileID: 7245876258102635286}
   - component: {fileID: 3074340407791599420}
   m_Layer: 12
-  m_Name: SlamDownParticlePosition
+  m_Name: SlamDownParticleSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -5200,7 +5245,7 @@ GameObject:
   - component: {fileID: 4806410207051513785}
   - component: {fileID: 6105038903911306873}
   - component: {fileID: 6227495563445660736}
-  m_Layer: 12
+  m_Layer: 15
   m_Name: WallCheck
   m_TagString: Untagged
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
@@ -5264,7 +5309,7 @@ GameObject:
   - component: {fileID: 1682720891341346545}
   - component: {fileID: 3783361076075261801}
   m_Layer: 12
-  m_Name: ThrowSwordProjectilePosition
+  m_Name: ThrowSwordProjectileSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -5309,7 +5354,7 @@ GameObject:
   - component: {fileID: 9054513557823677181}
   - component: {fileID: 9054513557823677183}
   - component: {fileID: 9054513557823677180}
-  m_Layer: 12
+  m_Layer: 15
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
@@ -5344,7 +5389,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mask:
     serializedVersion: 2
-    m_Bits: 2147483904
+    m_Bits: 2147551488
   _isTouchingLayers: 0
 --- !u!58 &9054513557823677180
 CircleCollider2D:
@@ -5374,8 +5419,6 @@ GameObject:
   - component: {fileID: 9054513558946311193}
   - component: {fileID: 9054513558946311197}
   - component: {fileID: 9054513558946311185}
-  - component: {fileID: 2057118330901136821}
-  - component: {fileID: 2206751116573102797}
   - component: {fileID: 9054513558946311199}
   - component: {fileID: 9054513558946311196}
   - component: {fileID: 9054513558946311187}
@@ -5413,6 +5456,7 @@ Transform:
   - {fileID: 8350311853555271601}
   - {fileID: 1682720891341346545}
   - {fileID: 5719373487905557135}
+  - {fileID: 6091243269847638985}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5572,49 +5616,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &2057118330901136821
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9054513558946311192}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 753bec178d2c4b56a89447fda39d8fb6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _coins: 0
-  _onChange:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 9054513558946311197}
-        m_MethodName: OnCoinsChanged
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &2206751116573102797
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9054513558946311192}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2557c448b27943e1b05408a8477460c5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _swords: 0
-  _onChange:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &9054513558946311199
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5729,6 +5730,36 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: bca66393-3904-4e09-8a40-67d37a7b059f
     m_ActionName: Hero/Throw[/Keyboard/shift]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 9054513558946311199}
+        m_MethodName: OnUseHealPotionIA
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: e9a613ec-295c-4428-92dc-00e1932f302f
+    m_ActionName: Hero/UseHealPotion[/Keyboard/h]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 9054513558946311199}
+        m_MethodName: OnUseJumpPotionIA
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 5e7aabac-139b-426a-8a14-6275aa5b6bac
+    m_ActionName: Hero/UseJumpPotion[/Keyboard/j]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Hero
@@ -5781,7 +5812,7 @@ Animator:
   m_GameObject: {fileID: 9054513558946311192}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 3a04bfe438fdc4546b2800e02702fd6c, type: 2}
+  m_Controller: {fileID: 9100000, guid: aa9fe4aefbf847f44974a8d1050904c4, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -5825,6 +5856,8 @@ MonoBehaviour:
     Component: {fileID: 5040539531420631725}
   - id: Throw
     Component: {fileID: 3783361076075261801}
+  - id: PotionEffect
+    Component: {fileID: 4579894533691261603}
 --- !u!114 &8625494101094854774
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5842,5 +5875,7 @@ MonoBehaviour:
   - Chance: 100
     Prefab: {fileID: 4562808722414723909, guid: ef3d8c820569ce84ab06f53efb01917f,
       type: 3}
-    DropVector: {x: 0, y: 0}
     Count: 0
+  _sectorAngle: 60
+  _sectorRotation: 0
+  _force: 1

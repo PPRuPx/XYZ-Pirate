@@ -14,10 +14,10 @@ GameObject:
   - component: {fileID: 5920652027994573866}
   - component: {fileID: 5877071943571441165}
   - component: {fileID: 5920652027994573864}
-  - component: {fileID: 6602580707407888790}
   - component: {fileID: 4020971106839011627}
   - component: {fileID: 2953119681753782742}
-  m_Layer: 0
+  - component: {fileID: -6281380568298199758}
+  m_Layer: 14
   m_Name: GoldCoinPhysical
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -141,8 +141,8 @@ MonoBehaviour:
   _action:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6602580707407888790}
-        m_MethodName: ApplyChange
+      - m_Target: {fileID: -6281380568298199758}
+        m_MethodName: Add
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -187,19 +187,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _objectToDestroy: {fileID: 5920652027994574295}
---- !u!114 &6602580707407888790
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5920652027994574295}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9931b301f34449f4ae40abfcdfb8d4ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _value: 10
 --- !u!114 &4020971106839011627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -239,3 +226,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _target: {fileID: 5920652027994573868}
   _prefab: {fileID: 398800399911911499, guid: b6a88e0bfe62b0f4b9314cf2f7631c38, type: 3}
+--- !u!114 &-6281380568298199758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5920652027994574295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b912d498d21746caa7b3fc7777c958bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _id: Coin
+  _count: 10

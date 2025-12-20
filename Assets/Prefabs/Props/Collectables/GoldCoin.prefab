@@ -13,9 +13,11 @@ GameObject:
   - component: {fileID: 5920652027994573866}
   - component: {fileID: -6772027722386803356}
   - component: {fileID: 5920652027994573864}
-  - component: {fileID: 3045446149169215423}
   - component: {fileID: 7607751283653540358}
-  m_Layer: 0
+  - component: {fileID: 1733935701142186047}
+  - component: {fileID: -338149229449093178}
+  - component: {fileID: 1352431687035013409}
+  m_Layer: 14
   m_Name: GoldCoin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -121,8 +123,8 @@ MonoBehaviour:
   _event:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3045446149169215423}
-        m_MethodName: ApplyChange
+      - m_Target: {fileID: 1352431687035013409}
+        m_MethodName: Add
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -156,19 +158,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _objectToDestroy: {fileID: 5920652027994574295}
---- !u!114 &3045446149169215423
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5920652027994574295}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9931b301f34449f4ae40abfcdfb8d4ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _value: 10
 --- !u!114 &7607751283653540358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -215,3 +204,53 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &1733935701142186047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5920652027994574295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5241087fb3764981bf7b254e991c93b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _frequency: 5
+  _amplitude: 0.1
+  _randomize: 0
+--- !u!50 &-338149229449093178
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5920652027994574295}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &1352431687035013409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5920652027994574295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b912d498d21746caa7b3fc7777c958bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _id: Coin
+  _count: 10

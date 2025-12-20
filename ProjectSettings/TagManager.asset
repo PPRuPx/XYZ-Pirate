@@ -22,8 +22,8 @@ TagManager:
   - Hero
   - Enemies
   - Collectables
-  - 
-  - 
+  - Checkers
+  - Colladable Enemies
   - 
   - 
   - 
@@ -60,4 +60,7 @@ TagManager:
     locked: 0
   - name: Creatures
     uniqueID: 1119810221
+    locked: 0
+  - name: Effects
+    uniqueID: 1762634525
     locked: 0

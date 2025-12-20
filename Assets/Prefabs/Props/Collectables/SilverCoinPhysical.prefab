@@ -13,11 +13,11 @@ GameObject:
   - component: {fileID: 5920254646288895913}
   - component: {fileID: 4562808722414723912}
   - component: {fileID: 9151254002719150849}
-  - component: {fileID: 4121545390237669261}
   - component: {fileID: 1352945692358505410}
   - component: {fileID: 5780973707219881919}
   - component: {fileID: 4562808722414723914}
-  m_Layer: 0
+  - component: {fileID: -6271860057287986309}
+  m_Layer: 14
   m_Name: SilverCoinPhysical
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -141,8 +141,8 @@ MonoBehaviour:
   _action:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4121545390237669261}
-        m_MethodName: ApplyChange
+      - m_Target: {fileID: -6271860057287986309}
+        m_MethodName: Add
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -174,19 +174,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &4121545390237669261
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4562808722414723909}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9931b301f34449f4ae40abfcdfb8d4ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _value: 1
 --- !u!114 &1352945692358505410
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -239,3 +226,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _objectToDestroy: {fileID: 4562808722414723909}
+--- !u!114 &-6271860057287986309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4562808722414723909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b912d498d21746caa7b3fc7777c958bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _id: Coin
+  _count: 1
