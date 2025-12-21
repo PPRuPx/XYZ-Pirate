@@ -86,6 +86,7 @@ namespace Creatures.Mobs
         {
             while (_canAttack.IsTouchingLayers)
             {
+                LookAtHero();
                 _creature.Attack();
                 yield return new WaitForSeconds(_attackCooldown);
             }
