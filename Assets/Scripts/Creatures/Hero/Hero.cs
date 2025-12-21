@@ -120,6 +120,7 @@ namespace Creatures.Hero
             if (!IsGrounded && _allowDoubleJump)
             {
                 _particles.Spawn("Jump");
+                Sounds.Play("Jump");
                 _allowDoubleJump = false;
                 IsJumpLocked = true;
                 Invoke(nameof(UnlockJump), _jumpLockTime);
@@ -240,6 +241,7 @@ namespace Creatures.Hero
 
         private void ThrowAndRemoveFromInventory()
         {
+            Sounds.Play("Range");
             _particles.Spawn("Throw");
             _session.Data.Inventory.Remove("Sword", 1);
         }

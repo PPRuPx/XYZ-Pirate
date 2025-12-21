@@ -1,4 +1,4 @@
-﻿using Components;
+﻿using Components.Audio;
 using Components.ColliderBased;
 using Components.GameObjectBased;
 using Components.Health;
@@ -9,6 +9,7 @@ namespace Creatures
     public class Creature : MonoBehaviour
     {
         [SerializeField] private bool _invertScale;
+        [SerializeField] private float _sizeMultiplier = 1;
         
         [Space] [Header("Movement")] 
         [SerializeField] protected float _moveSpeed;
@@ -27,6 +28,7 @@ namespace Creatures
         protected Rigidbody2D Rigidbody;
         protected Animator Animator;
         protected HealthComponent HealthComponent;
+        protected PlaySoundComponent Sounds;
 
         protected Vector3 Direction;
         protected bool IsGrounded;
@@ -44,6 +46,7 @@ namespace Creatures
             Rigidbody = GetComponent<Rigidbody2D>();
             Animator = GetComponent<Animator>();
             HealthComponent = GetComponent<HealthComponent>();
+            Sounds = GetComponent<PlaySoundComponent>();
         }
 
         public void SetDirection(Vector3 direction) =>
@@ -98,6 +101,7 @@ namespace Creatures
             if (IsGrounded)
             {
                 _particles.Spawn("Jump");
+                Sounds.Play("Jump");
                 IsJumpLocked = true;
                 Invoke(nameof(UnlockJump), _jumpLockTime);
                 return _jumpSpeed;
@@ -113,9 +117,9 @@ namespace Creatures
         {
             var multiplier = _invertScale ? -1 : 1;
             if (direction.x > 0)
-                transform.localScale = new Vector3(multiplier, 1, 1);
+                transform.localScale = new Vector3(multiplier * _sizeMultiplier, 1 * _sizeMultiplier, 1);
             else if (direction.x < 0)
-                transform.localScale = new Vector3(-1 * multiplier, 1, 1);
+                transform.localScale = new Vector3(-1 * multiplier * _sizeMultiplier, 1 * _sizeMultiplier, 1);
         }
 
         public virtual void TakeDamage()
@@ -123,6 +127,7 @@ namespace Creatures
             if (HealthComponent.IsInvulnerable())
                 return;
 
+            Sounds.Play("Hurt");
             IsJumpLocked = true;
             Animator.SetTrigger(HitKey);
             Rigidbody.velocity = new Vector2(Rigidbody.velocity.x, 0);
@@ -133,6 +138,7 @@ namespace Creatures
         public virtual void Attack()
         {
             Animator.SetTrigger(AttackKey);
+            Sounds.Play("Melee");
         }
 
         public void OnDoAttack()

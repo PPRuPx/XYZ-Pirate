@@ -1,8 +1,6 @@
-﻿using System;
-using Components.ColliderBased;
+﻿using Components.ColliderBased;
 using Components.GameObjectBased;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Utils;
 
 namespace Creatures.Mobs
