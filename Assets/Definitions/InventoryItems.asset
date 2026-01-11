@@ -14,12 +14,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _items:
   - _id: Coin
-    _unstackable: 0
+    _icon: {fileID: 21300000, guid: d0e256f7d358529479d14a778d6a1012, type: 3}
+    _tags: 00000000
   - _id: Sword
-    _unstackable: 0
+    _icon: {fileID: 21300000, guid: 34ad8319107de804b8781980e129bab6, type: 3}
+    _tags: 000000000100000002000000
   - _id: Key
-    _unstackable: 0
+    _icon: {fileID: 21300000, guid: c642858fdcd9b224fa4ac065c88f44a5, type: 3}
+    _tags: 01000000
   - _id: Heal Potion
-    _unstackable: 0
+    _icon: {fileID: 21300000, guid: 64191ae3eda968b4eb134d19122bd0ce, type: 3}
+    _tags: 0000000001000000
   - _id: Jump Potion
-    _unstackable: 0
+    _icon: {fileID: 21300000, guid: 1a74d61f0f60cce4e8fe6834bce65f49, type: 3}
+    _tags: 0000000001000000
+  - _id: Pearl
+    _icon: {fileID: 21300000, guid: 7da6c504939f579409a7dba923ba168e, type: 3}
+    _tags: 000000000100000002000000
+  - _id: Recovery Potion
+    _icon: {fileID: 21300000, guid: 0266e9aa4d921fc49a7bca5cf4a0e62e, type: 3}
+    _tags: 0000000001000000

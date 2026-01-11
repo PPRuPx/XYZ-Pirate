@@ -60,6 +60,30 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "NextItem",
+                    "type": "Button",
+                    "id": "0a7bfca3-f57c-457c-a0ef-4c5a848c519e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "UseRecoveryPotion",
+                    "type": "Button",
+                    "id": "0dfd0bb1-da6a-45e7-8475-f1e3a2c443cc",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "UseInventoryItem",
+                    "type": "Button",
+                    "id": "fe916565-d29d-4abf-a7ea-fe01960e44c0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -236,6 +260,39 @@
                     "processors": "",
                     "groups": "",
                     "action": "UseJumpPotion",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d9cfcf9c-9d31-4e5b-9846-705fffd47e13",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "NextItem",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e6af48ec-3234-4896-8789-1435c5f14a12",
+                    "path": "<Keyboard>/g",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UseRecoveryPotion",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "04198a92-3bd9-45fc-9c73-64e1bcc6bf95",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UseInventoryItem",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

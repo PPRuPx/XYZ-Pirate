@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using Utils.Disposables;
 
 namespace Model.Data.Properties
 {
@@ -10,6 +12,20 @@ namespace Model.Data.Properties
 
         public event OnPropertyChanged OnChanged;
 
+        public IDisposable Subscribe(OnPropertyChanged call)
+        {
+            OnChanged += call;
+            return new ActionDisposable(() => OnChanged -= call);
+        }
+
+        public IDisposable SubscribeAndInvoke(OnPropertyChanged call)
+        {
+            OnChanged += call;
+            var dispose = new ActionDisposable(() => OnChanged -= call);
+            call(_value, _value);
+            return dispose;
+        }
+        
         public T Value
         {
             get => _value;

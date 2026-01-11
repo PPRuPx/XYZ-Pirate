@@ -1,5 +1,4 @@
-﻿using System;
-using Components.Health;
+﻿using Components.Health;
 using UnityEngine;
 using Utils.Disposables;
 

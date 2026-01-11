@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using Components.ColliderBased;
+using Components.GameObjectBased;
 using Model.Definitions;
 using Model.State;
 using UnityEditor.Animations;
@@ -21,6 +22,7 @@ namespace Creatures.Hero
         [SerializeField] private Cooldown _superThrowCooldown;
         [SerializeField] private int _superThrowParticles;
         [SerializeField] private float _superThrowDelay;
+        [SerializeField] private SpawnComponent _throwSpawner;
     
         [Space] [Header("Interaction")] 
         [SerializeField] private CheckCircleOverlap _interactionCheck;
@@ -47,10 +49,31 @@ namespace Creatures.Hero
         private static readonly int ThrowKey = Animator.StringToHash("throw");
         private static readonly int IsOnWallKey = Animator.StringToHash("is-on-wall");
 
-        private int CoinCount => _session.Data.Inventory.Count("Coin");
-        private int SwordCount => _session.Data.Inventory.Count("Sword");
-        private int HealPotionCount => _session.Data.Inventory.Count("Heal Potion");
-        private int JumpPotionCount => _session.Data.Inventory.Count("Jump Potion");
+        private const string CoinId = "Coin";
+        private const string SwordId = "Sword";
+        private const string HealPotionId = "Heal Potion";
+        private const string RecoveryPotionId = "Recovery Potion";
+        private const string JumpPotionId = "Jump Potion";
+        
+        private int CoinCount => _session.Data.Inventory.Count(CoinId);
+        private int SwordCount => _session.Data.Inventory.Count(SwordId);
+        private int HealPotionCount => _session.Data.Inventory.Count(HealPotionId);
+        private int RecoveryPotionCount => _session.Data.Inventory.Count(RecoveryPotionId);
+        private int JumpPotionCount => _session.Data.Inventory.Count(JumpPotionId);
+
+        private string SelectedItemId => _session.QuickInventory.SelectedItem.Id;
+        
+        private bool CanThrow
+        {
+            get
+            {
+                if (SelectedItemId == SwordId)
+                    return SwordCount > 1;
+                
+                var def = DefsFacade.I.Items.Get(SelectedItemId);
+                return def.HasTag(ItemTag.Throwable);
+            }
+        }
         
         protected override void Awake()
         {
@@ -76,7 +99,7 @@ namespace Creatures.Hero
 
         private void OnInventoryChanged(string id, int value)
         {
-            if (id == "Sword")
+            if (id == SwordId)
                 UpdateHeroWeapon();
         }
 
@@ -140,7 +163,7 @@ namespace Creatures.Hero
         private void SpawnCoins()
         {
             var numCoinsToDispose = Mathf.Min(CoinCount, 5);
-            _session.Data.Inventory.Remove("Coin", numCoinsToDispose);
+            _session.Data.Inventory.Remove(CoinId, numCoinsToDispose);
 
             var burst = _hitParticles.emission.GetBurst(0);
             burst.count = numCoinsToDispose;
@@ -154,9 +177,20 @@ namespace Creatures.Hero
         {
             if (HealPotionCount > 0)
             {
-                _session.Data.Inventory.Remove("Heal Potion", 1);
+                _session.Data.Inventory.Remove(HealPotionId, 1);
                 HealthComponent.ModifyHealth(
                     DefsFacade.I.HealPotion.HealAmount);
+                _particles.Spawn("PotionEffect");
+            }
+        }
+        
+        public void UseRecoveryPotion()
+        {
+            if (RecoveryPotionCount > 0)
+            {
+                _session.Data.Inventory.Remove(RecoveryPotionId, 1);
+                var healAmount = DefsFacade.I.Player.MaxHealth - _session.Data.Hp.Value;
+                HealthComponent.ModifyHealth(Mathf.Max(0, healAmount));
                 _particles.Spawn("PotionEffect");
             }
         }
@@ -165,11 +199,35 @@ namespace Creatures.Hero
         {
             if (JumpPotionCount > 0)
             {
-                _session.Data.Inventory.Remove("Jump Potion", 1);
+                _session.Data.Inventory.Remove(JumpPotionId, 1);
                 ApplyJumpPowerBuff(
                     DefsFacade.I.JumpPotion.Multiplier, 
                     DefsFacade.I.JumpPotion.Duration);
                 _particles.Spawn("PotionEffect");
+            }
+        }
+        
+        public void UseInventoryItem()
+        {
+            switch (SelectedItemId)
+            {
+                case HealPotionId:
+                {
+                    UseHealPotion();
+                    break;
+                }
+                case RecoveryPotionId:
+                {
+                    UseRecoveryPotion();
+                    break;
+                }
+                case JumpPotionId:
+                {
+                    UseJumpPotion();
+                    break;
+                }
+                default:
+                    return;
             }
         }
         
@@ -207,28 +265,14 @@ namespace Creatures.Hero
 
         private void UpdateHeroWeapon() =>
             Animator.runtimeAnimatorController = SwordCount > 0 ? _armed : _unarmed;
-
-        public void StartThrowing()
-        {
-            _superThrowCooldown.Reset();
-        }
-
-        public void PerformThrowing()
-        {
-            if (SwordCount <= 1)
-                return;
-
-            _superThrow = _superThrowCooldown.IsReady;
-        
-            Animator.SetTrigger(ThrowKey);
-            _throwCooldown.Reset();
-        }
     
         public void OnDoThrow()
         {
             if (_superThrow)
             {
-                var numThrows = Mathf.Min(_superThrowParticles, SwordCount - 1);
+                var throwableCount = _session.Data.Inventory.Count(SelectedItemId);
+                var possibleCount = SelectedItemId == SwordId ? throwableCount - 1 : throwableCount;
+                var numThrows = Mathf.Min(_superThrowParticles, possibleCount);
                 StartCoroutine(DoSuperThrow(numThrows));
             }
             else
@@ -238,14 +282,7 @@ namespace Creatures.Hero
 
             _superThrow = false;
         }
-
-        private void ThrowAndRemoveFromInventory()
-        {
-            Sounds.Play("Range");
-            _particles.Spawn("Throw");
-            _session.Data.Inventory.Remove("Sword", 1);
-        }
-
+        
         private IEnumerator DoSuperThrow(int numThrows)
         {
             for (int i = 0; i < numThrows; i++)
@@ -255,6 +292,36 @@ namespace Creatures.Hero
             }
         }
 
+        private void ThrowAndRemoveFromInventory()
+        {
+            Sounds.Play("Range");
+
+            var throwableId = _session.QuickInventory.SelectedItem.Id;
+            var throwableDef = DefsFacade.I.Throwables.Get(throwableId);
+            _throwSpawner.SetPrefab(throwableDef.Projectile);
+            _throwSpawner.Spawn();
+
+            _session.Data.Inventory.Remove(throwableId, 1);
+        }
+
+        public void StartThrowing()
+        {
+            _superThrowCooldown.Reset();
+        }
+        
+        public void PerformThrowing()
+        {
+            if (!_throwCooldown.IsReady || !CanThrow) return;
+
+            if (_superThrowCooldown.IsReady) _superThrow = true;
+
+            Animator.SetTrigger(ThrowKey);
+            _throwCooldown.Reset();
+        }
+
+        public void NextItem() =>
+            _session.QuickInventory.SetNextItem();
+        
         public void AddInInventory(string id, int value) =>
             _session.Data.Inventory.Add(id, value);
     }

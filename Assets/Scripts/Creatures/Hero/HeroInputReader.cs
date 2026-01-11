@@ -53,5 +53,29 @@ namespace Creatures.Hero
                 _hero.UseJumpPotion();
             }
         }
+        
+        public void OnUseRecoveryPotionIA(InputAction.CallbackContext context)
+        {
+            if (context.started)
+            {
+                _hero.UseRecoveryPotion();
+            }
+        }
+        
+        public void OnNextItemIA(InputAction.CallbackContext context)
+        {
+            if (context.started)
+            {
+                _hero.NextItem();
+            }
+        }
+        
+        public void OnUseInventoryItemIA(InputAction.CallbackContext context)
+        {
+            if (context.started)
+            {
+                _hero.UseInventoryItem();
+            }
+        }
     }
 }

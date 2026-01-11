@@ -8,8 +8,9 @@ namespace Model.Definitions
     [CreateAssetMenu(menuName = "Defs/DefsFacade", fileName = "DefsFacade")]
     public class DefsFacade : ScriptableObject
     {
-        [FormerlySerializedAs("_inventory")] [SerializeField] private PlayerDef player;
+        [SerializeField] private PlayerDef player;
         [SerializeField] private InventoryItemsDef _items;
+        [SerializeField] private ThrowableItemsDef _throwables;
 
         [Space] [Header("Potions Specs")] 
         [SerializeField] private HealPotionDef _healPotion;
@@ -17,6 +18,7 @@ namespace Model.Definitions
 
         public PlayerDef Player => player;
         public InventoryItemsDef Items => _items;
+        public ThrowableItemsDef Throwables => _throwables;
         
         public HealPotionDef HealPotion => _healPotion;
         public JumpPotionDef JumpPotion => _jumpPotion;

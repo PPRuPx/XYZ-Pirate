@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -29,11 +30,14 @@ namespace Model.Definitions
     public struct ItemDef
     {
         [SerializeField] private string _id;
-        [FormerlySerializedAs("_stackable")] [SerializeField] private bool _unstackable;
+        [SerializeField] private Sprite _icon;
+        [SerializeField] private ItemTag[] _tags;
         
         public string Id => _id;
-        public bool IsUnstackable => _unstackable;
+        public Sprite Icon => _icon;
 
         public bool IsVoid => string.IsNullOrEmpty(_id);
+        
+        public bool HasTag(ItemTag tag) => _tags.Contains(tag);
     }
 }

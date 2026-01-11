@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Model.State;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace Components.LevelManagement
@@ -9,6 +10,8 @@ namespace Components.LevelManagement
 
         public void Exit()
         {
+            var session = FindObjectOfType<GameSession>();
+            session.Save();
             SceneManager.LoadScene(_sceneName);
         }
     }

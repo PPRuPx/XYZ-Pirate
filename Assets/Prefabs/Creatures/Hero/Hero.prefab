@@ -5309,7 +5309,7 @@ GameObject:
   - component: {fileID: 1682720891341346545}
   - component: {fileID: 3783361076075261801}
   m_Layer: 12
-  m_Name: ThrowSwordProjectileSpawner
+  m_Name: ThrowSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -5544,6 +5544,7 @@ MonoBehaviour:
     _value: 1
   _superThrowParticles: 3
   _superThrowDelay: 0.2
+  _throwSpawner: {fileID: 3783361076075261801}
   _interactionCheck: {fileID: 8624573869138431577}
   _unarmed: {fileID: 9100000, guid: 3a04bfe438fdc4546b2800e02702fd6c, type: 2}
   _armed: {fileID: 9100000, guid: aa9fe4aefbf847f44974a8d1050904c4, type: 2}
@@ -5752,6 +5753,51 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 5e7aabac-139b-426a-8a14-6275aa5b6bac
     m_ActionName: Hero/UseJumpPotion[/Keyboard/j]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 9054513558946311199}
+        m_MethodName: OnNextItemIA
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 0a7bfca3-f57c-457c-a0ef-4c5a848c519e
+    m_ActionName: Hero/NextItem[/Keyboard/q]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 9054513558946311199}
+        m_MethodName: OnUseRecoveryPotionIA
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 0dfd0bb1-da6a-45e7-8475-f1e3a2c443cc
+    m_ActionName: Hero/UseRecoveryPotion[/Keyboard/r]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 9054513558946311199}
+        m_MethodName: OnUseInventoryItemIA
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: fe916565-d29d-4abf-a7ea-fe01960e44c0
+    m_ActionName: Hero/UseInventoryItem[/Keyboard/r]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Hero
@@ -5804,7 +5850,7 @@ Animator:
   m_GameObject: {fileID: 9054513558946311192}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: aa9fe4aefbf847f44974a8d1050904c4, type: 2}
+  m_Controller: {fileID: 9100000, guid: 3a04bfe438fdc4546b2800e02702fd6c, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -5883,7 +5929,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f5935c5552449639b0b8927825ac806, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _source: {fileID: 0}
   _sounds:
   - _id: Jump
     _clip: {fileID: 8300000, guid: a70a473092bdd834993bdd6b6158c112, type: 3}

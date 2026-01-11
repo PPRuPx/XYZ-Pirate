@@ -9,7 +9,7 @@ namespace Components.LevelManagement
         public void Reload()
         {
             var session = FindObjectOfType<GameSession>();
-            Destroy(session);
+            session.LoadLastSave();
             
             var scene = SceneManager.GetActiveScene();
             SceneManager.LoadScene(scene.name);

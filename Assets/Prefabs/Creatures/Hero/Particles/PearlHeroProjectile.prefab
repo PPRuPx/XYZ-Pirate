@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 228401034783436683}
   - component: {fileID: 8461816619127655990}
   m_Layer: 0
-  m_Name: PearlProjectile
+  m_Name: PearlHeroProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -137,10 +137,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d790463b107f5d4cb6f2786611956d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tag: Player
+  _tag: Enemy
   _layer:
     serializedVersion: 2
-    m_Bits: 4096
+    m_Bits: 4294967295
   _event:
     m_PersistentCalls:
       m_Calls:
@@ -219,8 +219,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2bce1603e674d56965d484bbed15715, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 1
-  _invertX: 1
+  _speed: 10
+  _invertX: 0
 --- !u!114 &228401034783436683
 MonoBehaviour:
   m_ObjectHideFlags: 0
