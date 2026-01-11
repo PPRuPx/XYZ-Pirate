@@ -65,7 +65,7 @@ namespace Creatures.Hero
             _session = FindObjectOfType<GameSession>();
             _session.Data.Inventory.OnChanged += OnInventoryChanged;
             
-            HealthComponent.SetHealth(_session.Data.Hp);
+            HealthComponent.SetHealth(_session.Data.Hp.Value);
             UpdateHeroWeapon();
         }
 
@@ -81,7 +81,7 @@ namespace Creatures.Hero
         }
 
         public void OnHealthChanged(int currentHealth) =>
-            _session.Data.Hp = currentHealth;
+            _session.Data.Hp.Value = currentHealth;
 
         protected override void Update()
         {

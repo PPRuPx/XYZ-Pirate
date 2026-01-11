@@ -1,20 +1,21 @@
 ﻿using System;
 using Model.Definitions.Potions;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Model.Definitions
 {
     [CreateAssetMenu(menuName = "Defs/DefsFacade", fileName = "DefsFacade")]
     public class DefsFacade : ScriptableObject
     {
-        [SerializeField] private InventoryDef _inventory;
+        [FormerlySerializedAs("_inventory")] [SerializeField] private PlayerDef player;
         [SerializeField] private InventoryItemsDef _items;
 
         [Space] [Header("Potions Specs")] 
         [SerializeField] private HealPotionDef _healPotion;
         [SerializeField] private JumpPotionDef _jumpPotion;
 
-        public InventoryDef Inventory => _inventory;
+        public PlayerDef Player => player;
         public InventoryItemsDef Items => _items;
         
         public HealPotionDef HealPotion => _healPotion;

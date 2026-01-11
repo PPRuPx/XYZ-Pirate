@@ -27,7 +27,7 @@ namespace Model.Data
             var item = GetItem(id);
             if (item == null || itemDef.IsUnstackable)
             {
-                if (DefsFacade.I.Inventory.Capacity <= _inventory.Count)
+                if (DefsFacade.I.Player.InventorySize <= _inventory.Count)
                     return;
                 
                 item = new InventoryItemData(id);

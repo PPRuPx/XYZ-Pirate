@@ -2,6 +2,7 @@
 using System.Collections;
 using DefaultNamespace.Model.State;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Model.State
 {
@@ -13,10 +14,17 @@ namespace Model.State
 
         private void Awake()
         {
+            LoadHud();
+            
             if (IsSessionExist())
                 DestroyImmediate(gameObject);
             else
                 DontDestroyOnLoad(this);
+        }
+
+        private void LoadHud()
+        {
+            SceneManager.LoadScene("Hud", LoadSceneMode.Additive);
         }
 
         private bool IsSessionExist()
