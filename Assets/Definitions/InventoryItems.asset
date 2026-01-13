@@ -34,3 +34,6 @@ MonoBehaviour:
   - _id: Recovery Potion
     _icon: {fileID: 21300000, guid: 0266e9aa4d921fc49a7bca5cf4a0e62e, type: 3}
     _tags: 0000000001000000
+  - _id: Green Gem
+    _icon: {fileID: 21300000, guid: a4883e3f635401748aae72c23f71be16, type: 3}
+    _tags: 0000000001000000
