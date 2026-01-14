@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04feb2a86c474ceca8d7978ac06ab306, type: 3}
+  m_Name: es
+  m_EditorClassIdentifier: 
+  _url: https://docs.google.com/spreadsheets/d/e/2PACX-1vQaEFU97vyhfSgaz-BhdN6sFIZvO-IR5dMbHOzF5lQt80oqCMKfLdZxQ0hcy7AdaMk0W7qJ_mm1-J7L/pub?gid=1647956932&single=true&output=tsv
+  _localeItems:
+  - Key: menu_title
+    Value: "menu\r"
+  - Key: button_start
+    Value: "iniciar\r"
+  - Key: button_options
+    Value: "opciones\r"
+  - Key: button_exit
+    Value: "salir\r"
+  - Key: selected_language
+    Value: "El idioma seleccionado es {0}\r"
+  - Key: button_languages
+    Value: "idiomas\r"
+  - Key: button_ok
+    Value: "aceptar\r"
+  - Key: button_back
+    Value: "atr\xE1s\r"
+  - Key: Crabby_AskForAGem_1
+    Value: "Tr\xE1eme una Gema Verde...\r"
+  - Key: Crabby_AskForAGem_2
+    Value: "\xA1Y te mostrar\xE9 El Milagro!\r"
+  - Key: Crabby_GemObtained_1
+    Value: "\xA1Y ahora El Milagro!\r"
+  - Key: Crabby_GemObtained_2
+    Value: "Tengo una Gema...\r"
+  - Key: Crabby_GemObtained_3
+    Value: "\xA1\xA1Y t\xFA no!!\r"
+  - Key: Crabby_GemObtained_4
+    Value: "\xA1\xA1\xA1Jajajaja!!!\r"
+  - Key: Helm_1_Use
+    Value: "\xBFUsar el yelmo?\r"
+  - Key: Helm_1_Use_Option_1
+    Value: "S\xED\r"
+  - Key: Helm_1_Use_Option_2
+    Value: "No\r"
+  - Key: button_continue
+    Value: "Continuar...\r"
+  - Key: pause_title
+    Value: "pausa\r"
+  - Key: button_restart
+    Value: reiniciar

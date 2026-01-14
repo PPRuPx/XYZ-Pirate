@@ -22,6 +22,11 @@ namespace UI.MainMenu
             };
             Close();
         }
+        
+        public void OnLanguages()
+        {
+            WindowUtils.CreateWindow("UI/LocalizationWindow");
+        }
 
         public void OnExit()
         {

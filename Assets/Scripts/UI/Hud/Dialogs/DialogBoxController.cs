@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using Model.Data;
+using Model.Definitions.Localization;
 using PixelCrew.Utils;
 using UnityEngine;
 using UnityEngine.UI;
@@ -45,6 +46,7 @@ namespace UI.Hud.Dialogs
         {
             _text.text = string.Empty;
             var sentence = _data.Sentences[_currentSentence];
+            sentence = LocalizationManager.I.Localize(sentence);
 
             foreach (var letter in sentence)
             {
@@ -61,7 +63,8 @@ namespace UI.Hud.Dialogs
             if (_typingRoutine == null) return;
 
             StopTypeAnimation();
-            _text.text = _data.Sentences[_currentSentence];
+            var sentence = _data.Sentences[_currentSentence];
+            _text.text = LocalizationManager.I.Localize(sentence);
         }
 
         public void OnContinue()

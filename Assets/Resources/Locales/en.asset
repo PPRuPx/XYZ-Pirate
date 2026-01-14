@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04feb2a86c474ceca8d7978ac06ab306, type: 3}
+  m_Name: en
+  m_EditorClassIdentifier: 
+  _url: https://docs.google.com/spreadsheets/d/e/2PACX-1vQaEFU97vyhfSgaz-BhdN6sFIZvO-IR5dMbHOzF5lQt80oqCMKfLdZxQ0hcy7AdaMk0W7qJ_mm1-J7L/pub?gid=0&single=true&output=tsv
+  _localeItems:
+  - Key: menu_title
+    Value: "menu\r"
+  - Key: button_start
+    Value: "start\r"
+  - Key: button_options
+    Value: "options\r"
+  - Key: button_exit
+    Value: "exit\r"
+  - Key: selected_language
+    Value: "Selected language is {0}\r"
+  - Key: button_languages
+    Value: "languages\r"
+  - Key: button_ok
+    Value: "ok\r"
+  - Key: button_back
+    Value: "back\r"
+  - Key: Crabby_AskForAGem_1
+    Value: "Get me a Green Gem...\r"
+  - Key: Crabby_AskForAGem_2
+    Value: "And I will show you The Miracle!\r"
+  - Key: Crabby_GemObtained_1
+    Value: "And now The Miracle!\r"
+  - Key: Crabby_GemObtained_2
+    Value: "I have a Gem...\r"
+  - Key: Crabby_GemObtained_3
+    Value: "And you are not!!\r"
+  - Key: Crabby_GemObtained_4
+    Value: "Ahahahaha!!!\r"
+  - Key: Helm_1_Use
+    Value: "Use helm?\r"
+  - Key: Helm_1_Use_Option_1
+    Value: "1. Yes\r"
+  - Key: Helm_1_Use_Option_2
+    Value: "2. No\r"
+  - Key: button_continue
+    Value: "Continue...\r"
+  - Key: pause_title
+    Value: "pause\r"
+  - Key: button_restart
+    Value: restart

@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _data:
     _sentences:
-    - Get me a Green Gem...
-    - And I will show you The Miracle!
+    - Crabby_AskForAGem_1
+    - Crabby_AskForAGem_2
