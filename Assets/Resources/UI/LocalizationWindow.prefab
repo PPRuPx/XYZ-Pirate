@@ -634,6 +634,7 @@ GameObject:
   - component: {fileID: 7161798317644541698}
   - component: {fileID: 2094145436}
   - component: {fileID: 7018644619105990504}
+  - component: {fileID: 3440901715196323802}
   m_Layer: 5
   m_Name: LocaleItem
   m_TagString: Untagged
@@ -784,6 +785,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &3440901715196323802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6705942950735423020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26cd091ea7fb4de281325f6e58c9503f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioClip: {fileID: 8300000, guid: c280200909219504799809a1cb09490c, type: 3}
 --- !u!1 &7075715752174127224
 GameObject:
   m_ObjectHideFlags: 0

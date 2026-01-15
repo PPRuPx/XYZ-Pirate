@@ -641,7 +641,6 @@ GameObject:
   - component: {fileID: 1587015930476540216}
   - component: {fileID: 1587015930476540219}
   - component: {fileID: 4140963454520683585}
-  - component: {fileID: 1546643869214179840}
   m_Layer: 5
   m_Name: ExitButton
   m_TagString: Untagged
@@ -777,19 +776,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _audioClip: {fileID: 8300000, guid: c280200909219504799809a1cb09490c, type: 3}
---- !u!114 &1546643869214179840
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1587015930476540221}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26cd091ea7fb4de281325f6e58c9503f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _audioClip: {fileID: 0}
 --- !u!1 &1587015930585156434
 GameObject:
   m_ObjectHideFlags: 0
@@ -803,7 +789,6 @@ GameObject:
   - component: {fileID: 1587015930585156433}
   - component: {fileID: 1587015930585156432}
   - component: {fileID: 788993881828159426}
-  - component: {fileID: 4432831568101660028}
   m_Layer: 5
   m_Name: RestartButton
   m_TagString: Untagged
@@ -939,19 +924,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _audioClip: {fileID: 8300000, guid: c280200909219504799809a1cb09490c, type: 3}
---- !u!114 &4432831568101660028
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1587015930585156434}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26cd091ea7fb4de281325f6e58c9503f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _audioClip: {fileID: 0}
 --- !u!1 &1587015930805038419
 GameObject:
   m_ObjectHideFlags: 0
@@ -1055,7 +1027,6 @@ GameObject:
   - component: {fileID: 1587015930971369825}
   - component: {fileID: 1587015930971369824}
   - component: {fileID: 2541649940838930921}
-  - component: {fileID: 3961162873908885281}
   m_Layer: 5
   m_Name: OptionsButton
   m_TagString: Untagged
@@ -1191,19 +1162,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _audioClip: {fileID: 8300000, guid: c280200909219504799809a1cb09490c, type: 3}
---- !u!114 &3961162873908885281
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1587015930971369826}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26cd091ea7fb4de281325f6e58c9503f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _audioClip: {fileID: 0}
 --- !u!1 &1587015931192060691
 GameObject:
   m_ObjectHideFlags: 0
