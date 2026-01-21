@@ -55,11 +55,14 @@ MonoBehaviour:
   - Key: button_restart
     Value: "restart\r"
   - Key: perk_info_double_jump
-    Value: "Double Jump\r"
+    Value: "Double Jump: Allows you to perform another jump in mid-air! Press space
+      again (or keep it pressed).\r"
   - Key: perk_info_super_throw
-    Value: "Super Throw\r"
+    Value: "Super Throw: Allows you to throw 3 items in a row much more quickly!
+      Hold shift a little bit.\r"
   - Key: perk_info_force_shield
-    Value: "Force Shield\r"
+    Value: "Force Shield: Surrounds you with a force shield for 3 seconds, making
+      you completely immune to damage. Press R to use.\r"
   - Key: button_use
     Value: "use\r"
   - Key: button_buy
@@ -71,8 +74,20 @@ MonoBehaviour:
   - Key: Crabby_JustJoke_2
     Value: "I can teach you to use perks... not for free\r"
   - Key: Crabby_1_ChangePerk
-    Value: "Do you want to change perks?\r"
+    Value: "Do you want to change stats or perks?\r"
   - Key: Crabby_1_ChangePerk_Option_1
-    Value: "1. Yes\r"
+    Value: "1. Stats\r"
   - Key: Crabby_1_ChangePerk_Option_2
-    Value: 2. No
+    Value: "2. Perks\r"
+  - Key: Crabby_1_ChangePerk_Option_3
+    Value: "3. Nothing\r"
+  - Key: button_upgrade
+    Value: "upgrade\r"
+  - Key: label_stat_health
+    Value: "Health:\r"
+  - Key: label_stat_speed
+    Value: "Speed:\r"
+  - Key: label_stat_range_damage
+    Value: "Range damage:\r"
+  - Key: label_stat_crit_chance
+    Value: 'Crit chance:'

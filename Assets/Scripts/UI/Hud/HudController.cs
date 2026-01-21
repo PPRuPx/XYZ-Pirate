@@ -1,5 +1,6 @@
 ﻿using Model;
 using Model.Definitions;
+using Model.Definitions.Player;
 using UI.Widgets;
 using UnityEngine;
 using Utils;
@@ -40,14 +41,24 @@ namespace UI.Hud
 
         private void OnHealthChanged(int newValue, int oldValue)
         {
-            var maxHealth = DefsFacade.I.Player.MaxHealth;
-            var value = (float)newValue / maxHealth;
+            var maxHealth = _session.StatsModel.GetValue(StatId.Hp);
+            var value = (float) newValue / maxHealth;
             _healthBar.SetProgress(value);
         }
 
         public void OnSettings()
         {
             WindowUtils.CreateWindow("UI/InGameMenuWindow");
+        }
+        
+        public void OnStats()
+        {
+            WindowUtils.CreateWindow("UI/ManageStatsWindow");
+        }
+        
+        public void OnPerks()
+        {
+            WindowUtils.CreateWindow("UI/ManagePerksWindow");
         }
 
         private void OnDestroy()

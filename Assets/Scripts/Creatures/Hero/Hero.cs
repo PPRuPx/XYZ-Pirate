@@ -2,8 +2,10 @@
 using Components;
 using Components.ColliderBased;
 using Components.GameObjectBased;
+using Components.Health;
 using Model;
 using Model.Definitions;
+using Model.Definitions.Player;
 using UnityEditor.Animations;
 using UnityEngine;
 using Utils;
@@ -35,6 +37,7 @@ namespace Creatures.Hero
 
         [Space] [Header("Particles")] 
         [SerializeField] private ParticleSystem _hitParticles;
+        [SerializeField] private ParticleSystem _critParticles;
 
         private bool _allowDoubleJump;
         private bool _isOnWall;
@@ -89,9 +92,22 @@ namespace Creatures.Hero
         {
             _session = FindObjectOfType<GameSession>();
             _session.Data.Inventory.OnChanged += OnInventoryChanged;
+            _session.StatsModel.OnUpgraded += OnHeroUpgraded;
             
             HealthComponent.SetHealth(_session.Data.Hp.Value);
             UpdateHeroWeapon();
+        }
+        
+        private void OnHeroUpgraded(StatId statId)
+        {
+            switch (statId)
+            {
+                case StatId.Hp:
+                    var health = (int) _session.StatsModel.GetValue(statId);
+                    _session.Data.Hp.Value = health;
+                    HealthComponent.SetHealth(health);
+                    break;
+            }
         }
 
         private void OnDestroy()
@@ -127,6 +143,9 @@ namespace Creatures.Hero
             Animator.SetBool(IsOnWallKey, _isOnWall);
         }
 
+        protected override float CalculateSpeed() =>
+            _session.StatsModel.GetValue(StatId.Speed);
+        
         protected override float CalculateYVelocity()
         {
             var isJumpPressing = Direction.y > 0;
@@ -263,6 +282,10 @@ namespace Creatures.Hero
             if (SwordCount <= 0)
                 return;
 
+            var meleeDamage = _attackDamage;
+            meleeDamage = ModifyDamageByCrit(meleeDamage);
+            _attackRange.GetComponent<HealthChangeComponent>().setValue(-meleeDamage);
+
             base.Attack();
         }
 
@@ -302,10 +325,33 @@ namespace Creatures.Hero
 
             var throwableId = _session.QuickInventory.SelectedItem.Id;
             var throwableDef = DefsFacade.I.Throwables.Get(throwableId);
+                
             _throwSpawner.SetPrefab(throwableDef.Projectile);
-            _throwSpawner.Spawn();
+            var instance = _throwSpawner.SpawnInstance();
+            
+            var rangeDamage = (int) _session.StatsModel.GetValue(StatId.RangeDamage);
+            rangeDamage = ModifyDamageByCrit(rangeDamage);
+            instance.GetComponent<HealthChangeComponent>().setValue(-rangeDamage);
 
             _session.Data.Inventory.Remove(throwableId, 1);
+        }
+
+        private int ModifyDamageByCrit(int damage)
+        {
+            var critChance = (int)_session.StatsModel.GetValue(StatId.CritChance);
+            if (Random.value * 100 <= critChance)
+            {
+                SpawnCritParticle();
+                damage *= 2;
+            }
+
+            return damage;
+        }
+        
+        private void SpawnCritParticle()
+        {
+            _critParticles.gameObject.SetActive(true);
+            _critParticles.Play();
         }
 
         public void StartThrowing()

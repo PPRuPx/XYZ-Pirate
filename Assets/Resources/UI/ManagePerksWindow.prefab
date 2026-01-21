@@ -1443,6 +1443,7 @@ GameObject:
   - component: {fileID: 1655147139754742530}
   - component: {fileID: 8476903816393063013}
   - component: {fileID: 1689463024252182916}
+  - component: {fileID: 1419684547145940309}
   m_Layer: 5
   m_Name: PriceLabel
   m_TagString: Untagged
@@ -1510,6 +1511,20 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 'Price:'
+--- !u!114 &1419684547145940309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3388911403152695293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71787296c4504883b99e1ef967db3e40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _key: label_price
+  _capitalize: 0
 --- !u!1 &3476585205140406302
 GameObject:
   m_ObjectHideFlags: 0

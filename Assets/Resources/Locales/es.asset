@@ -15,7 +15,7 @@ MonoBehaviour:
   _url: https://docs.google.com/spreadsheets/d/e/2PACX-1vQaEFU97vyhfSgaz-BhdN6sFIZvO-IR5dMbHOzF5lQt80oqCMKfLdZxQ0hcy7AdaMk0W7qJ_mm1-J7L/pub?gid=1647956932&single=true&output=tsv
   _localeItems:
   - Key: menu_title
-    Value: "menu\r"
+    Value: "men\xFA\r"
   - Key: button_start
     Value: "iniciar\r"
   - Key: button_options
@@ -27,9 +27,9 @@ MonoBehaviour:
   - Key: button_languages
     Value: "idiomas\r"
   - Key: button_ok
-    Value: "aceptar\r"
+    Value: "ok\r"
   - Key: button_back
-    Value: "atr\xE1s\r"
+    Value: "volver\r"
   - Key: Crabby_AskForAGem_1
     Value: "Tr\xE1eme una Gema Verde...\r"
   - Key: Crabby_AskForAGem_2
@@ -37,20 +37,57 @@ MonoBehaviour:
   - Key: Crabby_GemObtained_1
     Value: "\xA1Y ahora El Milagro!\r"
   - Key: Crabby_GemObtained_2
-    Value: "Tengo una Gema...\r"
+    Value: "Tengo una gema...\r"
   - Key: Crabby_GemObtained_3
     Value: "\xA1\xA1Y t\xFA no!!\r"
   - Key: Crabby_GemObtained_4
-    Value: "\xA1\xA1\xA1Jajajaja!!!\r"
+    Value: "\xA1\xA1\xA1Ahajajaja!!!\r"
   - Key: Helm_1_Use
-    Value: "\xBFUsar el yelmo?\r"
+    Value: "\xBFUsar casco?\r"
   - Key: Helm_1_Use_Option_1
-    Value: "S\xED\r"
+    Value: "1. S\xED\r"
   - Key: Helm_1_Use_Option_2
-    Value: "No\r"
+    Value: "2. No\r"
   - Key: button_continue
     Value: "Continuar...\r"
   - Key: pause_title
     Value: "pausa\r"
   - Key: button_restart
-    Value: reiniciar
+    Value: "reiniciar\r"
+  - Key: perk_info_double_jump
+    Value: "Salto doble: \xA1Te permite realizar otro salto en el aire! Presiona
+      espacio de nuevo (o mantenlo presionado).\r"
+  - Key: perk_info_super_throw
+    Value: "S\xFAper lanzamiento: \xA1Te permite lanzar 3 objetos seguidos mucho
+      m\xE1s r\xE1pido! Mant\xE9n presionado Shift un poco.\r"
+  - Key: perk_info_force_shield
+    Value: "Escudo de fuerza: Te rodea con un escudo por 3 segundos, haci\xE9ndote
+      inmune al da\xF1o. Presiona R para usar.\r"
+  - Key: button_use
+    Value: "usar\r"
+  - Key: button_buy
+    Value: "comprar\r"
+  - Key: label_price
+    Value: "Precio:\r"
+  - Key: Crabby_JustJoke_1
+    Value: "\xA1Oh! \xA1Solo bromeaba! T\xF3malo de vuelta...\r"
+  - Key: Crabby_JustJoke_2
+    Value: "Puedo ense\xF1arte a usar habilidades... \u043D\u0435 \u0431\u0435\u0441\u043F\u043B\u0430\u0442\u043D\u043E\r"
+  - Key: Crabby_1_ChangePerk
+    Value: "\xBFQuieres cambiar estad\xEDsticas o habilidades?\r"
+  - Key: Crabby_1_ChangePerk_Option_1
+    Value: "1. Estad\xEDsticas\r"
+  - Key: Crabby_1_ChangePerk_Option_2
+    Value: "2. Habilidades\r"
+  - Key: Crabby_1_ChangePerk_Option_3
+    Value: "3. Nada\r"
+  - Key: button_upgrade
+    Value: "mejorar\r"
+  - Key: label_stat_health
+    Value: "Salud:\r"
+  - Key: label_stat_speed
+    Value: "Velocidad:\r"
+  - Key: label_stat_range_damage
+    Value: "Da\xF1o a distancia:\r"
+  - Key: label_stat_crit_chance
+    Value: "Prob. cr\xEDtico:"

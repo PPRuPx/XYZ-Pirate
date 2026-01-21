@@ -15,6 +15,7 @@ namespace Model.Definitions
         [SerializeField] private HealPotionRepository _healPotion;
         [SerializeField] private JumpPotionRepository _jumpPotion;
         [SerializeField] private PerkRepository _perks;
+        
 
         public PlayerDef Player => player;
         

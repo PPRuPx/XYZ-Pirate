@@ -6,6 +6,9 @@ namespace Components.Health
     {
         [SerializeField] private int _value;
 
+        public void setValue(int value) => 
+            _value = value;
+
         public void ApplyChange(GameObject target)
         {
             var healthComponent = target.GetComponent<HealthComponent>();

@@ -12,8 +12,10 @@ namespace UI.Widgets
         {
             base.DoStateTransition(state, instant);
             
-            _normal.SetActive(state != SelectionState.Pressed);
-            _pressed.SetActive(state == SelectionState.Pressed);
+            bool isPressedOrDisabled = state == SelectionState.Pressed || state == SelectionState.Disabled;
+            
+            _normal.SetActive(!isPressedOrDisabled);
+            _pressed.SetActive(isPressedOrDisabled);
         }
     }
 }

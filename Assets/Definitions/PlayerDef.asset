@@ -14,3 +14,84 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _inventorySize: 7
   _maxHealth: 10
+  _stats:
+  - _name: label_stat_health
+    _id: 0
+    _icon: {fileID: 21300000, guid: d8585f69226c2ee4ba220a847da9dca6, type: 3}
+    _levels:
+    - _value: 5
+      _price:
+        _itemId: Coin
+        _count: 0
+    - _value: 10
+      _price:
+        _itemId: Coin
+        _count: 50
+    - _value: 20
+      _price:
+        _itemId: Coin
+        _count: 100
+    - _value: 40
+      _price:
+        _itemId: Coin
+        _count: 200
+  - _name: label_stat_speed
+    _id: 1
+    _icon: {fileID: 21300000, guid: f20caa5dab7609745861543610f0598d, type: 3}
+    _levels:
+    - _value: 5
+      _price:
+        _itemId: Coin
+        _count: 0
+    - _value: 6
+      _price:
+        _itemId: Coin
+        _count: 50
+    - _value: 7
+      _price:
+        _itemId: Coin
+        _count: 100
+  - _name: label_stat_range_damage
+    _id: 2
+    _icon: {fileID: 21300000, guid: cb67ee4f5bb7d8141b4164cf5d02bd43, type: 3}
+    _levels:
+    - _value: 1
+      _price:
+        _itemId: Coin
+        _count: 0
+    - _value: 2
+      _price:
+        _itemId: Coin
+        _count: 100
+    - _value: 3
+      _price:
+        _itemId: Coin
+        _count: 200
+    - _value: 5
+      _price:
+        _itemId: GreenDiamond
+        _count: 1
+  - _name: label_stat_crit_chance
+    _id: 3
+    _icon: {fileID: 21300000, guid: 682ef3ecb2f15384fbb6797a1d22110b, type: 3}
+    _levels:
+    - _value: 0
+      _price:
+        _itemId: Coin
+        _count: 0
+    - _value: 10
+      _price:
+        _itemId: Coin
+        _count: 100
+    - _value: 20
+      _price:
+        _itemId: Coin
+        _count: 200
+    - _value: 30
+      _price:
+        _itemId: Coin
+        _count: 300
+    - _value: 50
+      _price:
+        _itemId: GreenDiamond
+        _count: 1
