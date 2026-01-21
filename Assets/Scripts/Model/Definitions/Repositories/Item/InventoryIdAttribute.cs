@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Model.Definitions.Editor
+namespace Model.Definitions.Repositories.Item
 {
     public class InventoryIdAttribute : PropertyAttribute
     {

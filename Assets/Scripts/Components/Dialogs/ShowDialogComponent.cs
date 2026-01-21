@@ -3,6 +3,7 @@ using Model.Data;
 using Model.Definitions;
 using UI.Hud.Dialogs;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Components.Dialogs
 {
@@ -11,6 +12,7 @@ namespace Components.Dialogs
         [SerializeField] private Mode _mode;
         [SerializeField] private DialogData _bound;
         [SerializeField] private DialogDef _external;
+        [SerializeField] private UnityEvent _onComplete;
 
         private DialogBoxController _dialogBox;
 
@@ -19,7 +21,7 @@ namespace Components.Dialogs
             if (_dialogBox == null)
                 _dialogBox = FindObjectOfType<DialogBoxController>();
 
-            _dialogBox.ShowDialog(Data);
+            _dialogBox.ShowDialog(Data, _onComplete);
         }
 
         public void Show(DialogDef def)

@@ -1,7 +1,6 @@
-﻿using System;
+﻿using Model;
 using Model.Data;
 using Model.Definitions;
-using Model.State;
 using UI.Widgets;
 using UnityEngine;
 using UnityEngine.UI;

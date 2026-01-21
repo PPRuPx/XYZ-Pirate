@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
+using Model;
 using Model.Data;
-using Model.State;
 using UI.Widgets;
 using UnityEngine;
 using Utils.Disposables;

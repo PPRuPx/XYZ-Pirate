@@ -1,8 +1,9 @@
 ﻿using System.Collections;
+using Components;
 using Components.ColliderBased;
 using Components.GameObjectBased;
+using Model;
 using Model.Definitions;
-using Model.State;
 using UnityEditor.Animations;
 using UnityEngine;
 using Utils;
@@ -17,12 +18,13 @@ namespace Creatures.Hero
         [SerializeField] private float _wallGravityScale;
         [SerializeField] protected float _invulOnHitTime;
 
-        [Space] [Header("Special Attack")] 
+        [Space] [Header("Special Tactics")] 
         [SerializeField] private Cooldown _throwCooldown;
         [SerializeField] private Cooldown _superThrowCooldown;
         [SerializeField] private int _superThrowParticles;
         [SerializeField] private float _superThrowDelay;
         [SerializeField] private SpawnComponent _throwSpawner;
+        [SerializeField] private ForceShieldComponent _forceShield;
     
         [Space] [Header("Interaction")] 
         [SerializeField] private CheckCircleOverlap _interactionCheck;
@@ -140,8 +142,9 @@ namespace Creatures.Hero
 
         protected override float CalculateJumpVelocity(float yVelocity)
         {
-            if (!IsGrounded && _allowDoubleJump)
+            if (!IsGrounded && _allowDoubleJump && _session.PerksModel.IsDoubleJumpSupported && !_isOnWall)
             {
+                _session.PerksModel.Cooldown.Reset();
                 _particles.Spawn("Jump");
                 Sounds.Play("Jump");
                 _allowDoubleJump = false;
@@ -268,11 +271,12 @@ namespace Creatures.Hero
     
         public void OnDoThrow()
         {
-            if (_superThrow)
+            if (_superThrow && _session.PerksModel.IsSuperThrowSupported)
             {
                 var throwableCount = _session.Data.Inventory.Count(SelectedItemId);
                 var possibleCount = SelectedItemId == SwordId ? throwableCount - 1 : throwableCount;
                 var numThrows = Mathf.Min(_superThrowParticles, possibleCount);
+                _session.PerksModel.Cooldown.Reset();
                 StartCoroutine(DoSuperThrow(numThrows));
             }
             else
@@ -317,6 +321,15 @@ namespace Creatures.Hero
 
             Animator.SetTrigger(ThrowKey);
             _throwCooldown.Reset();
+        }
+
+        public void UsePerk()
+        {
+            if (_session.PerksModel.IsForceShieldSupported)
+            {
+                _forceShield.Use();
+                _session.PerksModel.Cooldown.Reset();
+            }
         }
 
         public void NextItem() =>

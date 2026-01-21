@@ -4,11 +4,11 @@ using Utils.Disposables;
 
 namespace Model.Data.Properties
 {
-    public class ObservableProperty<T>
+    public class ObservableProperty<TPropertyType>
     {
-        [SerializeField] private T _value;
-        
-        public delegate void OnPropertyChanged(T newValue, T oldValue);
+        [SerializeField] protected TPropertyType _value;
+
+        public delegate void OnPropertyChanged(TPropertyType newValue, TPropertyType oldValue);
 
         public event OnPropertyChanged OnChanged;
 
@@ -25,20 +25,23 @@ namespace Model.Data.Properties
             call(_value, _value);
             return dispose;
         }
-        
-        public T Value
+
+        public virtual TPropertyType Value
         {
             get => _value;
             set
             {
-                var isSame = _value.Equals(value);
+                var isSame = _value?.Equals(value) ?? false;
                 if (isSame) return;
-
                 var oldValue = _value;
                 _value = value;
-                
-                OnChanged?.Invoke(_value, oldValue);
+                InvokeChangedEvent(_value, oldValue);
             }
+        }
+
+        protected void InvokeChangedEvent(TPropertyType newValue, TPropertyType oldValue)
+        {
+            OnChanged?.Invoke(newValue, oldValue);
         }
     }
 }

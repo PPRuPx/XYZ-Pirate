@@ -1,7 +1,7 @@
-﻿using System;
-using Model.Definitions.Potions;
+﻿using Model.Definitions.Repositories;
+using Model.Definitions.Repositories.Item;
+using Model.Definitions.Repositories.Potions;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Model.Definitions
 {
@@ -9,20 +9,20 @@ namespace Model.Definitions
     public class DefsFacade : ScriptableObject
     {
         [SerializeField] private PlayerDef player;
-        [SerializeField] private InventoryItemsDef _items;
-        [SerializeField] private ThrowableItemsDef _throwables;
-
-        [Space] [Header("Potions Specs")] 
-        [SerializeField] private HealPotionDef _healPotion;
-        [SerializeField] private JumpPotionDef _jumpPotion;
+        
+        [SerializeField] private ItemsReposiory _items;
+        [SerializeField] private ThrowableRepository _throwables;
+        [SerializeField] private HealPotionRepository _healPotion;
+        [SerializeField] private JumpPotionRepository _jumpPotion;
+        [SerializeField] private PerkRepository _perks;
 
         public PlayerDef Player => player;
-        public InventoryItemsDef Items => _items;
-        public ThrowableItemsDef Throwables => _throwables;
         
-        public HealPotionDef HealPotion => _healPotion;
-        public JumpPotionDef JumpPotion => _jumpPotion;
-        
+        public ItemsReposiory Items => _items;
+        public ThrowableRepository Throwables => _throwables;
+        public HealPotionRepository HealPotion => _healPotion;
+        public JumpPotionRepository JumpPotion => _jumpPotion;
+        public PerkRepository Perks => _perks;
 
         private static DefsFacade _instance;
 

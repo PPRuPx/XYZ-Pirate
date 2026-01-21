@@ -84,6 +84,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "UsePerk",
+                    "type": "Button",
+                    "id": "c3c4d651-82a7-43fb-91ad-b767655e580c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -266,7 +274,7 @@
                 {
                     "name": "",
                     "id": "d9cfcf9c-9d31-4e5b-9846-705fffd47e13",
-                    "path": "<Keyboard>/q",
+                    "path": "<Keyboard>/tab",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -288,11 +296,22 @@
                 {
                     "name": "",
                     "id": "04198a92-3bd9-45fc-9c73-64e1bcc6bf95",
-                    "path": "<Keyboard>/r",
+                    "path": "<Keyboard>/q",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "UseInventoryItem",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2c4abbcc-fc3a-46ba-9375-cc54ef1b8c8c",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UsePerk",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

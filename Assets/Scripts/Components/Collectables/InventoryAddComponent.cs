@@ -1,5 +1,6 @@
 ﻿using Creatures.Hero;
-using Model.Definitions.Editor;
+using Model.Definitions;
+using Model.Definitions.Repositories.Item;
 using UnityEngine;
 
 namespace Components.Collectables

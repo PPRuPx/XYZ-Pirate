@@ -1,4 +1,4 @@
-﻿using Model.State;
+﻿using Model;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 

@@ -1,33 +1,19 @@
 ﻿using System;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-namespace Model.Definitions
+namespace Model.Definitions.Repositories.Item
 {
     [CreateAssetMenu(menuName = "Defs/InventoryItems", fileName = "InventoryItems")]
-    public class InventoryItemsDef : ScriptableObject
+    public class ItemsReposiory : DefRepository<ItemDef>
     {
-        [SerializeField] private ItemDef[] _items;
-
-        public ItemDef Get(string id)
-        {
-            foreach (var itemDef in _items)
-            {
-                if (itemDef.Id == id)
-                    return itemDef;
-            }
-
-            return default;
-        }
-
 #if UNITY_EDITOR
-        public ItemDef[] ItemsForEditor => _items;
+        public ItemDef[] ItemsForEditor => _collection;
 #endif
     }
 
     [Serializable]
-    public struct ItemDef
+    public struct ItemDef : IHaveId
     {
         [SerializeField] private string _id;
         [SerializeField] private Sprite _icon;

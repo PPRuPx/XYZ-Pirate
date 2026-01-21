@@ -1,6 +1,5 @@
-﻿using Model.Data;
-using Model.Definitions.Editor;
-using Model.State;
+﻿using Model;
+using Model.Data;
 using UnityEngine;
 using UnityEngine.Events;
 

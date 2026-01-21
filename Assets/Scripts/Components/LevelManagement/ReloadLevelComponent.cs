@@ -1,8 +1,7 @@
 ﻿using System.Linq;
-using Cinemachine;
 using Creatures.Hero;
+using Model;
 using Model.Definitions;
-using Model.State;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 

@@ -57,7 +57,7 @@ namespace Components.Health
                 _onDie?.Invoke();
         }
         
-        private void ResetInvulnerability() =>
+        public void ResetInvulnerability() =>
             _invulnerability = _defaultInvulnerability;
     }
 

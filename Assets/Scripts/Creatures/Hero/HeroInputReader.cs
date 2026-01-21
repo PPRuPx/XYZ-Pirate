@@ -77,5 +77,13 @@ namespace Creatures.Hero
                 _hero.UseInventoryItem();
             }
         }
+        
+        public void OnUsePerkIA(InputAction.CallbackContext context)
+        {
+            if (context.started)
+            {
+                _hero.UsePerk();
+            }
+        }
     }
 }

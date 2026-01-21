@@ -3,6 +3,7 @@ using Model.Data;
 using Model.Definitions.Localization;
 using PixelCrew.Utils;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace UI.Hud.Dialogs
@@ -25,17 +26,19 @@ namespace UI.Hud.Dialogs
         private int _currentSentence;
         private AudioSource _sfxSource;
         private Coroutine _typingRoutine;
+        private UnityEvent _onComplete;
 
         private void Start()
         {
             _sfxSource = AudioUtils.FindSfxSource();
         }
 
-        public void ShowDialog(DialogData data)
+        public void ShowDialog(DialogData data, UnityEvent onComplete)
         {
             _data = data;
             _currentSentence = 0;
             _text.text = string.Empty;
+            _onComplete = onComplete;
 
             _container.SetActive(true);
             _sfxSource.PlayOneShot(_open);
@@ -76,6 +79,7 @@ namespace UI.Hud.Dialogs
             if (isDialogCompleted)
             {
                 HideDialogBox();
+                _onComplete?.Invoke();
             }
             else
             {

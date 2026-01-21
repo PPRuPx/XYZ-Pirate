@@ -12,18 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81060bce9864447f984be773ec2152c5, type: 3}
   m_Name: InventoryItems
   m_EditorClassIdentifier: 
-  _items:
+  _collection:
   - _id: Coin
     _icon: {fileID: 21300000, guid: d0e256f7d358529479d14a778d6a1012, type: 3}
-    _tags: 00000000
+    _tags: 0000000001000000
   - _id: Sword
     _icon: {fileID: 21300000, guid: 34ad8319107de804b8781980e129bab6, type: 3}
     _tags: 000000000100000002000000
-  - _id: Key
-    _icon: {fileID: 21300000, guid: c642858fdcd9b224fa4ac065c88f44a5, type: 3}
-    _tags: 01000000
   - _id: Heal Potion
     _icon: {fileID: 21300000, guid: 64191ae3eda968b4eb134d19122bd0ce, type: 3}
+    _tags: 0000000001000000
+  - _id: Recovery Potion
+    _icon: {fileID: 21300000, guid: 0266e9aa4d921fc49a7bca5cf4a0e62e, type: 3}
     _tags: 0000000001000000
   - _id: Jump Potion
     _icon: {fileID: 21300000, guid: 1a74d61f0f60cce4e8fe6834bce65f49, type: 3}
@@ -31,9 +31,9 @@ MonoBehaviour:
   - _id: Pearl
     _icon: {fileID: 21300000, guid: 7da6c504939f579409a7dba923ba168e, type: 3}
     _tags: 000000000100000002000000
-  - _id: Recovery Potion
-    _icon: {fileID: 21300000, guid: 0266e9aa4d921fc49a7bca5cf4a0e62e, type: 3}
-    _tags: 0000000001000000
-  - _id: Green Gem
+  - _id: Key
+    _icon: {fileID: 21300000, guid: c642858fdcd9b224fa4ac065c88f44a5, type: 3}
+    _tags: 01000000
+  - _id: GreenDiamond
     _icon: {fileID: 21300000, guid: a4883e3f635401748aae72c23f71be16, type: 3}
     _tags: 0000000001000000

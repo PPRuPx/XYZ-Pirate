@@ -1,5 +1,4 @@
 ﻿using System;
-using DefaultNamespace.Model.State;
 using Model.Data.Properties;
 using Model.Definitions;
 using UnityEngine;

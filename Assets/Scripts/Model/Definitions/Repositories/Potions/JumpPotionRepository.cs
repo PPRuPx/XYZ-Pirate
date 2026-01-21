@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 
-namespace Model.Definitions.Potions
+namespace Model.Definitions.Repositories.Potions
 {
-    [CreateAssetMenu(menuName = "Defs/Potions/JumpPotion", fileName = "JumpPotion")]
-    public class JumpPotionDef : ScriptableObject
+    [CreateAssetMenu(menuName = "Defs/JumpPotion", fileName = "JumpPotion")]
+    public class JumpPotionRepository : ScriptableObject
     {
         [SerializeField] private int _multiplier;
         [SerializeField] private int _duration;

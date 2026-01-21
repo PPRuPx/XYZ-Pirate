@@ -1,11 +1,11 @@
 ﻿using System;
-using Model.Definitions.Editor;
+using Model.Definitions.Repositories.Item;
 using UnityEngine;
 
-namespace Model.Definitions
+namespace Model.Definitions.Repositories
 {
     [CreateAssetMenu(menuName = "Defs/ThrowableItemsDef", fileName = "ThrowableItemsDef")]
-    public class ThrowableItemsDef : ScriptableObject
+    public class ThrowableRepository : ScriptableObject
     {
         [SerializeField] private ThrowableDef[] _items;
 

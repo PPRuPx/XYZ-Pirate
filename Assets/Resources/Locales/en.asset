@@ -53,4 +53,26 @@ MonoBehaviour:
   - Key: pause_title
     Value: "pause\r"
   - Key: button_restart
-    Value: restart
+    Value: "restart\r"
+  - Key: perk_info_double_jump
+    Value: "Double Jump\r"
+  - Key: perk_info_super_throw
+    Value: "Super Throw\r"
+  - Key: perk_info_force_shield
+    Value: "Force Shield\r"
+  - Key: button_use
+    Value: "use\r"
+  - Key: button_buy
+    Value: "buy\r"
+  - Key: label_price
+    Value: "Price:\r"
+  - Key: Crabby_JustJoke_1
+    Value: "Oh! I just joked! Take it back...\r"
+  - Key: Crabby_JustJoke_2
+    Value: "I can teach you to use perks... not for free\r"
+  - Key: Crabby_1_ChangePerk
+    Value: "Do you want to change perks?\r"
+  - Key: Crabby_1_ChangePerk_Option_1
+    Value: "1. Yes\r"
+  - Key: Crabby_1_ChangePerk_Option_2
+    Value: 2. No

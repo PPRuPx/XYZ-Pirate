@@ -2,7 +2,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace Model.Definitions.Editor
+namespace Model.Definitions.Repositories.Item.Editor
 {
     [CustomPropertyDrawer(typeof(InventoryIdAttribute))]
     public class InventoryIdAttributeDrawer : PropertyDrawer

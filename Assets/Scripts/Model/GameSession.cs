@@ -1,13 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Components.LevelManagement;
-using DefaultNamespace.Model.State;
 using Model.Data;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Utils.Disposables;
 
-namespace Model.State
+namespace Model
 {
     public class GameSession : MonoBehaviour
     {
@@ -20,6 +19,7 @@ namespace Model.State
         private readonly CompositeDisposable _trash = new CompositeDisposable();
 
         public QuickInventoryModel QuickInventory { get; private set; }
+        public PerksModel PerksModel { get; private set; }
 
         private readonly List<string> _checkpoints = new List<string>();
         public string LastCheckpointId => _checkpoints.Last();
@@ -39,18 +39,6 @@ namespace Model.State
                 DontDestroyOnLoad(this);
                 StartSession(_defaultCheckPoint);
             }
-        }
-        
-        private GameSession GetExistsSession()
-        {
-            var sessions = FindObjectsOfType<GameSession>();
-            foreach (var gameSession in sessions)
-            {
-                if (gameSession != this)
-                    return gameSession;
-            }
-
-            return null;
         }
 
         private void StartSession(string defaultCheckPoint)
@@ -78,11 +66,26 @@ namespace Model.State
         {
             QuickInventory = new QuickInventoryModel(_data);
             _trash.Retain(QuickInventory);
+            
+            PerksModel = new PerksModel(_data);
+            _trash.Retain(PerksModel);
         }
 
         private void LoadHud()
         {
             SceneManager.LoadScene("Hud", LoadSceneMode.Additive);
+        }
+        
+        private GameSession GetExistsSession()
+        {
+            var sessions = FindObjectsOfType<GameSession>();
+            foreach (var gameSession in sessions)
+            {
+                if (gameSession != this)
+                    return gameSession;
+            }
+
+            return null;
         }
 
         public void Save()

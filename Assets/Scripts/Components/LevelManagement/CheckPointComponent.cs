@@ -1,5 +1,5 @@
 ﻿using Components.GameObjectBased;
-using Model.State;
+using Model;
 using UnityEngine;
 using UnityEngine.Events;
 
