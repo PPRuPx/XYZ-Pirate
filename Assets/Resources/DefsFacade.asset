@@ -18,3 +18,4 @@ MonoBehaviour:
   _healPotion: {fileID: 11400000, guid: 4d616f1c40e070a419083d1be92b4e7b, type: 2}
   _jumpPotion: {fileID: 11400000, guid: 8b69c68d3142cbc4cb7f3b65f08624c6, type: 2}
   _perks: {fileID: 11400000, guid: 19d8a5808c744b14fa459bad23be9067, type: 2}
+  _crabbyShop: {fileID: 11400000, guid: 5f209734b4bddf24ea4762ef84eefe9d, type: 2}

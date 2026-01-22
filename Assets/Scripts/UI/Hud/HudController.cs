@@ -60,6 +60,11 @@ namespace UI.Hud
         {
             WindowUtils.CreateWindow("UI/ManagePerksWindow");
         }
+        
+        public void OnShop()
+        {
+            WindowUtils.CreateWindow("UI/ManageShopWindow");
+        }
 
         private void OnDestroy()
         {

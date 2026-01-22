@@ -141,6 +141,12 @@ namespace Creatures.Hero
             }
             
             Animator.SetBool(IsOnWallKey, _isOnWall);
+
+            if (_session.PerksModel.IsRegenerationSupported)
+            {
+                HealthComponent.ModifyHealth(1);
+                _session.PerksModel.Cooldown.Reset();
+            }
         }
 
         protected override float CalculateSpeed() =>

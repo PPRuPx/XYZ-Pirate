@@ -3506,11 +3506,9 @@ MonoBehaviour:
   _data:
     _inventory:
       _inventory:
-      - Id: Pearl
-        Value: 30
       - Id: Coin
-        Value: 1000
-      - Id: GreenDiamond
+        Value: 1500
+      - Id: Green Diamond
         Value: 15
     Hp:
       _value: 5

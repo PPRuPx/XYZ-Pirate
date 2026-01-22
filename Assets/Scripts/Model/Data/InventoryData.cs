@@ -159,6 +159,8 @@ namespace Model.Data
 
             return true;
         }
+
+        public bool hasItem(string id) => Count(id) > 0;
     }
 
     [Serializable]

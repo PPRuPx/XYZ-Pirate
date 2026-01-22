@@ -53,7 +53,7 @@ MonoBehaviour:
         _count: 100
   - _name: label_stat_range_damage
     _id: 2
-    _icon: {fileID: 21300000, guid: cb67ee4f5bb7d8141b4164cf5d02bd43, type: 3}
+    _icon: {fileID: 21300000, guid: 8a758d9f1e6ff3548a4ebe020b4dc50f, type: 3}
     _levels:
     - _value: 1
       _price:
@@ -69,11 +69,11 @@ MonoBehaviour:
         _count: 200
     - _value: 5
       _price:
-        _itemId: GreenDiamond
+        _itemId: Green Diamond
         _count: 1
   - _name: label_stat_crit_chance
     _id: 3
-    _icon: {fileID: 21300000, guid: 682ef3ecb2f15384fbb6797a1d22110b, type: 3}
+    _icon: {fileID: 21300000, guid: ef1f84d036f5b414a9749e083d925c3d, type: 3}
     _levels:
     - _value: 0
       _price:
@@ -93,5 +93,5 @@ MonoBehaviour:
         _count: 300
     - _value: 50
       _price:
-        _itemId: GreenDiamond
+        _itemId: Green Diamond
         _count: 1

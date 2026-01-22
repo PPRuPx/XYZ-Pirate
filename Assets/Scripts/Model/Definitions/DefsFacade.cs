@@ -15,7 +15,7 @@ namespace Model.Definitions
         [SerializeField] private HealPotionRepository _healPotion;
         [SerializeField] private JumpPotionRepository _jumpPotion;
         [SerializeField] private PerkRepository _perks;
-        
+        [SerializeField] private CrabbyShopRepository _crabbyShop;
 
         public PlayerDef Player => player;
         
@@ -24,6 +24,7 @@ namespace Model.Definitions
         public HealPotionRepository HealPotion => _healPotion;
         public JumpPotionRepository JumpPotion => _jumpPotion;
         public PerkRepository Perks => _perks;
+        public CrabbyShopRepository CrabbyShop => _crabbyShop;
 
         private static DefsFacade _instance;
 

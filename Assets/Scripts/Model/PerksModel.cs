@@ -37,6 +37,7 @@ namespace Model
         public bool IsDoubleJumpSupported => _data.Perks.Used.Value == "double-jump" && Cooldown.IsReady;
         public bool IsSuperThrowSupported => _data.Perks.Used.Value == "super-throw" && Cooldown.IsReady;
         public bool IsForceShieldSupported => _data.Perks.Used.Value == "force-shield" && Cooldown.IsReady;
+        public bool IsRegenerationSupported => _data.Perks.Used.Value == "regeneration" && Cooldown.IsReady;
 
         public void Unlock(string id)
         {

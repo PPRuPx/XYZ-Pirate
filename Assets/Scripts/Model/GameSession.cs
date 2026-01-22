@@ -21,6 +21,7 @@ namespace Model
         public QuickInventoryModel QuickInventory { get; private set; }
         public PerksModel PerksModel { get; private set; }
         public StatsModel StatsModel { get; private set; }
+        public ShopModel ShopModel { get; private set; }
 
         private readonly List<string> _checkpoints = new List<string>();
         public string LastCheckpointId => _checkpoints.Last();
@@ -73,6 +74,9 @@ namespace Model
             
             StatsModel = new StatsModel(_data);
             _trash.Retain(StatsModel);
+            
+            ShopModel = new ShopModel(_data);
+            _trash.Retain(ShopModel);
         }
 
         private void LoadHud()

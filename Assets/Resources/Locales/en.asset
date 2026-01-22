@@ -63,10 +63,15 @@ MonoBehaviour:
   - Key: perk_info_force_shield
     Value: "Force Shield: Surrounds you with a force shield for 3 seconds, making
       you completely immune to damage. Press R to use.\r"
+  - Key: perk_info_regeneration
+    Value: "Regeneration: Incredibly, wounds heal on their own! You automatically
+      restore 1 HP every 5 seconds.\r"
   - Key: button_use
     Value: "use\r"
   - Key: button_buy
     Value: "buy\r"
+  - Key: button_sell
+    Value: "sell\r"
   - Key: label_price
     Value: "Price:\r"
   - Key: Crabby_JustJoke_1
@@ -90,4 +95,30 @@ MonoBehaviour:
   - Key: label_stat_range_damage
     Value: "Range damage:\r"
   - Key: label_stat_crit_chance
-    Value: 'Crit chance:'
+    Value: "Crit chance:\r"
+  - Key: Sword
+    Value: "Sword\r"
+  - Key: Heal Potion
+    Value: "Heal Potion\r"
+  - Key: Jump Potion
+    Value: "Jump Potion\r"
+  - Key: Green Diamond
+    Value: "Green Diamond\r"
+  - Key: label_sell_price
+    Value: "Sell for:\r"
+  - Key: label_buy_price
+    Value: "Buy for:\r"
+  - Key: Crabby_2_Shop_1
+    Value: "Look at my preciouses!\r"
+  - Key: Crabby_2_Shop_2
+    Value: "I think I can sell you something...\r"
+  - Key: Crabby_2_Shop
+    Value: "Wanna something?\r"
+  - Key: Crabby_2_Shop_Option_1
+    Value: "1. Stats\r"
+  - Key: Crabby_2_Shop_Option_2
+    Value: "2. Perks\r"
+  - Key: Crabby_2_Shop_Option_3
+    Value: "3. Trade\r"
+  - Key: Crabby_2_Shop_Option_4
+    Value: 4. Nothing

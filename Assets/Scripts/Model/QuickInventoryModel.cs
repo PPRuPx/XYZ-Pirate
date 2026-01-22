@@ -1,10 +1,11 @@
 ﻿using System;
+using Model.Data;
 using Model.Data.Properties;
 using Model.Definitions;
 using UnityEngine;
 using Utils.Disposables;
 
-namespace Model.Data
+namespace Model
 {
     public class QuickInventoryModel : IDisposable
     {

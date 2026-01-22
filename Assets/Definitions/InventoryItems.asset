@@ -34,6 +34,6 @@ MonoBehaviour:
   - _id: Key
     _icon: {fileID: 21300000, guid: c642858fdcd9b224fa4ac065c88f44a5, type: 3}
     _tags: 01000000
-  - _id: GreenDiamond
+  - _id: Green Diamond
     _icon: {fileID: 21300000, guid: a4883e3f635401748aae72c23f71be16, type: 3}
     _tags: 0000000001000000

@@ -17,7 +17,7 @@ MonoBehaviour:
   - Key: menu_title
     Value: "men\xFA\r"
   - Key: button_start
-    Value: "iniciar\r"
+    Value: "comenzar\r"
   - Key: button_options
     Value: "opciones\r"
   - Key: button_exit
@@ -27,21 +27,21 @@ MonoBehaviour:
   - Key: button_languages
     Value: "idiomas\r"
   - Key: button_ok
-    Value: "ok\r"
+    Value: "aceptar\r"
   - Key: button_back
     Value: "volver\r"
   - Key: Crabby_AskForAGem_1
-    Value: "Tr\xE1eme una Gema Verde...\r"
+    Value: "Tr\xE1eme una gema verde...\r"
   - Key: Crabby_AskForAGem_2
-    Value: "\xA1Y te mostrar\xE9 El Milagro!\r"
+    Value: "\xA1Y te mostrar\xE9 el milagro!\r"
   - Key: Crabby_GemObtained_1
-    Value: "\xA1Y ahora El Milagro!\r"
+    Value: "\xA1Y ahora el milagro!\r"
   - Key: Crabby_GemObtained_2
-    Value: "Tengo una gema...\r"
+    Value: "Yo tengo una gema...\r"
   - Key: Crabby_GemObtained_3
     Value: "\xA1\xA1Y t\xFA no!!\r"
   - Key: Crabby_GemObtained_4
-    Value: "\xA1\xA1\xA1Ahajajaja!!!\r"
+    Value: "\xA1\xA1\xA1Jajajaja!!!\r"
   - Key: Helm_1_Use
     Value: "\xBFUsar casco?\r"
   - Key: Helm_1_Use_Option_1
@@ -58,21 +58,26 @@ MonoBehaviour:
     Value: "Salto doble: \xA1Te permite realizar otro salto en el aire! Presiona
       espacio de nuevo (o mantenlo presionado).\r"
   - Key: perk_info_super_throw
-    Value: "S\xFAper lanzamiento: \xA1Te permite lanzar 3 objetos seguidos mucho
-      m\xE1s r\xE1pido! Mant\xE9n presionado Shift un poco.\r"
+    Value: "Superlanzamiento: \xA1Te permite lanzar 3 objetos seguidos mucho m\xE1s
+      r\xE1pido! Mant\xE9n presionado Shift un poco.\r"
   - Key: perk_info_force_shield
-    Value: "Escudo de fuerza: Te rodea con un escudo por 3 segundos, haci\xE9ndote
-      inmune al da\xF1o. Presiona R para usar.\r"
+    Value: "Escudo de fuerza: Te rodea con un escudo de fuerza durante 3 segundos,
+      haci\xE9ndote completamente inmune al da\xF1o. Presiona R para usarlo.\r"
+  - Key: perk_info_regeneration
+    Value: "Regeneraci\xF3n: \xA1Incre\xEDble, las heridas sanan solas! Recuperas
+      autom\xE1ticamente 1 HP cada 5 segundos.\r"
   - Key: button_use
     Value: "usar\r"
   - Key: button_buy
     Value: "comprar\r"
+  - Key: button_sell
+    Value: "vender\r"
   - Key: label_price
     Value: "Precio:\r"
   - Key: Crabby_JustJoke_1
     Value: "\xA1Oh! \xA1Solo bromeaba! T\xF3malo de vuelta...\r"
   - Key: Crabby_JustJoke_2
-    Value: "Puedo ense\xF1arte a usar habilidades... \u043D\u0435 \u0431\u0435\u0441\u043F\u043B\u0430\u0442\u043D\u043E\r"
+    Value: "Puedo ense\xF1arte a usar habilidades... no gratis.\r"
   - Key: Crabby_1_ChangePerk
     Value: "\xBFQuieres cambiar estad\xEDsticas o habilidades?\r"
   - Key: Crabby_1_ChangePerk_Option_1
@@ -90,4 +95,30 @@ MonoBehaviour:
   - Key: label_stat_range_damage
     Value: "Da\xF1o a distancia:\r"
   - Key: label_stat_crit_chance
-    Value: "Prob. cr\xEDtico:"
+    Value: "Prob. de cr\xEDtico:\r"
+  - Key: Sword
+    Value: "Espada\r"
+  - Key: Heal Potion
+    Value: "Poci\xF3n de salud\r"
+  - Key: Jump Potion
+    Value: "Poci\xF3n de salto\r"
+  - Key: Green Diamond
+    Value: "Diamante verde\r"
+  - Key: label_sell_price
+    Value: "Vender por:\r"
+  - Key: label_buy_price
+    Value: "Comprar por:\r"
+  - Key: Crabby_2_Shop_1
+    Value: "\xA1Mira mis tesoros!\r"
+  - Key: Crabby_2_Shop_2
+    Value: "Creo que puedo venderte algo...\r"
+  - Key: Crabby_2_Shop
+    Value: "\xBFQuieres algo?\r"
+  - Key: Crabby_2_Shop_Option_1
+    Value: "1. Estad\xEDsticas\r"
+  - Key: Crabby_2_Shop_Option_2
+    Value: "2. Habilidades\r"
+  - Key: Crabby_2_Shop_Option_3
+    Value: "3. Comerciar\r"
+  - Key: Crabby_2_Shop_Option_4
+    Value: 4. Nada

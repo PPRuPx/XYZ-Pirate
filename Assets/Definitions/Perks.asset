@@ -17,20 +17,27 @@ MonoBehaviour:
     _icon: {fileID: 21300000, guid: 34566ce4537a05f4db2a935bbcd74df9, type: 3}
     _info: perk_info_double_jump
     _price:
-      _itemId: GreenDiamond
+      _itemId: Green Diamond
       _count: 1
     _cooldown: 1
   - _id: super-throw
     _icon: {fileID: 21300000, guid: 7083837e9ebdf574ab77c6069b453ff4, type: 3}
     _info: perk_info_super_throw
     _price:
-      _itemId: GreenDiamond
+      _itemId: Green Diamond
       _count: 3
     _cooldown: 3
   - _id: force-shield
     _icon: {fileID: 21300000, guid: 701ad0a1331738b4a976a94456b0d137, type: 3}
     _info: perk_info_force_shield
     _price:
-      _itemId: GreenDiamond
+      _itemId: Green Diamond
+      _count: 5
+    _cooldown: 5
+  - _id: regeneration
+    _icon: {fileID: 21300000, guid: d8585f69226c2ee4ba220a847da9dca6, type: 3}
+    _info: perk_info_regeneration
+    _price:
+      _itemId: Green Diamond
       _count: 5
     _cooldown: 5

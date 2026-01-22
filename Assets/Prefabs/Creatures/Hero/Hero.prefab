@@ -4994,7 +4994,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &753050202089117045
 Transform:
   m_ObjectHideFlags: 0
@@ -6515,7 +6515,7 @@ ParticleSystem:
     uvChannelMask: -1
     rowMode: 1
     sprites:
-    - sprite: {fileID: 21300000, guid: 682ef3ecb2f15384fbb6797a1d22110b, type: 3}
+    - sprite: {fileID: 21300000, guid: ef1f84d036f5b414a9749e083d925c3d, type: 3}
     flipU: 0
     flipV: 0
   VelocityModule:
