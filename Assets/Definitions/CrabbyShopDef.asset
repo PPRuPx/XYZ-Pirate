@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ed1a79fe10241c5b78c2559610fa240, type: 3}
+  m_Name: CrabbyShopDef
+  m_EditorClassIdentifier: 
+  _collection:
+  - _id: Sword
+    _icon: {fileID: 21300000, guid: 34ad8319107de804b8781980e129bab6, type: 3}
+    _sellPrice:
+      _itemId: Coin
+      _count: 5
+    _buyPrice:
+      _itemId: Coin
+      _count: 10
+  - _id: Heal Potion
+    _icon: {fileID: 21300000, guid: 64191ae3eda968b4eb134d19122bd0ce, type: 3}
+    _sellPrice:
+      _itemId: Coin
+      _count: 50
+    _buyPrice:
+      _itemId: Coin
+      _count: 100
+  - _id: Jump Potion
+    _icon: {fileID: 21300000, guid: 1a74d61f0f60cce4e8fe6834bce65f49, type: 3}
+    _sellPrice:
+      _itemId: Coin
+      _count: 50
+    _buyPrice:
+      _itemId: Coin
+      _count: 100
+  - _id: Green Diamond
+    _icon: {fileID: 21300000, guid: a4883e3f635401748aae72c23f71be16, type: 3}
+    _sellPrice:
+      _itemId: Coin
+      _count: 250
+    _buyPrice:
+      _itemId: Coin
+      _count: 500

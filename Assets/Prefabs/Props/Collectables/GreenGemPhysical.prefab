@@ -255,7 +255,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b912d498d21746caa7b3fc7777c958bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _id: GreenDiamond
+  _id: Green Diamond
   _count: 1
 --- !u!114 &3378462351028298192
 MonoBehaviour:

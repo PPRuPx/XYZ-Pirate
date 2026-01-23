@@ -3505,11 +3505,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _data:
     _inventory:
-      _inventory:
-      - Id: Coin
-        Value: 1500
-      - Id: Green Diamond
-        Value: 15
+      _inventory: []
     Hp:
       _value: 5
     Perks:
@@ -3743,7 +3739,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -23.35, y: -1.1, z: -10}
+  m_LocalPosition: {x: -23.236912, y: -1.1004764, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1559808149}
@@ -21110,7 +21106,7 @@ PrefabInstance:
     - target: {fileID: 3191580122144101004, guid: 9c13e770c0dd5cb4e953be797a72ffe1,
         type: 3}
       propertyPath: _id
-      value: GreenDiamond
+      value: Green Diamond
       objectReference: {fileID: 0}
     - target: {fileID: 8471254289487068035, guid: 9c13e770c0dd5cb4e953be797a72ffe1,
         type: 3}
@@ -23218,7 +23214,7 @@ PrefabInstance:
     - target: {fileID: 3191580122144101004, guid: 9c13e770c0dd5cb4e953be797a72ffe1,
         type: 3}
       propertyPath: _id
-      value: GreenDiamond
+      value: Green Diamond
       objectReference: {fileID: 0}
     - target: {fileID: 8471254289487068035, guid: 9c13e770c0dd5cb4e953be797a72ffe1,
         type: 3}
@@ -23876,7 +23872,7 @@ PrefabInstance:
     - target: {fileID: 4096949374419565020, guid: 39adb4b3dc9efc24e983be6c6da50685,
         type: 3}
       propertyPath: _required.Array.data[0].Id
-      value: GreenDiamond
+      value: Green Diamond
       objectReference: {fileID: 0}
     - target: {fileID: 4096949374419565020, guid: 39adb4b3dc9efc24e983be6c6da50685,
         type: 3}
