@@ -2,6 +2,7 @@
 using Creatures.Hero;
 using Model;
 using Model.Definitions;
+using Model.Definitions.Player;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -23,7 +24,7 @@ namespace Components.LevelManagement
             Destroy(FindObjectOfType<Hero>().gameObject);
             
             var session = FindObjectOfType<GameSession>();
-            session.Data.Hp.Value = DefsFacade.I.Player.MaxHealth;
+            session.Data.Hp.Value = (int) session.StatsModel.GetValue(StatId.Hp);
             
             FindObjectsOfType<CheckPointComponent>()
                 .First(cp => cp.Id == session.LastCheckpointId)

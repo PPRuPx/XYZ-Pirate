@@ -9,6 +9,7 @@ using Model.Definitions.Player;
 using UnityEditor.Animations;
 using UnityEngine;
 using Utils;
+using PlayerDef = Model.Definitions.PlayerDef;
 
 namespace Creatures.Hero
 {
@@ -65,6 +66,11 @@ namespace Creatures.Hero
         private int HealPotionCount => _session.Data.Inventory.Count(HealPotionId);
         private int RecoveryPotionCount => _session.Data.Inventory.Count(RecoveryPotionId);
         private int JumpPotionCount => _session.Data.Inventory.Count(JumpPotionId);
+        
+        // Shortcuts
+        private int MaxHp => (int) _session.StatsModel.GetValue(StatId.Hp);
+        private int CurrentHp => _session.Data.Hp.Value;
+        private int MissingHp => MaxHp - CurrentHp;
 
         private string SelectedItemId => _session.QuickInventory.SelectedItem.Id;
         
@@ -123,7 +129,7 @@ namespace Creatures.Hero
 
         public void OnHealthChanged(int currentHealth) =>
             _session.Data.Hp.Value = currentHealth;
-
+        
         protected override void Update()
         {
             base.Update();
@@ -141,8 +147,8 @@ namespace Creatures.Hero
             }
             
             Animator.SetBool(IsOnWallKey, _isOnWall);
-
-            if (_session.PerksModel.IsRegenerationSupported)
+            
+            if (_session.PerksModel.IsRegenerationSupported && MissingHp > 0)
             {
                 HealthComponent.ModifyHealth(1);
                 _session.PerksModel.Cooldown.Reset();
@@ -200,14 +206,14 @@ namespace Creatures.Hero
             _hitParticles.gameObject.SetActive(true);
             _hitParticles.Play();
         }
-
+        
         public void UseHealPotion()
         {
             if (HealPotionCount > 0)
             {
                 _session.Data.Inventory.Remove(HealPotionId, 1);
-                HealthComponent.ModifyHealth(
-                    DefsFacade.I.HealPotion.HealAmount);
+                var potionHealAmount= DefsFacade.I.HealPotion.HealAmount;
+                HealthComponent.ModifyHealth(Mathf.Min(MissingHp, potionHealAmount));
                 _particles.Spawn("PotionEffect");
             }
         }
@@ -217,8 +223,7 @@ namespace Creatures.Hero
             if (RecoveryPotionCount > 0)
             {
                 _session.Data.Inventory.Remove(RecoveryPotionId, 1);
-                var healAmount = DefsFacade.I.Player.MaxHealth - _session.Data.Hp.Value;
-                HealthComponent.ModifyHealth(Mathf.Max(0, healAmount));
+                HealthComponent.ModifyHealth(MissingHp);
                 _particles.Spawn("PotionEffect");
             }
         }
