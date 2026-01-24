@@ -33,6 +33,7 @@ namespace Model.Definitions.Player
         Hp,
         Speed,
         RangeDamage,
-        CritChance
+        CritChance,
+        LightTime
     }
 }

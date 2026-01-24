@@ -28,6 +28,7 @@ namespace Creatures.Hero
         [SerializeField] private float _superThrowDelay;
         [SerializeField] private SpawnComponent _throwSpawner;
         [SerializeField] private ForceShieldComponent _forceShield;
+        [SerializeField] private LightControllerComponent _candle;
     
         [Space] [Header("Interaction")] 
         [SerializeField] private CheckCircleOverlap _interactionCheck;
@@ -44,6 +45,7 @@ namespace Creatures.Hero
         private bool _isOnWall;
         private bool _allowThrowSword;
         private bool _superThrow;
+        private bool _lightIsOn;
 
         private float _defaultJumpSpeed;
         private float _defaultGravityScale;
@@ -71,6 +73,8 @@ namespace Creatures.Hero
         private int MaxHp => (int) _session.StatsModel.GetValue(StatId.Hp);
         private int CurrentHp => _session.Data.Hp.Value;
         private int MissingHp => MaxHp - CurrentHp;
+        
+        private float LightMaxCapacity => _session.StatsModel.GetValue(StatId.LightTime);
 
         private string SelectedItemId => _session.QuickInventory.SelectedItem.Id;
         
@@ -99,6 +103,8 @@ namespace Creatures.Hero
             _session = FindObjectOfType<GameSession>();
             _session.Data.Inventory.OnChanged += OnInventoryChanged;
             _session.StatsModel.OnUpgraded += OnHeroUpgraded;
+
+            _session.Data.Light.Value = LightMaxCapacity;
             
             HealthComponent.SetHealth(_session.Data.Hp.Value);
             UpdateHeroWeapon();
@@ -153,6 +159,32 @@ namespace Creatures.Hero
                 HealthComponent.ModifyHealth(1);
                 _session.PerksModel.Cooldown.Reset();
             }
+
+            CalculateLight();
+        }
+
+        private void CalculateLight()
+        {
+            if (_lightIsOn && _session.Data.Light.Value > 0f)
+            {
+                _session.Data.Light.Value -= Time.deltaTime;
+                _session.Data.Light.Value = Mathf.Clamp(_session.Data.Light.Value, 0f, LightMaxCapacity);
+
+                float lightCapacityRatio = _session.Data.Light.Value / LightMaxCapacity;
+                if (lightCapacityRatio < 0.1)
+                {
+                    _candle.SetIntensityRatio(lightCapacityRatio * 10);
+                }
+                
+                if (_session.Data.Light.Value <= 0f)
+                {
+                    _lightIsOn = false;
+                    _candle.gameObject.SetActive(false);
+                }
+            }
+            
+            if (!_lightIsOn && _session.Data.Light.Value < LightMaxCapacity)
+                _session.Data.Light.Value += Time.deltaTime;
         }
 
         protected override float CalculateSpeed() =>
@@ -394,5 +426,11 @@ namespace Creatures.Hero
         
         public void AddInInventory(string id, int value) =>
             _session.Data.Inventory.Add(id, value);
+
+        public void UseLight()
+        {
+            _lightIsOn = !_lightIsOn;
+            _candle.gameObject.SetActive(_lightIsOn);
+        }
     }
 }

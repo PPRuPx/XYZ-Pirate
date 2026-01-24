@@ -95,3 +95,11 @@ MonoBehaviour:
       _price:
         _itemId: Green Diamond
         _count: 1
+  - _name: label_stat_light_time
+    _id: 4
+    _icon: {fileID: 21300000, guid: f3e1166bd01ee7d4da75dc6255dacf60, type: 3}
+    _levels:
+    - _value: 20
+      _price:
+        _itemId: Coin
+        _count: 0

@@ -10,6 +10,7 @@ namespace Model.Data
         [SerializeField] private InventoryData _inventory;
         
         public IntProperty Hp = new IntProperty();
+        public FloatProperty Light = new FloatProperty();
         public PerksData Perks = new PerksData();
         public LevelData Levels = new LevelData();
         public InventoryData Inventory => _inventory;

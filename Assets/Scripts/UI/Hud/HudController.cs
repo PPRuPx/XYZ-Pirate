@@ -11,6 +11,7 @@ namespace UI.Hud
     public class HudController : MonoBehaviour
     {
         [SerializeField] private ProgressBarWidget _healthBar;
+        [SerializeField] private ProgressBarWidget _lightWidget;
         [SerializeField] private CurrentPerkWidget _currentPerk;
 
         private GameSession _session;
@@ -21,6 +22,7 @@ namespace UI.Hud
             _session = FindObjectOfType<GameSession>();
 
             _trash.Retain(_session.Data.Hp.SubscribeAndInvoke(OnHealthChanged));
+            _trash.Retain(_session.Data.Light.Subscribe(OnLightChanged));
             _trash.Retain(_session.PerksModel.Subscribe(OnPerkChanged));
             
             OnPerkChanged();
@@ -44,6 +46,13 @@ namespace UI.Hud
             var maxHealth = _session.StatsModel.GetValue(StatId.Hp);
             var value = (float) newValue / maxHealth;
             _healthBar.SetProgress(value);
+        }
+
+        private void OnLightChanged(float newValue, float oldValue)
+        {
+            var candleMaxCapacity = _session.StatsModel.GetValue(StatId.LightTime);
+            var value = 1 - (float) newValue / candleMaxCapacity;
+            _lightWidget.SetProgress(value);
         }
 
         public void OnSettings()

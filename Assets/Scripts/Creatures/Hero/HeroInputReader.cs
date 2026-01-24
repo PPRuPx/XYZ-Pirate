@@ -85,5 +85,13 @@ namespace Creatures.Hero
                 _hero.UsePerk();
             }
         }
+        
+        public void OnLightIA(InputAction.CallbackContext context)
+        {
+            if (context.started)
+            {
+                _hero.UseLight();
+            }
+        }
     }
 }

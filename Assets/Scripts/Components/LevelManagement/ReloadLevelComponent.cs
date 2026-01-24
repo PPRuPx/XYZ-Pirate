@@ -25,6 +25,7 @@ namespace Components.LevelManagement
             
             var session = FindObjectOfType<GameSession>();
             session.Data.Hp.Value = (int) session.StatsModel.GetValue(StatId.Hp);
+            session.Data.Light.Value = (float) session.StatsModel.GetValue(StatId.LightTime);
             
             FindObjectsOfType<CheckPointComponent>()
                 .First(cp => cp.Id == session.LastCheckpointId)
