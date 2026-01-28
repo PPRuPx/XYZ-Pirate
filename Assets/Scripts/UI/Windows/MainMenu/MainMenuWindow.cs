@@ -1,9 +1,8 @@
 ﻿using System;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using Utils;
 
-namespace UI.MainMenu
+namespace UI.Windows.MainMenu
 {
     public class MainMenuWindow : AnimatedWindow
     {
@@ -18,7 +17,8 @@ namespace UI.MainMenu
         {
             _closeAction = () =>
             {
-                SceneManager.LoadScene("Level 1");
+                var loader = FindObjectOfType<LevelLoader>();
+                loader.LoadLevel("Level 1");
             };
             Close();
         }

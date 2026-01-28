@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using Components;
 using Components.ColliderBased;
+using Components.Effects.CameraRelated;
 using Components.GameObjectBased;
 using Components.Health;
 using Model;
@@ -53,6 +54,7 @@ namespace Creatures.Hero
         private readonly Collider2D[] _interactionResult = new Collider2D[1];
 
         private GameSession _session;
+        private CameraShakeEffect _cameraShake;
     
         private static readonly int ThrowKey = Animator.StringToHash("throw");
         private static readonly int IsOnWallKey = Animator.StringToHash("is-on-wall");
@@ -103,8 +105,9 @@ namespace Creatures.Hero
             _session = FindObjectOfType<GameSession>();
             _session.Data.Inventory.OnChanged += OnInventoryChanged;
             _session.StatsModel.OnUpgraded += OnHeroUpgraded;
-
             _session.Data.Light.Value = LightMaxCapacity;
+
+            _cameraShake = FindObjectOfType<CameraShakeEffect>();
             
             HealthComponent.SetHealth(_session.Data.Hp.Value);
             UpdateHeroWeapon();
@@ -222,6 +225,7 @@ namespace Creatures.Hero
         public override void TakeDamage()
         {
             base.TakeDamage();
+            _cameraShake?.Shake();
             if (CoinCount > 0)
                 SpawnCoins();
         }

@@ -11,11 +11,13 @@ namespace Model.Definitions.Player
         [SerializeField] private StatId _id;
         [SerializeField] private Sprite _icon;
         [SerializeField] private StatLevelDef[] _levels;
+        [SerializeField] private bool _hidden;
 
         public StatId ID => _id;
         public string Name => _name;
         public Sprite Icon => _icon;
         public StatLevelDef[] Levels => _levels;
+        public bool Hidden => _hidden;
     }
 
     [Serializable]

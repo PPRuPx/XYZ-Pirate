@@ -121,4 +121,6 @@ MonoBehaviour:
   - Key: Crabby_2_Shop_Option_3
     Value: "3. Trade\r"
   - Key: Crabby_2_Shop_Option_4
-    Value: 4. Nothing
+    Value: "4. Nothing\r"
+  - Key: label_loading
+    Value: Loading...

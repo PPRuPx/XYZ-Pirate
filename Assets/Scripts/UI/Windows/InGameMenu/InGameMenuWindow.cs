@@ -1,10 +1,9 @@
-﻿using System;
-using Model;
+﻿using Model;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Utils;
 
-namespace UI.InGameMenu
+namespace UI.Windows.InGameMenu
 {
     public class InGameMenuWindow : AnimatedWindow
     {

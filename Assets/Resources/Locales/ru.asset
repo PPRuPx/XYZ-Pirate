@@ -146,4 +146,6 @@ MonoBehaviour:
   - Key: Crabby_2_Shop_Option_3
     Value: "3. \u0422\u043E\u0440\u0433\u043E\u0432\u043B\u044F\r"
   - Key: Crabby_2_Shop_Option_4
-    Value: "4. \u041D\u0438\u0447\u0435\u0433\u043E"
+    Value: "4. \u041D\u0438\u0447\u0435\u0433\u043E\r"
+  - Key: label_loading
+    Value: "\u0417\u0430\u0433\u0440\u0443\u0437\u043A\u0430..."

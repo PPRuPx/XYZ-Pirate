@@ -1,8 +1,8 @@
 ﻿using System.Linq;
 using Creatures.Hero;
 using Model;
-using Model.Definitions;
 using Model.Definitions.Player;
+using UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -15,8 +15,9 @@ namespace Components.LevelManagement
             var session = FindObjectOfType<GameSession>();
             session.LoadLastSave();
             
+            var loader = FindObjectOfType<LevelLoader>();
             var scene = SceneManager.GetActiveScene();
-            SceneManager.LoadScene(scene.name);
+            loader.LoadLevel(scene.name);
         }
         
         public void SoftReload()

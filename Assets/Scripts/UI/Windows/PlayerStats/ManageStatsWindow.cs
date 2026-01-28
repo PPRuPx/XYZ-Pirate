@@ -1,3 +1,4 @@
+using System.Linq;
 using Model;
 using Model.Definitions;
 using Model.Definitions.Player;
@@ -45,7 +46,7 @@ namespace UI.Windows.PlayerStats
 
         private void OnStatsChanged()
         {
-            var stats = DefsFacade.I.Player.Stats;
+            var stats = DefsFacade.I.Player.Stats.Where(s => !s.Hidden).ToList();
             _dataGroup.SetData(stats);
 
             var selected = _session.StatsModel.InterfaceSelectedStat.Value;

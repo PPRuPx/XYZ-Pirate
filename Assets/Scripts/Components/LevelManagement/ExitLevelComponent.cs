@@ -1,6 +1,6 @@
 ﻿using Model;
+using UI;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace Components.LevelManagement
 {
@@ -12,7 +12,8 @@ namespace Components.LevelManagement
         {
             var session = FindObjectOfType<GameSession>();
             session.Save();
-            SceneManager.LoadScene(_sceneName);
+            var loader = FindObjectOfType<LevelLoader>();
+            loader.LoadLevel(_sceneName);
         }
     }
 }
