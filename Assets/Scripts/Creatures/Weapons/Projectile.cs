@@ -8,8 +8,8 @@ namespace Creatures.Weapons
         {
             base.Start();
             
-            var force = new Vector2(_direction * _speed, 0);
-            _rigidbody.AddForce(force, ForceMode2D.Impulse);
+            var force = new Vector2(Direction * _speed, 0);
+            Rigidbody.AddForce(force, ForceMode2D.Impulse);
         }
     }
 }

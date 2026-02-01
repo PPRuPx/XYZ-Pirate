@@ -22,17 +22,25 @@ namespace Components.LevelManagement
         
         public void SoftReload()
         {
-            Destroy(FindObjectOfType<Hero>().gameObject);
+            Scene currentScene = SceneManager.GetActiveScene();
+            if (currentScene.name == "PatricTheBoss")
+            {
+                Reload();
+            }
+            else
+            {
+                Destroy(FindObjectOfType<Hero>().gameObject);
             
-            var session = FindObjectOfType<GameSession>();
-            session.Data.Hp.Value = (int) session.StatsModel.GetValue(StatId.Hp);
-            session.Data.Light.Value = (float) session.StatsModel.GetValue(StatId.LightTime);
+                var session = FindObjectOfType<GameSession>();
+                session.Data.Hp.Value = (int) session.StatsModel.GetValue(StatId.Hp);
+                session.Data.Light.Value = (float) session.StatsModel.GetValue(StatId.LightTime);
             
-            FindObjectsOfType<CheckPointComponent>()
-                .First(cp => cp.Id == session.LastCheckpointId)
-                .SpawnHero();
+                FindObjectsOfType<CheckPointComponent>()
+                    .First(cp => cp.Id == session.LastCheckpointId)
+                    .SpawnHero();
 
-            FindObjectOfType<SetFollowComponent>().Start();
+                FindObjectOfType<SetFollowComponent>().Start();
+            }
         }
     }
 }

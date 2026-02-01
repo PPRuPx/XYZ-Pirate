@@ -61,7 +61,7 @@ MonoBehaviour:
     Value: "Superlanzamiento: \xA1Te permite lanzar 3 objetos seguidos mucho m\xE1s
       r\xE1pido! Mant\xE9n presionado Shift un poco.\r"
   - Key: perk_info_force_shield
-    Value: "Escudo de fuerza: Te rodea con un escudo de fuerza durante 3 segundos,
+    Value: "Escudo de fuerza: Te rodea con un escudo de fuerza durante 5 segundos,
       haci\xE9ndote completamente inmune al da\xF1o. Presiona R para usarlo.\r"
   - Key: perk_info_regeneration
     Value: "Regeneraci\xF3n: \xA1Incre\xEDble, las heridas sanan solas! Recuperas
@@ -123,4 +123,8 @@ MonoBehaviour:
   - Key: Crabby_2_Shop_Option_4
     Value: "4. Nada\r"
   - Key: label_loading
-    Value: Cargando...
+    Value: "Cargando...\r"
+  - Key: patric_start_dialog
+    Value: "I will kill you!!\r"
+  - Key: patric_end_dialog
+    Value: NOOOooo....

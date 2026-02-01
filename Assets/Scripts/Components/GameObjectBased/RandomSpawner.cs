@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEditor;
 using UnityEngine;
+using Utils;
 using Random = UnityEngine.Random;
 
 namespace Components.GameObjectBased
@@ -20,25 +21,34 @@ namespace Components.GameObjectBased
         public void StartDrop(GameObject[] items)
         {
             TryStopCoroutine();
+
             _coroutine = StartCoroutine(StartSpawn(items));
         }
 
-        private IEnumerator StartSpawn(GameObject[] items)
+        public void DropImmediate(GameObject[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            foreach (var item in items)
             {
-                Spawn(items[i]);
+                Spawn(item);
+            }
+        }
+
+        private IEnumerator StartSpawn(GameObject[] particles)
+        {
+            for (var i = 0; i < particles.Length; i++)
+            {
+                Spawn(particles[i]);
                 yield return new WaitForSeconds(_waitTime);
             }
         }
 
-        private void Spawn(GameObject item)
+        private void Spawn(GameObject particle)
         {
-            var instance = Instantiate(item, transform.position, Quaternion.identity);
+            var instance = SpawnUtils.Spawn(particle, transform.position);
             var rigidBody = instance.GetComponent<Rigidbody2D>();
 
-            var randomAngel = Random.Range(0, _sectorAngle);
-            var forceVector = AngleToVectorInSector(randomAngel);
+            var randomAngle = Random.Range(0, _sectorAngle);
+            var forceVector = AngleToVectorInSector(randomAngle);
             rigidBody.AddForce(forceVector * _speed, ForceMode2D.Impulse);
         }
 
@@ -47,19 +57,18 @@ namespace Components.GameObjectBased
             var position = transform.position;
 
             var middleAngleDelta = (180 - _sectorRotation - _sectorAngle) / 2;
-            
             var rightBound = GetUnitOnCircle(middleAngleDelta);
             Handles.DrawLine(position, position + rightBound);
-            
+
             var leftBound = GetUnitOnCircle(middleAngleDelta + _sectorAngle);
             Handles.DrawLine(position, position + leftBound);
             Handles.DrawWireArc(position, Vector3.forward, rightBound, _sectorAngle, 1);
 
             Handles.color = new Color(1f, 1f, 1f, 0.1f);
-            Handles.DrawWireArc(position, Vector3.forward, rightBound, _sectorAngle, 1);
+            Handles.DrawSolidArc(position, Vector3.forward, rightBound, _sectorAngle, 1);
         }
 
-        private Vector3 AngleToVectorInSector(float angle)
+        private Vector2 AngleToVectorInSector(float angle)
         {
             var angleMiddleDelta = (180 - _sectorRotation - _sectorAngle) / 2;
             return GetUnitOnCircle(angle + angleMiddleDelta);

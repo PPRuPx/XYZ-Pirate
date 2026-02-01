@@ -17,7 +17,7 @@ namespace UI.Widgets
             if (_hp == null)
                 _hp = GetComponentInParent<HealthComponent>();
 
-            _maxHp = _hp.Health();
+            _maxHp = _hp.Health;
 
             _trash.Retain(_hp._onDie.Subscribe(OnDie));
             _trash.Retain(_hp._onChange.Subscribe(OnHpChanged));

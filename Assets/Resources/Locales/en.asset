@@ -61,7 +61,7 @@ MonoBehaviour:
     Value: "Super Throw: Allows you to throw 3 items in a row much more quickly!
       Hold shift a little bit.\r"
   - Key: perk_info_force_shield
-    Value: "Force Shield: Surrounds you with a force shield for 3 seconds, making
+    Value: "Force Shield: Surrounds you with a force shield for 5 seconds, making
       you completely immune to damage. Press R to use.\r"
   - Key: perk_info_regeneration
     Value: "Regeneration: Incredibly, wounds heal on their own! You automatically
@@ -123,4 +123,8 @@ MonoBehaviour:
   - Key: Crabby_2_Shop_Option_4
     Value: "4. Nothing\r"
   - Key: label_loading
-    Value: Loading...
+    Value: "Loading...\r"
+  - Key: patric_start_dialog
+    Value: "I will kill you!!\r"
+  - Key: patric_end_dialog
+    Value: NOOOooo....

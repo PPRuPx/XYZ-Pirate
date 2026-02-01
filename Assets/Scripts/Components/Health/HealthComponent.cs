@@ -22,7 +22,7 @@ namespace Components.Health
             _defaultInvulnerability = _invulnerability;
         }
 
-        public int Health() => _health;
+        public int Health => _health;
 
         public void SetHealth(int healthValue) =>
             _health = healthValue;
@@ -31,6 +31,12 @@ namespace Components.Health
         
         public void SetInvulnerability(bool invulnerability) =>
             _invulnerability = invulnerability;
+
+        public void SetDefaultInvulnerability(bool invulnerability)
+        {
+            _invulnerability = invulnerability;
+            _defaultInvulnerability = invulnerability;
+        }
 
         public void ModifyHealth(int delta)
         {
@@ -59,6 +65,19 @@ namespace Components.Health
         
         public void ResetInvulnerability() =>
             _invulnerability = _defaultInvulnerability;
+        
+#if UNITY_EDITOR
+        [ContextMenu("Update Health")]
+        private void UpdateHealth()
+        {
+            _onChange?.Invoke(_health);
+        }
+#endif
+        
+        private void OnDestroy()
+        {
+            _onDie.RemoveAllListeners();
+        }
     }
 
     [Serializable]

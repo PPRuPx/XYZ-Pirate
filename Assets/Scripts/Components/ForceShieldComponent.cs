@@ -12,7 +12,7 @@ namespace Components
 
         public void Use()
         {
-            _health.SetInvulnerability(true);
+            _health.SetDefaultInvulnerability(true);
             _cooldown.Reset();
             gameObject.SetActive(true);
         }
@@ -25,7 +25,7 @@ namespace Components
 
         private void OnDisable()
         {
-            _health.ResetInvulnerability();
+            _health.SetDefaultInvulnerability(false);
         }
     }
 }

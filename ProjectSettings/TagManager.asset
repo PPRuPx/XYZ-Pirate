@@ -8,6 +8,7 @@ TagManager:
   - Interactable
   - SfxAudioSource
   - MainCanvas
+  - Water
   layers:
   - Default
   - TransparentFX
@@ -65,4 +66,7 @@ TagManager:
     locked: 0
   - name: Effects
     uniqueID: 1762634525
+    locked: 0
+  - name: Overlay
+    uniqueID: 2545329409
     locked: 0

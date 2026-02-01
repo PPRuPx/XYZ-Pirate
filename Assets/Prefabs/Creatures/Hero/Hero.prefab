@@ -10041,7 +10041,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: {fileID: 9054513558946311185}
   _cooldown:
-    _value: 3
+    _value: 5
 --- !u!114 &2491199498609687813
 MonoBehaviour:
   m_ObjectHideFlags: 0

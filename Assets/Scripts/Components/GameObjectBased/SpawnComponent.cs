@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Utils;
 
 namespace Components.GameObjectBased
 {
@@ -12,8 +13,10 @@ namespace Components.GameObjectBased
         
         public GameObject SpawnInstance()
         {
-            var instance = Instantiate(_prefab, _target.position, Quaternion.identity);
-            instance.transform.localScale = _target.lossyScale;
+            var instance = SpawnUtils.Spawn(_prefab, _target.position);
+
+            var scale = _target.lossyScale;
+            instance.transform.localScale = scale;
             instance.SetActive(true);
             return instance;
         }
