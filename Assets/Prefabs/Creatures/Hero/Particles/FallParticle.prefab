@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2255851056076117805}
   - component: {fileID: 624643942001691833}
-  - component: {fileID: 6060023069977483602}
-  - component: {fileID: 7866586745728791371}
+  - component: {fileID: 696831308119377461}
+  - component: {fileID: 8693332797835994968}
   m_Layer: 0
   m_Name: FallParticle
   m_TagString: Untagged
@@ -83,7 +83,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6060023069977483602
+--- !u!114 &696831308119377461
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -92,41 +92,57 @@ MonoBehaviour:
   m_GameObject: {fileID: 7130081698175151967}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa9b91f7c7ac525468ba418296a8805f, type: 3}
+  m_Script: {fileID: 11500000, guid: 47f55af419601374bb045557c60758bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _frameRate: 10
-  _loop: 0
-  _sprites:
-  - {fileID: 21300000, guid: e1325f533ee0ad34e87937af254ea5aa, type: 3}
-  - {fileID: 21300000, guid: 11a5ebbe4ae27b04a8dea34c39deff75, type: 3}
-  - {fileID: 21300000, guid: 021053eeea325e64ba25104203ba3256, type: 3}
-  - {fileID: 21300000, guid: 3fbaa070b29d9bd4e8b6de201a2b7f2c, type: 3}
-  - {fileID: 21300000, guid: 781b0d9dc7c889247acf9a9f0e164b7c, type: 3}
-  _onComplete:
+  _clips:
+  - Name: fall
+    Sprites:
+    - {fileID: 21300000, guid: e1325f533ee0ad34e87937af254ea5aa, type: 3}
+    - {fileID: 21300000, guid: 11a5ebbe4ae27b04a8dea34c39deff75, type: 3}
+    - {fileID: 21300000, guid: 021053eeea325e64ba25104203ba3256, type: 3}
+    - {fileID: 21300000, guid: 3fbaa070b29d9bd4e8b6de201a2b7f2c, type: 3}
+    - {fileID: 21300000, guid: 781b0d9dc7c889247acf9a9f0e164b7c, type: 3}
+    Loop: 0
+    AllowNextClip: 0
+    OnComplete:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8693332797835994968}
+          m_MethodName: Release
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &8693332797835994968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7130081698175151967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 051dcbf18b4d49c595bd00f31f04c463, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _onRestart:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7866586745728791371}
-        m_MethodName: DestroyObject
-        m_Mode: 1
+      - m_Target: {fileID: 696831308119377461}
+        m_MethodName: SetClip
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: fall
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &7866586745728791371
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7130081698175151967}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9444494ae86dcf344b3351a7e857f6ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _objectToDestroy: {fileID: 7130081698175151967}

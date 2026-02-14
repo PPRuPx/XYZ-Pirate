@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using Utils;
+using Utils.ObjectPool;
 
 namespace Components.GameObjectBased
 {
@@ -7,17 +8,22 @@ namespace Components.GameObjectBased
     {
         [SerializeField] private Transform _target;
         [SerializeField] private GameObject _prefab;
+        [SerializeField] private bool _usePool;
 
         [ContextMenu("Spawn")]
         public void Spawn() => SpawnInstance();
         
         public GameObject SpawnInstance()
         {
-            var instance = SpawnUtils.Spawn(_prefab, _target.position);
+            var targetPos = _target.position;
+            var instance = _usePool
+                ? Pool.Instance.Get(_prefab, targetPos)
+                : SpawnUtils.Spawn(_prefab, targetPos);
 
             var scale = _target.lossyScale;
             instance.transform.localScale = scale;
             instance.SetActive(true);
+            
             return instance;
         }
 

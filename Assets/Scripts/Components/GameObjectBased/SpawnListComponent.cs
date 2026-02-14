@@ -16,7 +16,17 @@ namespace Components.GameObjectBased
 
         public void Spawn(string id)
         {
-            _spawners.FirstOrDefault(s => s.id == id)?.Component.Spawn();
+            SpawnData first = null;
+            foreach (var s in _spawners)
+            {
+                if (s.id == id)
+                {
+                    first = s;
+                    break;
+                }
+            }
+
+            first?.Component.Spawn();
         }
         
         [Serializable]

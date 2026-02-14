@@ -16,8 +16,13 @@ namespace Model.Definitions
         public int InventorySize => _inventorySize;
         public int MaxHealth => _maxHealth;
         public StatDef[] Stats => _stats;
-        
-        public StatDef GetStat(StatId id) => 
-            _stats.FirstOrDefault(x => x.ID == id);
+
+        public StatDef GetStat(StatId id)
+        {
+            foreach (var x in _stats)
+                if (x.ID == id) return x;
+
+            return new StatDef();
+        } 
     }
 }

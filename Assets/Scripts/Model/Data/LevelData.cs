@@ -13,17 +13,32 @@ namespace Model.Data
 
         public int GetLevel(StatId id)
         {
-            var progress = _progress.FirstOrDefault(x => x.Id == id);
+            var progress = FindLevelProgress(id);
             return progress?.Level ?? 0;
         }
 
         public void LevelUp(StatId id)
         {
-            var progress = _progress.FirstOrDefault(x => x.Id == id);
+            var progress = FindLevelProgress(id);
             if (progress == null)
                 _progress.Add(new LevelProgress(id, 1));
             else
                 progress.Level++;
+        }
+        
+        private LevelProgress FindLevelProgress(StatId id)
+        {
+            LevelProgress progress = null;
+            foreach (var x in _progress)
+            {
+                if (x.Id == id)
+                {
+                    progress = x;
+                    break;
+                }
+            }
+
+            return progress;
         }
     }
 
