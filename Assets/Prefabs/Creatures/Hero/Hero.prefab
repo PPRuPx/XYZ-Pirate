@@ -10476,6 +10476,8 @@ MonoBehaviour:
   _throwSpawner: {fileID: 3783361076075261801}
   _forceShield: {fileID: 1489186397308187109}
   _candle: {fileID: 2491199498609687813}
+  _dashVelocity: 10
+  _dashDuration: 0.2
   _interactionCheck: {fileID: 8624573869138431577}
   _unarmed: {fileID: 9100000, guid: 3a04bfe438fdc4546b2800e02702fd6c, type: 2}
   _armed: {fileID: 9100000, guid: aa9fe4aefbf847f44974a8d1050904c4, type: 2}
@@ -10554,6 +10556,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hero: {fileID: 9054513558946311197}
+  _doubleTapThreshold: 0.3
 --- !u!114 &9054513558946311196
 MonoBehaviour:
   m_ObjectHideFlags: 0

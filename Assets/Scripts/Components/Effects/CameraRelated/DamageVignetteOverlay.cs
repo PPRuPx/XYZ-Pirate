@@ -10,8 +10,8 @@ namespace Components.Effects.CameraRelated
     public class DamageVignetteOverlay: MonoBehaviour
     {
         [Header("Settings")]
-        [SerializeField] private Volume globalVolume; // Перетащите ваш GlobalPostFX сюда в инспекторе
-        [SerializeField] private float maxIntensity = 0.7f;
+        [SerializeField] private Volume globalVolume;
+        [SerializeField] private float maxIntensity = 0.35f;
     
         private Vignette _vignette;
         private GameSession _session;
@@ -39,7 +39,7 @@ namespace Components.Effects.CameraRelated
             float currentHp = _session.Data.Hp.Value;
             float healthPercent = currentHp / maxHp;
             
-            float targetIntensity = 1f - healthPercent;
+            float targetIntensity = maxIntensity * (1 - healthPercent);
             targetIntensity = Mathf.Clamp(targetIntensity, 0f, maxIntensity);
 
             _vignette.intensity.value = targetIntensity;

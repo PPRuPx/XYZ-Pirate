@@ -30,6 +30,8 @@ namespace Creatures.Hero
         [SerializeField] private SpawnComponent _throwSpawner;
         [SerializeField] private ForceShieldComponent _forceShield;
         [SerializeField] private LightControllerComponent _candle;
+        [SerializeField] private float _dashVelocity = 30f;
+        [SerializeField] private float _dashDuration = 0.2f;
     
         [Space] [Header("Interaction")] 
         [SerializeField] private CheckCircleOverlap _interactionCheck;
@@ -47,9 +49,11 @@ namespace Creatures.Hero
         private bool _allowThrowSword;
         private bool _superThrow;
         private bool _lightIsOn;
+        private bool _isDashing;
 
         private float _defaultJumpSpeed;
         private float _defaultGravityScale;
+        private float _dashDirection;
 
         private readonly Collider2D[] _interactionResult = new Collider2D[1];
 
@@ -193,8 +197,19 @@ namespace Creatures.Hero
         protected override float CalculateSpeed() =>
             _session.StatsModel.GetValue(StatId.Speed);
         
+        protected override float CalculateXVelocity()
+        {
+            if (_isDashing)
+                return _dashDirection * _dashVelocity;
+            
+            return base.CalculateXVelocity();
+        }
+
         protected override float CalculateYVelocity()
         {
+            if (_isDashing)
+                return 0f;
+
             var isJumpPressing = Direction.y > 0;
 
             if (IsGrounded || _isOnWall)
@@ -436,5 +451,33 @@ namespace Creatures.Hero
             _lightIsOn = !_lightIsOn;
             _candle.gameObject.SetActive(_lightIsOn);
         }
+        
+        public void Dash(float directionX)
+        {
+            if (_isDashing || directionX == 0) 
+                return;
+            
+            if (!_session.PerksModel.IsDashSupported)
+                return;
+            
+            StartCoroutine(DoDash(directionX));
+        }
+
+        private IEnumerator DoDash(float directionX)
+        {
+            _session.PerksModel.Cooldown.Reset();
+            
+            _isDashing = true;
+            _dashDirection = Mathf.Sign(directionX);
+
+            var originalGravity = Rigidbody.gravityScale;
+            Rigidbody.gravityScale = 0;
+
+            yield return new WaitForSeconds(_dashDuration);
+
+            Rigidbody.gravityScale = originalGravity;
+            _isDashing = false;
+        }
+        
     }
 }

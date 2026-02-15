@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1498,7 +1498,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 362425266}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.691324, y: 1.1579891, z: 0}
+  m_LocalPosition: {x: 2.6903985, y: 1.1579889, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1201371172}
@@ -1722,7 +1722,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -6340,11 +6340,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2f1dc112b7748d995ff99a500b8a9bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _overlays:
-  - {fileID: 1773690938}
-  - {fileID: 640080103}
-  - {fileID: 2101768734}
-  damageThreshold: 0.3
 --- !u!95 &1314594509
 Animator:
   serializedVersion: 3

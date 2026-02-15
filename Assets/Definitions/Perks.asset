@@ -20,6 +20,13 @@ MonoBehaviour:
       _itemId: Green Diamond
       _count: 1
     _cooldown: 1
+  - _id: dash
+    _icon: {fileID: 21300000, guid: f20caa5dab7609745861543610f0598d, type: 3}
+    _info: perk_info_double_dash
+    _price:
+      _itemId: Green Diamond
+      _count: 1
+    _cooldown: 1
   - _id: super-throw
     _icon: {fileID: 21300000, guid: 7083837e9ebdf574ab77c6069b453ff4, type: 3}
     _info: perk_info_super_throw

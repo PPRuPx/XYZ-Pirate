@@ -127,4 +127,6 @@ MonoBehaviour:
   - Key: patric_start_dialog
     Value: "I will kill you!!\r"
   - Key: patric_end_dialog
-    Value: NOOOooo....
+    Value: "NOOOooo....\r"
+  - Key: label_use_double_jump
+    Value: Try to use double jump skill here
