@@ -10,12 +10,12 @@ namespace Creatures.Mobs.Boss.DaddyShark
     {
         [Header("Objects")]
         [SerializeField] private GameObject _blockPrefab;
-        [SerializeField] private Transform[] _spawnPoints; // 22 красные точки сверху
-        [SerializeField] private Light2D[] _safetyLights; // 22 источника света на полу
+        [SerializeField] private Transform[] _spawnPoints;
+        [SerializeField] private Light2D[] _safetyLights;
 
         [Header("Timings")]
-        [SerializeField] private float _warningDuration = 1.2f; // Время свечения перед падением
-        [SerializeField] private float _maxFallDelay = 0.4f; // Разброс для эффекта "волны"
+        [SerializeField] private float _warningDuration = 1.2f;
+        [SerializeField] private float _maxFallDelay = 0.4f;
 
         [Header("Visuals")]
         [SerializeField] private QuakeEffect _quakeEffect;
@@ -23,17 +23,15 @@ namespace Creatures.Mobs.Boss.DaddyShark
         [SerializeField] private Color _safeColor = Color.green;
         [ColorUsage(true, true)]
         [SerializeField] private Color _dangerColor = Color.red;
-        [SerializeField] private float _idleIntensity = 0f; // Яркость в обычном состоянии
-        [SerializeField] private float _activeIntensity = 1.5f; // Яркость при активации ловушки
+        [SerializeField] private float _idleIntensity = 0f;
+        [SerializeField] private float _activeIntensity = 1.5f;
 
-        // Группы индексов для выбора безопасных зон (с учетом 0-based index)
-        // Группа 3-5 => индексы 2,3,4 и т.д.
         private readonly int[][] safeGroups = new int[][]
         {
-            new int[] { 2, 3, 4 }, // Группа 3-5
-            new int[] { 6, 7, 8, 9 }, // Группа 7-10
-            new int[] { 12, 13, 14, 15 }, // Группа 13-16
-            new int[] { 17, 18, 19 } // Группа 18-20
+            new int[] { 2, 3, 4 },
+            new int[] { 6, 7, 8, 9 },
+            new int[] { 12, 13, 14, 15 },
+            new int[] { 17, 18, 19 }
         };
 
         private void Start()
@@ -54,7 +52,6 @@ namespace Creatures.Mobs.Boss.DaddyShark
             foreach (var group in safeGroups)
                 safeIndices.Add(group[Random.Range(0, group.Length)]);
 
-            // Включаем свет (Красный - опасно, Зеленый - безопасно)
             for (int i = 0; i < _safetyLights.Length; i++)
             {
                 if (_safetyLights[i] == null) continue;
