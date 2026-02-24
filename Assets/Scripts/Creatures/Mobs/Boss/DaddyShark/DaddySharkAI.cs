@@ -8,8 +8,8 @@ namespace Creatures.Mobs.Boss.DaddyShark
     public class DaddySharkAI : MonoBehaviour
     {
         [SerializeField] private LayerCheck _vision;
-        [SerializeField] private LayerCheck _canAttack;      // Зона укуса
-        [SerializeField] private LayerCheck _rangeAttackArea; // Зона стрельбы
+        [SerializeField] private LayerCheck _canAttack;
+        [SerializeField] private LayerCheck _rangeAttackArea;
         
         [Header("Timings")]
         [SerializeField] private float _alarmDelay = 0.5f;
@@ -20,7 +20,7 @@ namespace Creatures.Mobs.Boss.DaddyShark
         private Coroutine _current;
         private GameObject _target;
         private bool _isDead;
-        private bool _needsQuakeRestart; // Флаг для перехвата урона в 3 фазе
+        private bool _needsQuakeRestart;
 
         private DaddyShark _creature;
         private Animator _animator;
@@ -35,7 +35,6 @@ namespace Creatures.Mobs.Boss.DaddyShark
             _patrol = GetComponent<Patrol>();
         }
 
-        // --- БЛОК ПОДПИСКИ И ОТПИСКИ ---
         private void OnEnable()
         {
             if (_creature != null)
@@ -47,11 +46,9 @@ namespace Creatures.Mobs.Boss.DaddyShark
             if (_creature != null)
                 _creature.OnTakeDamage -= OnBossHit;
         }
-        // -------------------------------
 
         private void OnBossHit()
         {
-            // Если босса ударили в 3 фазе, взводим флаг перезапуска ульты
             if (_creature.IsStage3) 
                 _needsQuakeRestart = true;
         }
@@ -76,22 +73,18 @@ namespace Creatures.Mobs.Boss.DaddyShark
         {
             while (_vision.IsTouchingLayers)
             {
-                // ПРИОРИТЕТ 1: Фаза 3 (Ульта -> Цикл стрельбы до урона)
                 if (_creature.IsStage3)
                 {
                     yield return StartCoroutine(UltimateCycle());
                 }
-                // ПРИОРИТЕТ 2: Ближний бой (если подошел вплотную)
                 else if (_canAttack.IsTouchingLayers)
                 {
                     yield return StartCoroutine(AttackAction());
                 }
-                // ПРИОРИТЕТ 3: Стрельба (Фаза 2)
                 else if (_creature.IsStage2 && _rangeAttackArea.IsTouchingLayers)
                 {
                     yield return StartCoroutine(ShootAction());
                 }
-                // ПРИОРИТЕТ 4: Просто идти к герою
                 else
                 {
                     _creature.SetDirection(GetDirectionToTarget());
@@ -106,15 +99,13 @@ namespace Creatures.Mobs.Boss.DaddyShark
 
         private IEnumerator UltimateCycle()
         {
-            _needsQuakeRestart = false; // Сбрасываем флаг перед началом
+            _needsQuakeRestart = false;
             _creature.SetDirection(Vector2.zero);
 
-            // 1. Сама Ульта
             _creature.ActivateAgroVisuals();
             _creature.Quake();
-            yield return new WaitForSeconds(3f); // Время ярости и падения блоков
+            yield return new WaitForSeconds(3f);
 
-            // 2. Ведёт себя как во 2 фазе, пока не получит урон
             while (!_needsQuakeRestart && _vision.IsTouchingLayers)
             {
                 if (_canAttack.IsTouchingLayers)
@@ -133,8 +124,6 @@ namespace Creatures.Mobs.Boss.DaddyShark
                     yield return null;
                 }
             }
-            // Если вышли из цикла по _needsQuakeRestart == true, 
-            // UltimateCycle завершится и GoToHero запустит его снова.
         }
 
         private IEnumerator AttackAction()

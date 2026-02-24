@@ -42,7 +42,6 @@ namespace Creatures.Mobs.Boss.DaddyShark
                 ActivateAgroVisuals();
             }
 
-            // Уведомляем AI, что босса ударили
             OnTakeDamage?.Invoke();
         }
 
@@ -50,7 +49,6 @@ namespace Creatures.Mobs.Boss.DaddyShark
         {
             if (_forceShield != null) 
                 _forceShield.Use();
-            // Теперь AgroKey определен и сработает корректно
             Animator.SetTrigger(AgroKey);
         }
 
