@@ -7,10 +7,8 @@ using Components.Health;
 using Model;
 using Model.Definitions;
 using Model.Definitions.Player;
-using UnityEditor.Animations;
 using UnityEngine;
 using Utils;
-using PlayerDef = Model.Definitions.PlayerDef;
 
 namespace Creatures.Hero
 {
@@ -37,8 +35,8 @@ namespace Creatures.Hero
         [SerializeField] private CheckCircleOverlap _interactionCheck;
 
         [Space] [Header("Animations")] 
-        [SerializeField] private AnimatorController _unarmed;
-        [SerializeField] private AnimatorController _armed;
+        [SerializeField] private RuntimeAnimatorController _unarmed;
+        [SerializeField] private RuntimeAnimatorController _armed;
 
         [Space] [Header("Particles")] 
         [SerializeField] private ParticleSystem _hitParticles;
@@ -179,9 +177,9 @@ namespace Creatures.Hero
 
                 float lightCapacityRatio = _session.Data.Light.Value / LightMaxCapacity;
                 if (lightCapacityRatio < 0.1)
-                {
                     _candle.SetIntensityRatio(lightCapacityRatio * 10);
-                }
+                else
+                    _candle.SetIntensityRatio(1);
                 
                 if (_session.Data.Light.Value <= 0f)
                 {

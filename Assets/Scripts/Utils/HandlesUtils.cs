@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace DefaultNamespace.Utils
+namespace Utils
 {
     public class HandlesUtils
     {

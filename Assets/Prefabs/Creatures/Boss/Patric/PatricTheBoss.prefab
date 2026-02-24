@@ -497,6 +497,7 @@ MonoBehaviour:
     - {fileID: 0}
     - {fileID: 0}
     _color: {r: 1, g: 0.51307935, b: 0.039215684, a: 0}
+    _intensity: 0.5
   - _lights:
     - {fileID: 0}
     - {fileID: 0}
@@ -507,6 +508,7 @@ MonoBehaviour:
     - {fileID: 0}
     - {fileID: 0}
     _color: {r: 1, g: 0, b: 0, a: 0}
+    _intensity: 0.5
 --- !u!114 &2167005467775637300
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -662,4 +664,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d96e8d3c046c2948ac8bffd7d3a61f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _value: -2
+  _value: -3

@@ -10,11 +10,19 @@ namespace Components.LevelManagement
 {
     public class ReloadLevelComponent : MonoBehaviour
     {
-        public void Reload()
+        public void ReloadInMenu()
         {
             var session = FindObjectOfType<GameSession>();
             session.LoadLastSave();
             
+            var scene = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(scene.name);
+        }
+        
+        public void Reload()
+        {
+            var session = FindObjectOfType<GameSession>();
+            session.Save();
             var loader = FindObjectOfType<LevelLoader>();
             var scene = SceneManager.GetActiveScene();
             loader.LoadLevel(scene.name);
@@ -23,7 +31,7 @@ namespace Components.LevelManagement
         public void SoftReload()
         {
             Scene currentScene = SceneManager.GetActiveScene();
-            if (currentScene.name == "PatricTheBoss")
+            if (currentScene.name == "PatricTheBoss" || currentScene.name == "DaddyShark")
             {
                 Reload();
             }

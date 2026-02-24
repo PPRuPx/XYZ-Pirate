@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using UnityEditor;
 using UnityEngine;
 using Utils;
 using Random = UnityEngine.Random;
@@ -52,21 +51,23 @@ namespace Components.GameObjectBased
             rigidBody.AddForce(forceVector * _speed, ForceMode2D.Impulse);
         }
 
+#if UNITY_EDITOR
         private void OnDrawGizmosSelected()
         {
             var position = transform.position;
 
             var middleAngleDelta = (180 - _sectorRotation - _sectorAngle) / 2;
             var rightBound = GetUnitOnCircle(middleAngleDelta);
-            Handles.DrawLine(position, position + rightBound);
+            UnityEditor.Handles.DrawLine(position, position + rightBound);
 
             var leftBound = GetUnitOnCircle(middleAngleDelta + _sectorAngle);
-            Handles.DrawLine(position, position + leftBound);
-            Handles.DrawWireArc(position, Vector3.forward, rightBound, _sectorAngle, 1);
+            UnityEditor.Handles.DrawLine(position, position + leftBound);
+            UnityEditor.Handles.DrawWireArc(position, Vector3.forward, rightBound, _sectorAngle, 1);
 
-            Handles.color = new Color(1f, 1f, 1f, 0.1f);
-            Handles.DrawSolidArc(position, Vector3.forward, rightBound, _sectorAngle, 1);
+            UnityEditor.Handles.color = new Color(1f, 1f, 1f, 0.1f);
+            UnityEditor.Handles.DrawSolidArc(position, Vector3.forward, rightBound, _sectorAngle, 1);
         }
+#endif
 
         private Vector2 AngleToVectorInSector(float angle)
         {

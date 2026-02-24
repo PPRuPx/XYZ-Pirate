@@ -35,11 +35,11 @@ namespace Creatures
         protected bool IsJumping;
         protected bool IsJumpLocked;
 
-        private static readonly int IsRunningKey = Animator.StringToHash("is-running");
-        private static readonly int IsGroundedKey = Animator.StringToHash("is-grounded");
-        private static readonly int VerticalVelocityKey = Animator.StringToHash("vertical-velocity");
-        private static readonly int HitKey = Animator.StringToHash("hit");
-        private static readonly int AttackKey = Animator.StringToHash("attack");
+        protected static readonly int IsRunningKey = Animator.StringToHash("is-running");
+        protected static readonly int IsGroundedKey = Animator.StringToHash("is-grounded");
+        protected static readonly int VerticalVelocityKey = Animator.StringToHash("vertical-velocity");
+        protected static readonly int HitKey = Animator.StringToHash("hit");
+        protected static readonly int AttackKey = Animator.StringToHash("attack");
 
         protected virtual void Awake()
         {
@@ -110,7 +110,7 @@ namespace Creatures
         {
             if (IsGrounded)
             {
-                _particles.Spawn("Jump");
+                _particles?.Spawn("Jump");
                 Sounds.Play("Jump");
                 IsJumpLocked = true;
                 Invoke(nameof(UnlockJump), _jumpLockTime);
@@ -154,7 +154,7 @@ namespace Creatures
         public void OnDoAttack()
         {
             _attackRange.Check();
-            _particles.Spawn("Slash");
+            _particles?.Spawn("Slash");
         }
     }
 }

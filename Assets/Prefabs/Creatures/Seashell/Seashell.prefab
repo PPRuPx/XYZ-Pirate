@@ -504,6 +504,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _target: {fileID: 6600780050949387720}
   _prefab: {fileID: 8223080766305588195, guid: 489bd57a652c15f46b4aeddb9f497699, type: 3}
+  _usePool: 0
 --- !u!95 &3389595399611018291
 Animator:
   serializedVersion: 3
@@ -568,6 +569,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _target: {fileID: 6600780050989252766}
   _prefab: {fileID: 784224723074169537, guid: 593fc9c6f8554dc47a6733afec239d5c, type: 3}
+  _usePool: 0
 --- !u!1 &6600780051239933583
 GameObject:
   m_ObjectHideFlags: 0
@@ -649,6 +651,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _target: {fileID: 6600780051239933582}
   _prefab: {fileID: 4420834555265327490, guid: c5ff90d7080e314479b1c76e9695690f, type: 3}
+  _usePool: 0
 --- !u!114 &6600780051239933579
 MonoBehaviour:
   m_ObjectHideFlags: 0

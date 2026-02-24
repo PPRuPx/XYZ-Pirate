@@ -899,7 +899,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5808085500446750405}
-        m_MethodName: Reload
+        m_MethodName: ReloadInMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

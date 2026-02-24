@@ -129,4 +129,28 @@ MonoBehaviour:
   - Key: patric_end_dialog
     Value: "NOOOooo....\r"
   - Key: label_use_double_jump
-    Value: Try to use double jump skill here
+    Value: "Try to use double jump skill here\r"
+  - Key: Crabby_3_Hole_1
+    Value: "T\xEDo, esto tiene mala pinta...\r"
+  - Key: Crabby_3_Hole_2
+    Value: "Yo que t\xFA, no entrar\xEDa ah\xED.\r"
+  - Key: Crabby_3_Hole_3
+    Value: "\xA1Te lo digo en serio!\r"
+  - Key: Crabby_3_Hole_4
+    Value: "Pero si est\xE1s tan loco...\r"
+  - Key: Crabby_3_Hole_5
+    Value: "Compra todo lo que puedas comprar.\r"
+  - Key: Crabby_3_Hole_6
+    Value: "No es momento de andar ahorrando oro y gemas.\r"
+  - Key: Crabby_3_Hole_7
+    Value: "Total, vas a morir, je-je.\r"
+  - Key: daddy_shark_start_dialog
+    Value: "Mmm... \xA1Carne fresca!\r"
+  - Key: daddy_shark_end_dialog
+    Value: "\xA1\xBFPero c\xF3mo?! \xA1No es justo!\r"
+  - Key: diamong_end_dialog_1
+    Value: "\xA1Qu\xE9 diamante tan enorme! \xA1Soy rico! \xA1Incre\xEDblemente rico!\r"
+  - Key: diamong_end_dialog_2
+    Value: "\xA1Al fin tengo lo que tanto tiempo estuve buscando!\r"
+  - Key: thx
+    Value: "\xA1GRACIAS POR JUGAR! :*"
